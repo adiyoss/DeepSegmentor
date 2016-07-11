@@ -1,1 +1,1 @@
-# DeepSegmentor
+# Deep Segmentor
