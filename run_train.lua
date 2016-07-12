@@ -21,11 +21,11 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/features/word_duration/x.t7', 'the path to the features file')
-   cmd:option('-labels_path', 'data/labels/word_duration/y.t7', 'the path to the labels file')
+   cmd:option('-features_path', 'data/word_duration/t7/x.t7', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration/t7/y.t7', 'the path to the labels file')
    cmd:option('-input_dim', 13, 'the input size')
    -- loss
-   cmd:option('-eps', 1, 'the tolerance value for the loss function')
+   cmd:option('-eps', 10, 'the tolerance value for the loss function')
    -- model
    cmd:option('-hidden_size', 80, 'the hidden size')
    cmd:option('-dropout', 0.5, 'dropout rate')
@@ -38,13 +38,23 @@ if not opt then
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
-   cmd:option('-n_epochs', 30, 'the number of epochs')
+   cmd:option('-patience', 5, 'the number of epochs to be patience')
    
    cmd:text()
    opt = cmd:parse(arg or {})
 end
 ----------------------------------------------------------------------
+-- create loggers
+lossLogger = optim.Logger(paths.concat(opt.save, 'loss.log'))
+scoreLogger = optim.Logger(paths.concat(opt.save, 'score.log'))
+
+-- set seed and save the parameters for reproducibility
 torch.manualSeed(opt.seed)
+paramsLogger = io.open(paths.concat(opt.save, 'params.log'), 'w')
+for key, value in pairs(opt) do
+  paramsLogger:write(key .. ': ' .. tostring(value) .. '\n')
+end
+paramsLogger:close()
 
 d:new()
 print '==> Loading data set'
@@ -70,18 +80,24 @@ end
 
 print '==> training! '
 local time = 0
-local iteration = 1  -- epoch tracker
+local iteration = 1  -- for early stopping
+local epoch = 1  -- epoch tracker
+local best_loss = 9999999
+local best_score = -1
+local loss = -1
 
-while iteration <= opt.n_epochs do
+while loss < best_loss or iteration <= opt.patience do
+  -- training
   model:training()
-  print("==> online epoch # " .. iteration)
+  print("==> online epoch # " .. epoch)
   for t =1,#x do    
     xlua.progress(t, #x)
     time = time + tr:train(x[t], y[t])
   end
   print("\n==> time to learn 1 sample = " .. (time*1000) .. 'ms')
-  iteration = iteration + 1
+  epoch = epoch + 1
   
+  -- evaluating
   model:evaluate()
   local total_score = 0
   local cumulative_loss = 0
@@ -93,10 +109,36 @@ while iteration <= opt.n_epochs do
       cumulative_loss = cumulative_loss + loss
       --print('Score: ' .. score .. ', y: [' .. y[t][1] .. ', ' .. y[t][2] .. '], y hat: [' .. onset .. ', ' .. offset .. ']')
   end
+  loss = cumulative_loss / #x
   print('Total Score: ' .. total_score / #x)  
-  print('Cumulative Loss: ' .. cumulative_loss / #x .. '\n')  
+  print('Cumulative Loss: ' .. loss .. '\n')
+  
+  -- early stopping criteria
+  if loss >= best_loss then 
+    -- increase iteration number
+    iteration = iteration + 1
+    print('\n========================================')
+    print('==> Loss did not improved, iteration: ' .. iteration)
+    print('========================================\n')
+  else
+    -- update the best loss value
+    best_loss = loss  
+    best_score = total_score
+    
+    -- save/log current net
+    local filename = paths.concat(opt.save, 'model.net')
+    os.execute('mkdir -p ' .. sys.dirname(filename))
+    print('==> saving model to '..filename)    
+    torch.save(filename, model)
+    iteration = 1
+  end
+  -- update logger/plot
+  lossLogger:add{['% loss (train set)'] = loss}
+  scoreLogger:add{['% score (train set)'] = total_score}
 end
-torch.save('results/model.net', model)
+
+lossLogger:add{['% loss (train set)'] = best_loss}
+scoreLogger:add{['% score (train set)'] = best_score}
 
 --[[
 model:evaluate()
