@@ -20,8 +20,8 @@ if not opt then
   -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/features/word_duration/x.t7', 'the path to the features file')
-   cmd:option('-labels_path', 'data/labels/word_duration/y.t7', 'the path to the labels file')
+   cmd:option('-features_path', 'data/word_duration/t7/x.t7', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration/t7/y.t7', 'the path to the labels file')
    cmd:option('-input_dim', 13, 'the input size')
    -- train
    cmd:option('-model', 'results/model.net', 'the path to the model directory')

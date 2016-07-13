@@ -1,5 +1,11 @@
+—- accuracy —-
 1. create new reader straight from dir of .wav files
 2. print file names near the scores so we can debug them
-3. use new features - spectrogram? 
-4. support mini-batches
-5. support GPU
+3. initialize the model with the multi class version
+4. use new features - spectrogram?
+—- technicalities —-
+1. support mini-batches
+2. support GPU
+—- paper —-
+1. compare to whom?
+2. benchmark?
