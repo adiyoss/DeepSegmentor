@@ -1,6 +1,7 @@
 —- accuracy —-
 1. create new reader straight from dir of .wav files
 2. print file names near the scores so we can debug them
+3. rewrite the model to support the new element-rnn versions
 3. initialize the model with the multi class version
 4. use new features - spectrogram?
 
