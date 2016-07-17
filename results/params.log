@@ -1,13 +1,13 @@
 clipping: 5
 input_dim: 13
-features_path: data/word_duration/t7/x.t7
-labels_path: data/word_duration/t7/y.t7
+features_path: data/word_duration/small/
+labels_path: data/word_duration/small/
 seed: 1234
 learningRate: 0.01
 type: double
 momentum: 0.9
 optimization: ADAGRAD
-eps: 10
+eps: 5
 patience: 5
 plot: false
 save: results

@@ -3,7 +3,6 @@ require 'torch'
 require 'xlua'
 require 'optim'
 -------------------------------
-
 local trainer = {}
 
 -- C'Tor

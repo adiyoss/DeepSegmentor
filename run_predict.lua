@@ -7,6 +7,7 @@ require 'xlua'
 dofile ('model/structured_hinge_loss.lua') -- new loss function
 d = dofile('common/data.lua')
 m = dofile('model/model.lua')
+eval = dofile('evaluate.lua')
 
 ----------------------------------------------------------------------
 if not opt then    
@@ -20,8 +21,8 @@ if not opt then
   -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration/t7/x.t7', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration/t7/y.t7', 'the path to the labels file')
+   cmd:option('-features_path', 'data/word_duration/test/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration/test/', 'the path to the labels file')
    cmd:option('-input_dim', 13, 'the input size')
    -- train
    cmd:option('-model', 'results/model.net', 'the path to the model directory')
@@ -39,7 +40,7 @@ local eps = 2
 
 d:new()
 print '==> Loading data set'
-x, y = d:read_data_word_duration(opt.features_path, opt.labels_path, opt.input_dim)
+x, y, f_n = d:read_data(opt.features_path, opt.labels_path, opt.input_dim)
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(eps)
@@ -50,14 +51,4 @@ model = torch.load(opt.model)
 print(model)
 
 print '==> predict '
-local cumulative_loss = 0
-model:evaluate()
-for t =1,#x do
-    local output = model:forward(x[t])
-    local score, onset, offset = criterion:predict(output)
-    local loss = criterion:task_loss(y[t], {onset, offset})
-    cumulative_loss = cumulative_loss + loss
-    print('Score: ' .. score .. ', y_hat: [' .. onset .. ', ' .. offset ..'], y: [' .. y[t][1] .. ', ' .. y[t][2] .. '], loss: ' .. loss)    
-end
-print('\nAverage cumulative loss: ' .. cumulative_loss / #x)
-
+local loss, score = eval:evaluate(model, criterion, x, y, true)

@@ -1,12 +1,14 @@
-#from aetypes import Enum
-import os
 from subprocess import call
 import sys
 import numpy as np
 
+from lib.textgrid import IntervalTier, Interval
+from lib.textgrid import TextGrid
+
 __author__ = 'yossiadi'
 
 
+# ---------------------- GENERAL ---------------------- #
 def easy_call(command, debug_mode=False):
     try:
         # command = "time " + command
@@ -19,6 +21,13 @@ def easy_call(command, debug_mode=False):
         print type(exception)  # the exception instance
         print exception.args  # arguments stored in .args
         exit(-1)
+
+
+# ---------------------- WAV FILES ---------------------- #
+def crop_wav(wav_path, start_trim, end_trim, output_path):
+    duration = end_trim - start_trim
+    cmd = 'sbin/sox %s %s trim %s %s' % (wav_path, output_path, str(start_trim), str(duration))
+    easy_call(cmd)
 
 
 # get the length of the wav file
@@ -42,26 +51,13 @@ def normalize_to_prob(y):
     return y_norm
 
 
-#class LearningTypes(Enum):
-#    TRAIN, PREDICT = range(2)
-#
-#    @classmethod
-#    def tostring(cls, val):
-#        for k, v in vars(cls).iteritems():
-#            if v == val:
-#                return k
-#
-#    @classmethod
-#    def fromstring(cls, str):
-#        return getattr(cls, str.upper(), None)
-
-
 def concatenate_x_frames(x, y, num_of_frames, is_y=True):
     """
     Concatenate n frames before and after the current frame
     :param x: The features
     :param y: The labels
     :param num_of_frames: The number pf frames to concatenate
+    :param is_y:
     :return: The new features and labels
     """
     if is_y:
@@ -105,3 +101,33 @@ def concatenate_x_frames(x, y, num_of_frames, is_y=True):
                 x_concat.append(tmp_x)
             items_x.append(x_concat)
         return np.array(items_x)
+
+
+# ---------------------- TEXT-GRIDS ---------------------- #
+def create_text_grid(text_grid_path, label, num_of_frames):
+    """
+    create TextGrid files from the labels_path file
+    :param num_of_frames:
+    :param label:
+    :param text_grid_path:
+    """
+
+    # should be different for every file format
+    FRAME_RATE = 10
+    MILLISEC_2_SEC = 0.001
+    FRAME_CONCAT_ONSET = 0
+    FRAME_CONCAT_OFFSET = 0
+    v_onset = (label[0] + FRAME_CONCAT_ONSET)
+    v_offset = (label[1] + FRAME_CONCAT_OFFSET)
+    length = num_of_frames * FRAME_RATE * MILLISEC_2_SEC
+
+    # build TextGrid
+    text_grid = TextGrid()
+    vowels_tier = IntervalTier(name='Duration', minTime=0.0, maxTime=float(length))
+    vowels_tier.addInterval(Interval(0, float(v_onset) * FRAME_RATE * MILLISEC_2_SEC, ""))
+    vowels_tier.addInterval(
+            Interval(float(v_onset) * FRAME_RATE * MILLISEC_2_SEC, float(v_offset) * FRAME_RATE * MILLISEC_2_SEC, ""))
+    vowels_tier.addInterval(Interval(float(v_offset) * FRAME_RATE * MILLISEC_2_SEC, float(length), ""))
+
+    text_grid.append(vowels_tier)
+    text_grid.write(text_grid_path)

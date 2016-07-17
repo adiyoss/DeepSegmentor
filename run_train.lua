@@ -8,6 +8,8 @@ dofile ('model/structured_hinge_loss.lua') -- new loss function
 d = dofile('common/data.lua')
 m = dofile('model/model.lua')
 tr = dofile('train.lua')
+eval = dofile('evaluate.lua')
+
 
 ----------------------------------------------------------------------
 if not opt then
@@ -21,11 +23,11 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration/t7/x.t7', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration/t7/y.t7', 'the path to the labels file')
+   cmd:option('-features_path', 'data/word_duration/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration/', 'the path to the labels file')
    cmd:option('-input_dim', 13, 'the input size')
    -- loss
-   cmd:option('-eps', 10, 'the tolerance value for the loss function')
+   cmd:option('-eps', 5, 'the tolerance value for the loss function')
    -- model
    cmd:option('-hidden_size', 100, 'the hidden size')
    cmd:option('-dropout', 0.5, 'dropout rate')
@@ -56,9 +58,15 @@ for key, value in pairs(opt) do
 end
 paramsLogger:close()
 
+train_folder = 'train/'
+val_folder = 'val/'
+test_folder = 'test/'
+
 d:new()
 print '==> Loading data set'
-x, y = d:read_data_word_duration(opt.features_path, opt.labels_path, opt.input_dim)
+x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim)
+x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim)
+x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim)
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(opt.eps)
@@ -80,39 +88,30 @@ end
 
 print '==> training! '
 local time = 0
-local iteration = 1  -- for early stopping
+local iteration = 0  -- for early stopping
 local epoch = 1  -- epoch tracker
-local best_loss = 9999999
+local best_loss = 99999999
 local best_score = -1
+local score = -1
 local loss = -1
+
+loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val, true)
 
 while loss < best_loss or iteration <= opt.patience do
   -- training
   model:training()
   print("==> online epoch # " .. epoch)
-  for t =1,#x do    
-    xlua.progress(t, #x)
-    time = time + tr:train(x[t], y[t])
+  for t =1,#x_train do
+    xlua.progress(t, #x_train)
+    time = time + tr:train(x_train[t], y_train[t])
   end
   print("\n==> time to learn 1 sample = " .. (time*1000) .. 'ms')
   epoch = epoch + 1
   
   -- evaluating
   model:evaluate()
-  local total_score = 0
-  local cumulative_loss = 0
-  for t =1,#x do
-      local output = model:forward(x[t])
-      local score, onset, offset = criterion:predict(output)
-      total_score = total_score + score
-      local loss = criterion:task_loss(y[t], {onset, offset})
-      cumulative_loss = cumulative_loss + loss
-      --print('Score: ' .. score .. ', y: [' .. y[t][1] .. ', ' .. y[t][2] .. '], y hat: [' .. onset .. ', ' .. offset .. ']')
-  end
-  loss = cumulative_loss / #x
-  print('Total Score: ' .. total_score / #x)  
-  print('Cumulative Loss: ' .. loss .. '\n')
-  
+  loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val, true)
+    
   -- early stopping criteria
   if loss >= best_loss then 
     -- increase iteration number
@@ -122,30 +121,26 @@ while loss < best_loss or iteration <= opt.patience do
     print('========================================\n')
   else
     -- update the best loss value
-    best_loss = loss  
-    best_score = total_score
+    best_loss = loss
+    best_score = score
     
     -- save/log current net
     local filename = paths.concat(opt.save, 'model.net')
     os.execute('mkdir -p ' .. sys.dirname(filename))
-    print('==> saving model to '..filename)    
+    print('==> saving model to '..filename)
     torch.save(filename, model)
-    iteration = 1
+    iteration = 0
   end
   -- update logger/plot
   lossLogger:add{['% loss (train set)'] = loss}
-  scoreLogger:add{['% score (train set)'] = total_score}
+  scoreLogger:add{['% score (train set)'] = score}
 end
 
 lossLogger:add{['% loss (train set)'] = best_loss}
 scoreLogger:add{['% score (train set)'] = best_score}
 
---[[
-model:evaluate()
-for t =1,#x do
-    local output = model:forward(x[t])
-    local score, onset, offset = criterion:predict(output)
-    print('Score: ' .. score .. ', onset: ' .. onset .. ', offset: ' .. offset)
-end
-]]--
+
+-- TEST --
+print 'evaluating on test set'
+eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
 

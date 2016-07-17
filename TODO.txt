@@ -1,14 +1,12 @@
 —- accuracy —-
-1. create new reader straight from dir of .wav files
-2. print file names near the scores so we can debug them
-3. rewrite the model to support the new element-rnn versions
-3. initialize the model with the multi class version
-4. use new features - spectrogram?
+1. initialize the model with the multi class version
 
 —- technicalities —-
-1. support mini-batches
-2. support GPU - only minor changes
+1. rewrite the model to support the new element-rnn versions - tomorrow
+2. support mini-batches
+3. support GPU - only minor changes - tomorrow
 
-—- paper —-
+Questions for Yossi K.:
 1. compare to whom?
-2. benchmark?
+2. benchmark? Datasets? word duration? vot? vowel?
+3. use new features - spectrogram? filter banks?

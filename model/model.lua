@@ -27,7 +27,7 @@ function model:build_model(input_dim, hidden_size, dropout_rate, method)
 
   m = nn.Sequential()
      :add(brnn)
-     :add(nn.Sequencer(nn.NormStabilizer()))
+     --:add(nn.Sequencer(nn.NormStabilizer()))
      :add(nn.Sequencer(nn.Dropout(dropout_rate)))          
      :add(nn.StructLayer(2*hidden_size, method))
      

@@ -31,26 +31,27 @@ function utils:load_data(path, input_dim)
   
   -- local data = torch.Tensor(num_of_examples, input_dim)
   local data = {}
- --local mins = torch.zeros(1, input_dim):fill(999999999)
- --local maxes = torch.zeros(1, input_dim):fill(-999999999)
   if file then
     local i = 1
     for line in file:lines() do
       local j = 1
       local tmp = torch.Tensor(1, input_dim)
-      --mins:cmin(tmp)
-      --maxes:cmax(tmp)
       for str in string.gmatch(line, "(%S+)") do
+        -- read only until input dim is reached
+        if j > input_dim then
+          break
+        end
         tmp[1][j] = str
         j = j + 1
-      end
-      if (j - 1) == input_dim then
-        if opt.type == 'double' then
+      end      
+      -- support gpu processing
+      if (j - 1) == input_dim then        
+        if not opt or not opt.type then
+          data[i] = tmp:double()
+        elseif opt.type == 'double' then
           data[i] = tmp:double()
         elseif opt.type == 'cuda' then
           data[i] = tmp:cuda()
-        else
-          data[i] = tmp:double()
         end
         i = i + 1
       end
@@ -60,14 +61,7 @@ function utils:load_data(path, input_dim)
   end  
   if not file then
     file:close()
-  end
-  
-  --[[
-  for i=1,#data do
-    data[i]:csub(mins):cdiv(maxes - mins)
-  end
-  ]]--
-  
+  end  
   return data
 end
 
