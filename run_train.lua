@@ -27,7 +27,7 @@ if not opt then
    -- loss
    cmd:option('-eps', 10, 'the tolerance value for the loss function')
    -- model
-   cmd:option('-hidden_size', 80, 'the hidden size')
+   cmd:option('-hidden_size', 100, 'the hidden size')
    cmd:option('-dropout', 0.5, 'dropout rate')
    -- train
    cmd:option('-save', 'results', 'subdirectory to save/log experiments in')

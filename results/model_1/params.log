@@ -12,5 +12,5 @@ patience: 5
 plot: false
 save: results
 weightDecay: 0
-hidden_size: 100
+hidden_size: 80
 dropout: 0.5
