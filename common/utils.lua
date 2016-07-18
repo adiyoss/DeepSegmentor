@@ -18,7 +18,7 @@ function utils:get_num_of_lines(path)
   else
     print("\n==>ERROR: can not open file.")    
   end  
-  if not file then
+  if file then
     file:close()
   end
   return i
@@ -58,8 +58,8 @@ function utils:load_data(path, input_dim)
     end
   else
     print("\n==>ERROR: can not open file.")    
-  end  
-  if not file then
+  end 
+  if file then
     file:close()
   end  
   return data
@@ -82,7 +82,7 @@ function utils:load_labels(path)
   else
     print("\n==>ERROR: can not open file.")    
   end  
-  if not file then
+  if file then
     file:close()
   end
   return labels

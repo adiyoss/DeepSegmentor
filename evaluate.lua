@@ -1,11 +1,17 @@
+require 'torch'
+require 'xlua'
+
 local evaluator = {}
 
 function evaluator:evaluate(model, criterion, x, y, f_n, verbose)  
   local avg_score = 0
   local cumulative_loss = 0
-  
+
   model:evaluate()  
   for t =1, #x do
+      if not verbose then
+        xlua.progress(t, #x)
+      end
       local output = model:forward(x[t])
       local score, onset, offset = criterion:predict(output)
       local loss = criterion:task_loss(y[t], {onset, offset})

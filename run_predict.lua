@@ -40,7 +40,7 @@ local eps = 2
 
 d:new()
 print '==> Loading data set'
-x, y, f_n = d:read_data(opt.features_path, opt.labels_path, opt.input_dim)
+x, y, f_n = d:read_data(opt.features_path, opt.labels_path, opt.input_dim, 'test.t7')
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(eps)
@@ -51,4 +51,4 @@ model = torch.load(opt.model)
 print(model)
 
 print '==> predict '
-local loss, score = eval:evaluate(model, criterion, x, y, true)
+local loss, score = eval:evaluate(model, criterion, x, y, f_n, true)

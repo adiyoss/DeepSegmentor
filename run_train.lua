@@ -64,9 +64,9 @@ test_folder = 'test/'
 
 d:new()
 print '==> Loading data set'
-x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim)
-x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim)
-x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim)
+x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
+x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
+x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(opt.eps)
@@ -95,7 +95,11 @@ local best_score = -1
 local score = -1
 local loss = -1
 
-loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val, true)
+print 'evaluating on validation set'
+loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+
+print('\nAverage score: ' .. score)
+print('Average cumulative loss: ' .. loss)
 
 while loss < best_loss or iteration <= opt.patience do
   -- training
@@ -110,8 +114,11 @@ while loss < best_loss or iteration <= opt.patience do
   
   -- evaluating
   model:evaluate()
-  loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val, true)
-    
+  print 'evaluating on validation set'
+  loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+  print('\nAverage score: ' .. score)
+  print('Average cumulative loss: ' .. loss)
+  
   -- early stopping criteria
   if loss >= best_loss then 
     -- increase iteration number
@@ -124,10 +131,16 @@ while loss < best_loss or iteration <= opt.patience do
     best_loss = loss
     best_score = score
     
+    -- clean state before saving
+    model:clearState()
+    model:get(1):forget()
+    model:get(1).output = torch.Tensor()
+    model:get(1).gradInput = torch.Tensor()
+    
     -- save/log current net
     local filename = paths.concat(opt.save, 'model.net')
     os.execute('mkdir -p ' .. sys.dirname(filename))
-    print('==> saving model to '..filename)
+    print('==> loss improved, saving model to '..filename)
     torch.save(filename, model)
     iteration = 0
   end

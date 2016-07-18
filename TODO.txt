@@ -2,9 +2,10 @@
 1. initialize the model with the multi class version
 
 —- technicalities —-
-1. rewrite the model to support the new element-rnn versions - tomorrow
+1. rewrite the model to support the new element-rnn versions
 2. support mini-batches
-3. support GPU - only minor changes - tomorrow
+3. support GPU - only minor changes
+4. add exceptions
 
 Questions for Yossi K.:
 1. compare to whom?
