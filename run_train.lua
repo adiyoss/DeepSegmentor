@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
---require('mobdebug').start()
+require('mobdebug').start()
 require 'torch'   -- torch
 require 'nn'
 require 'rnn'
@@ -58,15 +58,15 @@ for key, value in pairs(opt) do
 end
 paramsLogger:close()
 
-train_folder = 'train/'
+train_folder = 'val/'
 val_folder = 'val/'
-test_folder = 'test/'
+test_folder = 'val/'
 
 d:new()
 print '==> Loading data set'
-x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
+x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'val.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
-x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
+x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'val.t7')
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(opt.eps)
