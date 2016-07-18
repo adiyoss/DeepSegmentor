@@ -39,13 +39,19 @@ if not opt then
    cmd:option('-learningRate', 0.01, 'learning rate at t=0')
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
-   cmd:option('-type', 'double', 'data type: double | cuda')
+   cmd:option('-type', 'cuda', 'data type: double | cuda')
    cmd:option('-patience', 5, 'the number of epochs to be patience')
    
    cmd:text()
    opt = cmd:parse(arg or {})
 end
 ----------------------------------------------------------------------
+if opt.type == 'cuda' then
+   print('==> switching to CUDA')
+   require 'cunn'
+   torch.setdefaulttensortype('torch.FloatTensor')
+end
+
 -- create loggers
 lossLogger = optim.Logger(paths.concat(opt.save, 'loss.log'))
 scoreLogger = optim.Logger(paths.concat(opt.save, 'score.log'))
