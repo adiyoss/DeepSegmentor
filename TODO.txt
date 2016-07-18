@@ -7,7 +7,7 @@
 3. support GPU - only minor changes
 4. add exceptions
 
-Questions for Yossi K.:
+Questions for Yossi K. (Wednesday/Thursday):
 1. compare to whom?
 2. benchmark? Datasets? word duration? vot? vowel?
 3. use new features - spectrogram? filter banks?
