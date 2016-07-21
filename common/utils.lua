@@ -29,29 +29,29 @@ function utils:load_data(path, input_dim)
   local file = io.open(path, "r")
   num_of_examples = self:get_num_of_lines(path)
   
-  -- local data = torch.Tensor(num_of_examples, input_dim)
-  local data = {}
+  local data = torch.Tensor(num_of_examples, 1, input_dim)
+  --local data = {}
   if file then
     local i = 1
     for line in file:lines() do
       local j = 1
-      local tmp = torch.Tensor(1, input_dim)
+      --local tmp = torch.Tensor(1, input_dim)
       for str in string.gmatch(line, "(%S+)") do
         -- read only until input dim is reached
         if j > input_dim then
           break
         end
-        tmp[1][j] = str
+        data[i][1][j] = str
         j = j + 1
       end      
       -- support gpu processing
       if (j - 1) == input_dim then        
         if not opt or not opt.type then
-          data[i] = tmp:double()
+          data[i] = data[i]:double()
         elseif opt.type == 'double' then
-          data[i] = tmp:double()
+          data[i] = data[i]:double()
         elseif opt.type == 'cuda' then
-          data[i] = tmp:cuda()
+          data[i] = data[i]:cuda()
         end
         i = i + 1
       end

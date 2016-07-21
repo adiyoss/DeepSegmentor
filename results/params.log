@@ -1,7 +1,7 @@
-clipping: 5
+clipping: 2
 input_dim: 13
-features_path: data/word_duration/
-labels_path: data/word_duration/
+features_path: data/word_duration
+labels_path: data/word_duration
 seed: 1234
 learningRate: 0.01
 type: double
