@@ -15,6 +15,7 @@ function data:new()
   self.y_suffix = '.labels'
 end
 
+-- validate that for every .txt file there exists .textgrid file
 function data:validate_data(path_x, path_y)
   local n_files = 0
   for file in paths.files(path_x) do

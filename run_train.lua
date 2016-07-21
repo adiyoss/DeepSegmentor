@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------
-require('mobdebug').start()
+--require('mobdebug').start()
 require 'torch'   -- torch
 require 'nn'
 require 'rnn'
@@ -35,13 +35,8 @@ if not opt then
    cmd:option('-save', 'results', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
-<<<<<<< HEAD
-   cmd:option('-clipping', 5, 'gradient clipping in the range of [-5, 5]')
-   cmd:option('-learningRate', 0.1, 'learning rate at t=0')
-=======
-   cmd:option('-clipping', 2, 'gradient clipping in the range of [-5, 5]')
+   cmd:option('-clipping', 2, 'gradient clipping in the range of [-n, n]')
    cmd:option('-learningRate', 0.01, 'learning rate at t=0')
->>>>>>> feature-support_rnn_update
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
@@ -51,13 +46,26 @@ if not opt then
    opt = cmd:parse(arg or {})
 end
 ----------------------------------------------------------------------
+-- define parameters
+local time = 0
+local iteration = 0  -- for early stopping
+local epoch = 1  -- epoch tracker
+local best_loss = 99999999
+local best_score = -1
+local score = -1
+local loss = -1
+train_folder = 'train/'
+val_folder = 'val/'
+test_folder = 'test/'
+
+-- for CUDA
 if opt.type == 'cuda' then
    print('==> switching to CUDA')
    require 'cunn'
    torch.setdefaulttensortype('torch.FloatTensor')
 end
 
--- create loggers
+-- ========== create loggers and save the parameters ========== --
 lossLogger = optim.Logger(paths.concat(opt.save, 'loss.log'))
 scoreLogger = optim.Logger(paths.concat(opt.save, 'score.log'))
 
@@ -69,16 +77,16 @@ for key, value in pairs(opt) do
 end
 paramsLogger:close()
 
-train_folder = 'train/'
-val_folder = 'val/'
-test_folder = 'test/'
 
+-- ============================ load the data ============================ --
 d:new()
 print '==> Loading data set'
---x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
+x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
---x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
+x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
 
+
+-- ========== define the model, loss and optimization technique ========== --
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(opt.eps)
 print(criterion)
@@ -97,43 +105,41 @@ if model then
   parameters, gradParameters = model:getParameters()
 end
 
+-- ============================= training ================================ --
 print '==> training! '
-local time = 0
-local iteration = 0  -- for early stopping
-local epoch = 1  -- epoch tracker
-local best_loss = 99999999
-local best_score = -1
-local score = -1
-local loss = -1
-
 print 'evaluating on validation set'
 loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
 print('\nAverage score: ' .. score)
 print('Average cumulative loss: ' .. loss)
 
+-- loop until convergence
 while loss < best_loss or iteration <= opt.patience do
-  -- training
+  -- training mode
   model:training()
+  
   print("==> online epoch # " .. epoch)
   for t =1,#x_train do
     xlua.progress(t, #x_train)
     time = time + tr:train(x_train[t], y_train[t])
   end
+  
   print("\n==> time to learn 1 sample = " .. (time*1000) .. 'ms')
   epoch = epoch + 1
   
-  -- evaluating
+  -- evaluate mode
   model:evaluate()
   print 'evaluating on validation set'
   loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+  
   print('\nAverage score: ' .. score)
   print('Average cumulative loss: ' .. loss)
   
   -- early stopping criteria
-  if loss >= best_loss then 
+  if loss >= best_loss then     
     -- increase iteration number
     iteration = iteration + 1
+    
     print('\n========================================')
     print('==> Loss did not improved, iteration: ' .. iteration)
     print('========================================\n')
@@ -155,16 +161,18 @@ while loss < best_loss or iteration <= opt.patience do
     torch.save(filename, model)
     iteration = 0
   end
-  -- update logger/plot
+  
+  -- update loggers
   lossLogger:add{['% loss (train set)'] = loss}
   scoreLogger:add{['% score (train set)'] = score}
 end
 
+-- update loggers for final results
 lossLogger:add{['% loss (train set)'] = best_loss}
 scoreLogger:add{['% score (train set)'] = best_score}
 
 
--- TEST --
+-- ============================== testing ================================ --
 print 'evaluating on test set'
 eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
 

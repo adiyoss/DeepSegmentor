@@ -20,7 +20,7 @@ function StructuredHingeLoss:updateOutput(input, y)
   self.offset = 2
   self.output = input[self.onset] + input[self.offset] + self:task_loss({self.onset, self.offset}, y, self.eps)
   
-  -- TODO add constraints
+  -- TODO add more constraints
   for i=self.MIN_GAP,input:size(1) do
     for j=i+self.MIN_SIZE,input:size(1) do
       local tmp = input[i] + input[j] + self:task_loss({i, j}, y, self.eps)
@@ -61,7 +61,7 @@ function StructuredHingeLoss:predict(input)
   local offset = 2
   local output = input[onset] + input[offset]
 
-  -- TODO add constraints
+  -- TODO add more constraints
   for i=self.MIN_GAP,input:size(1) do
     for j=i+self.MIN_SIZE,input:size(1) do
       local tmp = input[i] + input[j]

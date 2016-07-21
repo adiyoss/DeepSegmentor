@@ -9,7 +9,7 @@ local model = {}
 
 -- build model
 function model:build_model(input_dim, hidden_size, dropout_rate, method)
-  -- merges the output of one time-step of fwd and bwd rnns.    
+  -- adds the output of one time-step of fwd and bwd rnns.    
   local merge = nn.CAddTable()
   brnn = nn.SeqBRNN(input_dim, hidden_size, false, merge)
   
