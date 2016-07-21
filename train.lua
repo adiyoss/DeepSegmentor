@@ -86,8 +86,8 @@ function trainer:train(train_x, train_y)
                    gradParameters:clamp(-self.clipping, self.clipping)                               
                    
                    -- normalize gradients and f(X)
-                   gradParameters:div(#train_x)
-                   f = f/#train_x
+                   gradParameters:div(train_x:size(1))
+                   f = f/train_x:size(1)
                    
                    -- update logger/plot
                    -- tracking the gradients
@@ -102,7 +102,7 @@ function trainer:train(train_x, train_y)
 
  -- time taken
  time = sys.clock() - time
- time = time / #train_x
+ time = time / train_x:size(1)
  
  return time
 end

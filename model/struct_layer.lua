@@ -12,10 +12,10 @@ end
 
 -- compute the forward pass
 function StructLayer:updateOutput(input)     
-  self.output:resize(#input)
+  self.output:resize(input:size(1))
   self.output:zero()  
   -- W*x for all timesteps
-  for i=1,#input do
+  for i=1,input:size(1) do
     self.output[i] = self.weight * input[i]:t()    
   end
   return self.output
@@ -24,8 +24,8 @@ end
 -- compute the gradient w.r.t the input
 -- df / dx
 function StructLayer:updateGradInput(input, gradOutput)
-  self.gradInput = {}
-  for k, v in pairs(input) do self.gradInput[k] = torch.zeros(1, self.dim) end
+  self.gradInput = torch.zeros(input:size())
+  --for k=1, input:size(1) do self.gradInput[k] = torch.zeros(1, self.dim) end
   self.gradInput[tonumber(gradOutput[1][1])]:add(self.weight) --> w for phi(x, y_hat)
   self.gradInput[tonumber(gradOutput[2][1])]:add(self.weight) --> w for phi(x, y_hat)
   self.gradInput[tonumber(gradOutput[3][1])]:add(torch.mul(self.weight, -1)) --> -w for phi(x, y)

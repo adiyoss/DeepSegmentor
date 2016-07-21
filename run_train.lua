@@ -23,8 +23,8 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration/', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration/', 'the path to the labels file')
+   cmd:option('-features_path', 'data/word_duration', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration', 'the path to the labels file')
    cmd:option('-input_dim', 13, 'the input size')
    -- loss
    cmd:option('-eps', 10, 'the tolerance value for the loss function')
@@ -35,8 +35,13 @@ if not opt then
    cmd:option('-save', 'results', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
+<<<<<<< HEAD
    cmd:option('-clipping', 5, 'gradient clipping in the range of [-5, 5]')
    cmd:option('-learningRate', 0.1, 'learning rate at t=0')
+=======
+   cmd:option('-clipping', 2, 'gradient clipping in the range of [-5, 5]')
+   cmd:option('-learningRate', 0.01, 'learning rate at t=0')
+>>>>>>> feature-support_rnn_update
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')

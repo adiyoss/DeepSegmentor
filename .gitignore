@@ -2,7 +2,7 @@
 .DS_Store
 *.net
 data/word_duration/
-
+*.t7
 
 # Compiled Lua sources
 luac.out
