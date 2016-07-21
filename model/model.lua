@@ -6,7 +6,7 @@ dofile('model/struct_layer.lua')
 
 -------------------------------
 local model = {}
-  
+
 -- build model
 function model:build_model(input_dim, hidden_size, dropout_rate, method)
   -- forward rnn

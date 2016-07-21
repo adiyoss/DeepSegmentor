@@ -3,11 +3,11 @@ input_dim: 13
 features_path: data/word_duration/
 labels_path: data/word_duration/
 seed: 1234
-learningRate: 0.01
+learningRate: 0.1
 type: double
 momentum: 0.9
 optimization: ADAGRAD
-eps: 5
+eps: 10
 patience: 5
 plot: false
 save: results
