@@ -30,12 +30,10 @@ function utils:load_data(path, input_dim)
   num_of_examples = self:get_num_of_lines(path)
   
   local data = torch.Tensor(num_of_examples, 1, input_dim)
-  --local data = {}
   if file then
     local i = 1
     for line in file:lines() do
       local j = 1
-      --local tmp = torch.Tensor(1, input_dim)
       for str in string.gmatch(line, "(%S+)") do
         -- read only until input dim is reached
         if j > input_dim then
@@ -61,7 +59,13 @@ function utils:load_data(path, input_dim)
   end 
   if file then
     file:close()
-  end  
+  end 
+  
+  -- support gpu processing    
+  if opt and opt.type == 'cuda' then
+    data = data:cuda()
+  end
+  
   return data
 end
 

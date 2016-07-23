@@ -107,33 +107,33 @@ end
 
 -- ============================= training ================================ --
 print '==> training! '
-print 'evaluating on validation set'
+print '==> evaluating on validation set'
 loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
-print('\nAverage score: ' .. score)
-print('Average cumulative loss: ' .. loss)
+print('\n==> Average score: ' .. score)
+print('==> Average cumulative loss: ' .. loss)
 
 -- loop until convergence
 while loss < best_loss or iteration <= opt.patience do
   -- training mode
   model:training()
   
+  -- do full epoch
   print("==> online epoch # " .. epoch)
-  for t =1,#x_train do
+  for t =1, #x_train do
     xlua.progress(t, #x_train)
     time = time + tr:train(x_train[t], y_train[t])
-  end
-  
+  end  
   print("\n==> time to learn 1 sample = " .. (time*1000) .. 'ms')
   epoch = epoch + 1
   
   -- evaluate mode
   model:evaluate()
-  print 'evaluating on validation set'
+  print '==> evaluating on validation set'
   loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
   
-  print('\nAverage score: ' .. score)
-  print('Average cumulative loss: ' .. loss)
+  print('\n==> Average score: ' .. score)
+  print('==> Average cumulative loss: ' .. loss)
   
   -- early stopping criteria
   if loss >= best_loss then     
@@ -173,6 +173,6 @@ scoreLogger:add{['% score (train set)'] = best_score}
 
 
 -- ============================== testing ================================ --
-print 'evaluating on test set'
+print '==> evaluating on test set'
 eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
 

@@ -11,14 +11,10 @@ function trainer:new(data_type, clipping)
   if data_type == 'cuda' then
      model:cuda()
      criterion:cuda()     
-     -- Log results to files
-     --trainLogger = optim.Logger(paths.concat(opt.save, 'train.log'))
-     --testLogger = optim.Logger(paths.concat(opt.save, 'test.log'))
   end
-  self.clipping = clipping
+  self.clipping = clipping  
   -- Log results to files
   gradLogger = optim.Logger(paths.concat(opt.save, 'grad.log'))
---  testLogger = optim.Logger(paths.concat(opt.save, 'test.log'))
 end
 
 function trainer:set_optimizer(optimization)  

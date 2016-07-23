@@ -2,9 +2,8 @@
 1. initialize the model with the multi class version
 
 —- technicalities —-
-1. rewrite the model to support the new element-rnn versions, then re-check the gpu usage
-2. support mini-batches
-3. add exceptions
+1. support mini-batches
+2. add exceptions
 
 Questions for Yossi K.:
 1. compare to whom?
