@@ -3,6 +3,7 @@
 *.net
 data/word_duration/
 *.t7
+python/.idea/
 
 # Compiled Lua sources
 luac.out
