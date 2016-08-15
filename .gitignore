@@ -2,6 +2,7 @@
 .DS_Store
 *.net
 data/word_duration/
+data/vot/
 *.t7
 python/.idea/*
 *.pyc
