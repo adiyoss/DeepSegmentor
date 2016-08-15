@@ -1,0 +1,30 @@
+WORD DURATION DATA STATISTICS:
+
+Duration statistics for train files: 
+Mean: 49.318
+Median: 49.000
+Std: 11.070
+Max: 102.000
+Min: 17.000
+Number of files: 3406
+Number of files that do not fall into 4 std is 5
+
+
+Duration statistics for test files: 
+Mean: 51.856
+Median: 51.000
+Std: 11.817
+Max: 101.000
+Min: 22.000
+Number of files: 1006
+Number of files that do not fall into 4 std is 1
+
+
+Duration statistics for validation files: 
+Mean: 47.790
+Median: 49.000
+Std: 10.480
+Max: 87.000
+Min: 19.000
+Number of files: 591
+Number of files that do not fall into 4 std is 0

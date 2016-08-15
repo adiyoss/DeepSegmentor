@@ -1,0 +1,893 @@
+==> processing options	
+==> Loading data set	
+==> define loss	
+nn.StructuredHingeLoss
+==> build the model and initialize weights	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> output]
+  (1): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (2): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (3): nn.StructLayer
+}
+==> configuring optimizer	
+==> training! 	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s719ms | Step: 54ms    
+
+==> Average score: 0	
+==> Average cumulative loss: 102.00191570881	
+==> online epoch # 1	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m43s | Step: 169ms      
+
+==> time to learn 1 sample = 1592.4819774898ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s434ms | Step: 53ms    
+
+==> Average score: 54.890838531164	
+==> Average cumulative loss: 1.5038314176245	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 2	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m43s | Step: 170ms      
+
+==> time to learn 1 sample = 3185.0025899889ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s390ms | Step: 54ms    
+
+==> Average score: 51.230400819714	
+==> Average cumulative loss: 1.3486590038314	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 3	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m42s | Step: 169ms      
+
+==> time to learn 1 sample = 4776.699699304ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s402ms | Step: 54ms    
+
+==> Average score: 53.182510632325	
+==> Average cumulative loss: 1.2471264367816	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 4	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m43s | Step: 170ms      
+
+==> time to learn 1 sample = 6374.706323033ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s489ms | Step: 54ms    
+
+==> Average score: 51.577276107408	
+==> Average cumulative loss: 1.2452107279693	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 5	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m44s | Step: 169ms      
+
+==> time to learn 1 sample = 7974.9780153407ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s495ms | Step: 54ms    
+
+==> Average score: 54.133960526744	
+==> Average cumulative loss: 1.2892720306513	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 6	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m44s | Step: 169ms      
+
+==> time to learn 1 sample = 9573.338599583ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s434ms | Step: 54ms    
+
+==> Average score: 49.21173841787	
+==> Average cumulative loss: 1.1819923371648	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 7	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m33s | Step: 169ms      
+
+==> time to learn 1 sample = 11134.583955461ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s363ms | Step: 53ms    
+
+==> Average score: 44.719880266388	
+==> Average cumulative loss: 1.4521072796935	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 8	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m42s | Step: 168ms      
+
+==> time to learn 1 sample = 12725.42782248ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s391ms | Step: 53ms    
+
+==> Average score: 52.512594618545	
+==> Average cumulative loss: 1.3467432950192	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 9	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m42s | Step: 169ms      
+
+==> time to learn 1 sample = 14311.942702208ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s403ms | Step: 53ms    
+
+==> Average score: 46.388639108741	
+==> Average cumulative loss: 1.1532567049808	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 10	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m42s | Step: 169ms      
+
+==> time to learn 1 sample = 15900.210928456ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s632ms | Step: 54ms    
+
+==> Average score: 46.726991088406	
+==> Average cumulative loss: 1.0632183908046	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model.net	
+==> online epoch # 11	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m43s | Step: 171ms      
+
+==> time to learn 1 sample = 17493.331608958ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s368ms | Step: 53ms    
+
+==> Average score: 48.676345911595	
+==> Average cumulative loss: 1.2375478927203	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 12	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m39s | Step: 165ms      
+
+==> time to learn 1 sample = 19072.735745299ms	
+==> evaluating on validation set	
+ [================================================================ 261/261 ============>] Tot: 14s51ms | Step: 52ms     
+
+==> Average score: 42.089558687004	
+==> Average cumulative loss: 1.2375478927203	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 13	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m34s | Step: 166ms      
+
+==> time to learn 1 sample = 20629.896325166ms	
+==> evaluating on validation set	
+ [================================================================= 261/261 ===========>] Tot: 14s177ms | Step: 53ms    
+
+==> Average score: 46.495807232416	
+==> Average cumulative loss: 1.2988505747126	
+
+========================================	
+==> Loss did not improved, iteration: 3	
+========================================
+	
+==> online epoch # 14	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m35s | Step: 166ms      
+
+==> time to learn 1 sample = 22193.394744457ms	
+==> evaluating on validation set	
+ [================================================================ 261/261 ============>] Tot: 14s28ms | Step: 52ms     
+
+==> Average score: 43.828390978379	
+==> Average cumulative loss: 1.2413793103448	
+
+========================================	
+==> Loss did not improved, iteration: 4	
+========================================
+	
+==> online epoch # 15	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m34s | Step: 166ms      
+
+==> time to learn 1 sample = 23746.436582419ms	
+==> evaluating on validation set	
+ [================================================================ 261/261 ============>] Tot: 14s10ms | Step: 52ms     
+
+==> Average score: 45.521186329332	
+==> Average cumulative loss: 1.3524904214559	
+
+========================================	
+==> Loss did not improved, iteration: 5	
+========================================
+	
+==> online epoch # 16	
+ [=============================================================== 2402/2402 ===========>] Tot: 6m34s | Step: 166ms      
+
+==> time to learn 1 sample = 25302.789262437ms	
+==> evaluating on validation set	
+ [================================================================ 261/261 ============>] Tot: 14s10ms | Step: 52ms     
+
+==> Average score: 40.914807967864	
+==> Average cumulative loss: 1.2528735632184	
+
+========================================	
+==> Loss did not improved, iteration: 6	
+========================================
+	
+==> evaluating on test set	
+Filename: 416_B08_wName1.data, score: 69.912745412359, y_hat: [119, 183], y: [120.0, 181.0], loss: 0	
+Filename: 416_B08_wName2.data, score: -36.916961018675, y_hat: [50, 97], y: [50.0, 60.0], loss: 17.5	
+Filename: 416_B09_wName2.data, score: 42.218354123844, y_hat: [59, 92], y: [60.0, 91.0], loss: 0	
+Filename: 416_B10_wName1.data, score: 86.050298937559, y_hat: [70, 104], y: [70.0, 106.0], loss: 0	
+Filename: 417_B09_wName1.data, score: 74.538385639053, y_hat: [171, 256], y: [170.0, 256.0], loss: 0	
+Filename: 417_B09_wName3.data, score: 61.193566865608, y_hat: [80, 119], y: [80.0, 118.0], loss: 0	
+Filename: 417_B10_wName2.data, score: 49.56218185854, y_hat: [90, 135], y: [90.0, 135.0], loss: 0	
+Filename: 417_B10_wName3.data, score: -23.543233067382, y_hat: [48, 68], y: [50.0, 64.0], loss: 1	
+Filename: 418_B08_wName1.data, score: 71.57257817979, y_hat: [120, 181], y: [120.0, 178.0], loss: 0.5	
+Filename: 418_B10_wName1.data, score: 45.684742825894, y_hat: [49, 73], y: [50.0, 73.0], loss: 0	
+Filename: 419_B09_wName1.data, score: -39.105036220798, y_hat: [50, 70], y: [50.0, 63.0], loss: 2.5	
+Filename: 419_B09_wName2.data, score: 72.559065299356, y_hat: [110, 172], y: [110.0, 167.0], loss: 1.5	
+Filename: 419_B09_wName3.data, score: 54.058606106424, y_hat: [69, 107], y: [70.0, 107.0], loss: 0	
+Filename: 419_B10_wName2.data, score: 62.193599006026, y_hat: [50, 70], y: [50.0, 73.0], loss: 0.5	
+Filename: 419_B10_wName3.data, score: 50.072608203072, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 420_B08_wName1.data, score: 52.624869694684, y_hat: [70, 111], y: [70.0, 108.0], loss: 0.5	
+Filename: 421_B09_wName1.data, score: -14.22474502497, y_hat: [50, 70], y: [50.0, 67.0], loss: 0.5	
+Filename: 421_B09_wName2.data, score: 14.135129246351, y_hat: [51, 72], y: [50.0, 76.0], loss: 1	
+Filename: 421_B09_wName3.data, score: 48.33654147189, y_hat: [70, 103], y: [70.0, 103.0], loss: 0	
+Filename: 421_B10_wName3.data, score: 44.091187669027, y_hat: [49, 77], y: [50.0, 77.0], loss: 0	
+Filename: 422_B08_wName1.data, score: 72.311746994867, y_hat: [90, 134], y: [90.0, 134.0], loss: 0	
+Filename: 422_B10_wName1.data, score: 15.989850928684, y_hat: [47, 67], y: [50.0, 63.0], loss: 1.5	
+Filename: 423_B09_wName1.data, score: 73.020292178211, y_hat: [150, 229], y: [150.0, 226.0], loss: 0.5	
+Filename: 423_B09_wName2.data, score: 69.356878604062, y_hat: [100, 155], y: [100.0, 152.0], loss: 0.5	
+Filename: 423_B09_wName3.data, score: 60.175582045273, y_hat: [80, 121], y: [80.0, 122.0], loss: 0	
+Filename: 423_B10_wName2.data, score: 60.380230814117, y_hat: [100, 149], y: [100.0, 150.0], loss: 0	
+Filename: 424_B08_wName1.data, score: 44.678131652036, y_hat: [67, 142], y: [100.0, 149.0], loss: 18	
+Filename: 424_B08_wName2.data, score: 55.950366119114, y_hat: [90, 133], y: [90.0, 133.0], loss: 0	
+Filename: 424_B10_wName1.data, score: 85.118906545402, y_hat: [60, 80], y: [60.0, 91.0], loss: 4.5	
+Filename: 425_B09_wName1.data, score: 71.181237407465, y_hat: [201, 304], y: [200.0, 300.0], loss: 1	
+Filename: 425_B09_wName2.data, score: 46.99607018948, y_hat: [60, 92], y: [60.0, 91.0], loss: 0	
+Filename: 425_B09_wName3.data, score: 79.824739151207, y_hat: [190, 291], y: [190.0, 286.0], loss: 1.5	
+Filename: 425_B10_wName3.data, score: 38.9854450738, y_hat: [48, 75], y: [50.0, 77.0], loss: 0	
+Filename: 426_B08_wName2.data, score: 73.892364037519, y_hat: [170, 253], y: [170.0, 255.0], loss: 0	
+Filename: 426_B10_wName1.data, score: 79.855701566616, y_hat: [120, 182], y: [120.0, 179.0], loss: 0.5	
+Filename: 427_B09_wName1.data, score: 51.861852983448, y_hat: [50, 75], y: [50.0, 75.0], loss: 0	
+Filename: 427_B09_wName2.data, score: 82.341563790024, y_hat: [129, 194], y: [130.0, 193.0], loss: 0	
+Filename: 427_B09_wName3.data, score: 90.22139521529, y_hat: [239, 366], y: [240.0, 362.0], loss: 1	
+Filename: 427_B10_wName2.data, score: 1.5246729119982, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 428_B08_wName3.data, score: 51.887428661391, y_hat: [50, 73], y: [50.0, 73.0], loss: 0	
+Filename: 429_B09_wName1.data, score: 86.675423532341, y_hat: [250, 374], y: [250.0, 374.0], loss: 0	
+Filename: 429_B09_wName2.data, score: 52.526201015057, y_hat: [60, 90], y: [60.0, 90.0], loss: 0	
+Filename: 429_B10_wName2.data, score: 58.195439359937, y_hat: [80, 122], y: [80.0, 123.0], loss: 0	
+Filename: 429_B10_wName3.data, score: 47.050791311768, y_hat: [50, 71], y: [50.0, 70.0], loss: 0	
+Filename: 430_B08_wName2.data, score: -22.706452560281, y_hat: [43, 63], y: [50.0, 65.0], loss: 2.5	
+Filename: 430_B08_wName3.data, score: 65.444362992342, y_hat: [110, 169], y: [110.0, 167.0], loss: 0	
+Filename: 430_B10_wName1.data, score: 42.204693054199, y_hat: [50, 73], y: [50.0, 71.0], loss: 0	
+Filename: 431_B09_wName1.data, score: 74.539285743068, y_hat: [208, 318], y: [210.0, 315.0], loss: 0.5	
+Filename: 431_B09_wName2.data, score: 13.921440529085, y_hat: [48, 68], y: [50.0, 66.0], loss: 0	
+Filename: 431_B09_wName3.data, score: -20.033912354955, y_hat: [49, 69], y: [50.0, 62.0], loss: 2.5	
+Filename: 431_B10_wName2.data, score: 36.760214271547, y_hat: [50, 75], y: [50.0, 76.0], loss: 0	
+Filename: 431_B10_wName3.data, score: 71.641097571842, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 432_B08_wName1.data, score: -84.291953475714, y_hat: [29, 50], y: [50.0, 61.0], loss: 14	
+Filename: 432_B08_wName2.data, score: 69.77318663255, y_hat: [59, 91], y: [60.0, 93.0], loss: 0	
+Filename: 433_B09_wName1.data, score: 66.054184969518, y_hat: [49, 69], y: [50.0, 71.0], loss: 0	
+Filename: 433_B09_wName2.data, score: 69.249974830154, y_hat: [50, 70], y: [50.0, 68.0], loss: 0	
+Filename: 433_B09_wName3.data, score: 47.537571486378, y_hat: [60, 94], y: [60.0, 92.0], loss: 0	
+Filename: 433_B10_wName2.data, score: 60.780161731455, y_hat: [90, 140], y: [90.0, 136.0], loss: 1	
+Filename: 433_B10_wName3.data, score: 20.262247054999, y_hat: [50, 70], y: [50.0, 70.0], loss: 0	
+Filename: 434_B08_wName1.data, score: -34.189432391467, y_hat: [50, 70], y: [50.0, 63.0], loss: 2.5	
+Filename: 434_B08_wName2.data, score: 65.245437564809, y_hat: [140, 213], y: [140.0, 213.0], loss: 0	
+Filename: 434_B10_wName1.data, score: 51.839816054818, y_hat: [60, 86], y: [60.0, 89.0], loss: 0.5	
+Filename: 435_B09_wName1.data, score: 58.114729371703, y_hat: [100, 156], y: [100.0, 151.0], loss: 1.5	
+Filename: 435_B09_wName2.data, score: 74.561166900331, y_hat: [120, 182], y: [120.0, 181.0], loss: 0	
+Filename: 435_B09_wName3.data, score: -40.158402663161, y_hat: [50, 70], y: [50.0, 64.0], loss: 2	
+Filename: 436_B08_wName1.data, score: 48.754661068854, y_hat: [60, 92], y: [60.0, 91.0], loss: 0	
+Filename: 436_B08_wName2.data, score: 42.951279556092, y_hat: [100, 151], y: [100.0, 150.0], loss: 0	
+Filename: 436_B08_wName3.data, score: 70.293059576489, y_hat: [46, 73], y: [50.0, 72.0], loss: 1	
+Filename: 436_B10_wName1.data, score: 37.892670766692, y_hat: [48, 68], y: [50.0, 66.0], loss: 0	
+Filename: 437_B09_wName1.data, score: 86.948433199444, y_hat: [160, 239], y: [160.0, 241.0], loss: 0	
+Filename: 437_B09_wName2.data, score: 56.140031682677, y_hat: [50, 73], y: [50.0, 75.0], loss: 0	
+Filename: 437_B09_wName3.data, score: 99.879282235598, y_hat: [50, 70], y: [50.0, 71.0], loss: 0	
+Filename: 437_B10_wName2.data, score: 52.636353944007, y_hat: [49, 70], y: [50.0, 70.0], loss: 0	
+Filename: 437_B10_wName3.data, score: 64.68326243835, y_hat: [59, 91], y: [60.0, 89.0], loss: 0	
+Filename: 438_B08_wName2.data, score: 74.419721223909, y_hat: [129, 191], y: [130.0, 194.0], loss: 0.5	
+Filename: 438_B08_wName3.data, score: 66.819754136935, y_hat: [80, 112], y: [80.0, 120.0], loss: 3	
+Filename: 438_B10_wName1.data, score: 68.746911608905, y_hat: [49, 70], y: [50.0, 72.0], loss: 0	
+Filename: 439_B09_wName1.data, score: 54.57524507562, y_hat: [60, 92], y: [60.0, 90.0], loss: 0	
+Filename: 439_B09_wName2.data, score: 97.144413610511, y_hat: [290, 435], y: [290.0, 435.0], loss: 0	
+Filename: 439_B09_wName3.data, score: 5.6713043409488, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 439_B10_wName2.data, score: 82.309105278353, y_hat: [49, 71], y: [50.0, 72.0], loss: 0	
+Filename: 440_B08_wName1.data, score: -21.861572171111, y_hat: [50, 70], y: [50.0, 64.0], loss: 2	
+Filename: 440_B08_wName2.data, score: -38.026041672962, y_hat: [50, 70], y: [50.0, 60.0], loss: 4	
+Filename: 440_B08_wName3.data, score: -20.997388165654, y_hat: [49, 69], y: [50.0, 62.0], loss: 2.5	
+Filename: 440_B10_wName1.data, score: 53.911512819454, y_hat: [50, 73], y: [50.0, 76.0], loss: 0.5	
+Filename: 441_B09_wName1.data, score: 52.740467260807, y_hat: [100, 152], y: [100.0, 151.0], loss: 0	
+Filename: 441_B09_wName2.data, score: 71.728355713726, y_hat: [69, 103], y: [70.0, 107.0], loss: 1	
+Filename: 441_B09_wName3.data, score: 55.408594297432, y_hat: [70, 109], y: [70.0, 108.0], loss: 0	
+Filename: 441_B10_wName2.data, score: 53.894293604689, y_hat: [60, 88], y: [60.0, 88.0], loss: 0	
+Filename: 441_B10_wName3.data, score: 63.237404940788, y_hat: [100, 154], y: [100.0, 152.0], loss: 0	
+Filename: 442_B08_wName1.data, score: 51.389208748598, y_hat: [80, 122], y: [80.0, 122.0], loss: 0	
+Filename: 442_B08_wName2.data, score: 71.93104448491, y_hat: [50, 78], y: [50.0, 78.0], loss: 0	
+Filename: 442_B10_wName1.data, score: 51.908638120383, y_hat: [80, 123], y: [80.0, 121.0], loss: 0	
+Filename: 443_B09_wName1.data, score: 57.283480688443, y_hat: [81, 123], y: [80.0, 121.0], loss: 0	
+Filename: 443_B09_wName2.data, score: 58.461214720001, y_hat: [90, 139], y: [90.0, 136.0], loss: 0.5	
+Filename: 443_B09_wName3.data, score: 72.697194911779, y_hat: [170, 259], y: [170.0, 256.0], loss: 0.5	
+Filename: 443_B10_wName2.data, score: 53.953836031366, y_hat: [67, 106], y: [70.0, 105.0], loss: 0.5	
+Filename: 444_B08_wName1.data, score: -39.359114420655, y_hat: [50, 70], y: [50.0, 63.0], loss: 2.5	
+Filename: 444_B08_wName2.data, score: -33.400676821764, y_hat: [50, 70], y: [50.0, 60.0], loss: 4	
+Filename: 444_B08_wName3.data, score: -33.596627602561, y_hat: [50, 98], y: [50.0, 61.0], loss: 17.5	
+Filename: 444_B10_wName1.data, score: 73.480994629624, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 444_B10_wName3.data, score: 53.772829567029, y_hat: [69, 108], y: [70.0, 105.0], loss: 0.5	
+Filename: 445_B09_wName1.data, score: 66.993132209227, y_hat: [148, 231], y: [150.0, 227.0], loss: 1	
+Filename: 445_B09_wName2.data, score: 62.205564261616, y_hat: [120, 183], y: [120.0, 182.0], loss: 0	
+Filename: 445_B09_wName3.data, score: 43.145615829407, y_hat: [49, 75], y: [50.0, 72.0], loss: 0.5	
+Filename: 446_B08_wName1.data, score: 70.172943187553, y_hat: [60, 92], y: [60.0, 89.0], loss: 0.5	
+Filename: 446_B08_wName2.data, score: 68.111924570498, y_hat: [91, 135], y: [90.0, 136.0], loss: 0	
+Filename: 446_B08_wName3.data, score: 80.761885218249, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 447_B09_wName1.data, score: 82.010517622826, y_hat: [251, 381], y: [250.0, 375.0], loss: 2	
+Filename: 447_B09_wName2.data, score: 60.456715713752, y_hat: [110, 163], y: [110.0, 164.0], loss: 0	
+Filename: 447_B09_wName3.data, score: 67.609185752794, y_hat: [61, 92], y: [60.0, 92.0], loss: 0	
+Filename: 447_B10_wName2.data, score: 54.957955587587, y_hat: [91, 138], y: [90.0, 135.0], loss: 0.5	
+Filename: 448_B08_wName1.data, score: 70.677827793763, y_hat: [79, 125], y: [80.0, 122.0], loss: 0.5	
+Filename: 448_B08_wName2.data, score: 71.971070746683, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 448_B08_wName3.data, score: 34.31773008296, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 448_B10_wName3.data, score: 47.434993838493, y_hat: [70, 103], y: [70.0, 103.0], loss: 0	
+Filename: 449_B09_wName1.data, score: 43.884002303202, y_hat: [51, 71], y: [50.0, 73.0], loss: 0	
+Filename: 449_B09_wName2.data, score: 49.793613034454, y_hat: [50, 73], y: [50.0, 71.0], loss: 0	
+Filename: 449_B09_wName3.data, score: 52.939379688834, y_hat: [80, 123], y: [80.0, 121.0], loss: 0	
+Filename: 449_B10_wName2.data, score: 59.677197552531, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 450_B08_wName1.data, score: -96.32632916134, y_hat: [52, 75], y: [50.0, 65.0], loss: 4	
+Filename: 450_B08_wName2.data, score: 70.721198369455, y_hat: [100, 169], y: [100.0, 153.0], loss: 7	
+Filename: 450_B10_wName1.data, score: 41.662328369639, y_hat: [59, 90], y: [60.0, 90.0], loss: 0	
+Filename: 450_B10_wName3.data, score: 50.03346614915, y_hat: [99, 149], y: [100.0, 149.0], loss: 0	
+Filename: 451_B09_wName1.data, score: 38.845560467207, y_hat: [101, 155], y: [100.0, 152.0], loss: 0.5	
+Filename: 451_B09_wName2.data, score: 29.855362883536, y_hat: [69, 104], y: [70.0, 104.0], loss: 0	
+Filename: 451_B09_wName3.data, score: 65.469865518378, y_hat: [110, 163], y: [110.0, 163.0], loss: 0	
+Filename: 451_B10_wName2.data, score: -45.581388172998, y_hat: [49, 69], y: [50.0, 59.0], loss: 4	
+Filename: 452_B08_wName1.data, score: 62.162060502452, y_hat: [50, 73], y: [50.0, 78.0], loss: 1.5	
+Filename: 452_B10_wName1.data, score: 59.726136935191, y_hat: [60, 89], y: [60.0, 89.0], loss: 0	
+Filename: 452_B10_wName3.data, score: 60.969973979437, y_hat: [50, 70], y: [50.0, 68.0], loss: 0	
+Filename: 453_B09_wName1.data, score: 60.941713876604, y_hat: [129, 202], y: [130.0, 197.0], loss: 1.5	
+Filename: 453_B09_wName2.data, score: 67.248468119234, y_hat: [101, 150], y: [100.0, 148.0], loss: 0	
+Filename: 453_B09_wName3.data, score: 70.747059886087, y_hat: [59, 90], y: [60.0, 89.0], loss: 0	
+Filename: 453_B10_wName2.data, score: 55.607312845576, y_hat: [111, 169], y: [110.0, 168.0], loss: 0	
+Filename: 454_B08_wName1.data, score: -23.968453757925, y_hat: [50, 70], y: [50.0, 64.0], loss: 2	
+Filename: 454_B08_wName2.data, score: -0.90601242379086, y_hat: [49, 75], y: [50.0, 75.0], loss: 0	
+Filename: 454_B08_wName3.data, score: 52.285164223722, y_hat: [50, 71], y: [50.0, 70.0], loss: 0	
+Filename: 454_B10_wName1.data, score: 72.625367353173, y_hat: [129, 191], y: [130.0, 194.0], loss: 0.5	
+Filename: 454_B10_wName3.data, score: 65.327296137644, y_hat: [99, 153], y: [100.0, 150.0], loss: 0.5	
+Filename: 455_B09_wName1.data, score: 51.141882135686, y_hat: [49, 74], y: [50.0, 76.0], loss: 0	
+Filename: 455_B09_wName2.data, score: 65.898442703927, y_hat: [129, 197], y: [130.0, 197.0], loss: 0	
+Filename: 455_B09_wName3.data, score: 76.186974528359, y_hat: [160, 243], y: [160.0, 240.0], loss: 0.5	
+Filename: 455_B10_wName2.data, score: 51.230607403683, y_hat: [50, 75], y: [50.0, 76.0], loss: 0	
+Filename: 456_B08_wName1.data, score: -35.643059846144, y_hat: [51, 71], y: [50.0, 62.0], loss: 3.5	
+Filename: 456_B08_wName2.data, score: 66.78978912813, y_hat: [130, 197], y: [130.0, 198.0], loss: 0	
+Filename: 456_B08_wName3.data, score: 50.943578545939, y_hat: [100, 149], y: [100.0, 150.0], loss: 0	
+Filename: 456_B10_wName1.data, score: 39.670180737636, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 457_B09_wName1.data, score: 81.727830153143, y_hat: [161, 240], y: [160.0, 240.0], loss: 0	
+Filename: 457_B09_wName2.data, score: 84.690345433301, y_hat: [120, 182], y: [120.0, 181.0], loss: 0	
+Filename: 457_B09_wName3.data, score: 72.064526816223, y_hat: [50, 74], y: [50.0, 78.0], loss: 1	
+Filename: 457_B10_wName2.data, score: 63.112987556494, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 458_B08_wName2.data, score: 74.543587333995, y_hat: [60, 83], y: [60.0, 91.0], loss: 3	
+Filename: 458_B08_wName3.data, score: 68.537570051599, y_hat: [70, 105], y: [70.0, 106.0], loss: 0	
+Filename: 458_B10_wName1.data, score: 39.552143345383, y_hat: [81, 120], y: [80.0, 120.0], loss: 0	
+Filename: 458_B10_wName3.data, score: 19.200754744639, y_hat: [48, 68], y: [50.0, 67.0], loss: 0	
+Filename: 459_B09_wName1.data, score: 65.009984828116, y_hat: [187, 270], y: [180.0, 269.0], loss: 2.5	
+Filename: 459_B09_wName2.data, score: -16.956019726057, y_hat: [49, 69], y: [50.0, 61.0], loss: 3	
+Filename: 459_B09_wName3.data, score: 63.651408859436, y_hat: [190, 282], y: [190.0, 286.0], loss: 1	
+Filename: 459_B10_wName2.data, score: 50.970175702739, y_hat: [70, 108], y: [70.0, 108.0], loss: 0	
+Filename: 460_B08_wName1.data, score: 63.32298440943, y_hat: [90, 135], y: [90.0, 134.0], loss: 0	
+Filename: 460_B08_wName3.data, score: 54.173702939272, y_hat: [100, 151], y: [100.0, 152.0], loss: 0	
+Filename: 460_B10_wName3.data, score: 28.517334064489, y_hat: [48, 68], y: [50.0, 68.0], loss: 0	
+Filename: 461_B09_wName1.data, score: 86.452612977198, y_hat: [170, 258], y: [170.0, 255.0], loss: 0.5	
+Filename: 461_B09_wName2.data, score: 105.46975227882, y_hat: [250, 379], y: [250.0, 377.0], loss: 0	
+Filename: 461_B09_wName3.data, score: 96.521239997844, y_hat: [270, 405], y: [270.0, 404.0], loss: 0	
+Filename: 462_B08_wName1.data, score: 58.75551846652, y_hat: [50, 74], y: [50.0, 76.0], loss: 0	
+Filename: 462_B08_wName3.data, score: 55.964449127029, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 462_B10_wName1.data, score: -19.555329004914, y_hat: [48, 68], y: [50.0, 59.0], loss: 3.5	
+Filename: 462_B10_wName3.data, score: 70.058939401207, y_hat: [90, 131], y: [90.0, 137.0], loss: 2	
+Filename: 463_B09_wName1.data, score: 72.664856520724, y_hat: [240, 377], y: [240.0, 363.0], loss: 6	
+Filename: 463_B09_wName2.data, score: 68.048640307004, y_hat: [60, 92], y: [60.0, 92.0], loss: 0	
+Filename: 463_B09_wName3.data, score: 67.582521473433, y_hat: [99, 154], y: [100.0, 152.0], loss: 0	
+Filename: 464_B08_wName1.data, score: 29.446661846141, y_hat: [50, 71], y: [50.0, 65.0], loss: 2	
+Filename: 464_B08_wName2.data, score: 90.034747162921, y_hat: [91, 138], y: [90.0, 138.0], loss: 0	
+Filename: 464_B10_wName1.data, score: 48.367764354758, y_hat: [100, 153], y: [100.0, 149.0], loss: 1	
+Filename: 464_B10_wName3.data, score: -17.179747588141, y_hat: [36, 58], y: [50.0, 60.0], loss: 6	
+Filename: 465_B09_wName1.data, score: -25.656636170566, y_hat: [50, 70], y: [50.0, 62.0], loss: 3	
+Filename: 465_B09_wName2.data, score: 78.752880099217, y_hat: [187, 286], y: [190.0, 284.0], loss: 0.5	
+Filename: 465_B09_wName3.data, score: 106.60712347807, y_hat: [251, 380], y: [250.0, 377.0], loss: 0.5	
+Filename: 466_B08_wName1.data, score: 58.817495087, y_hat: [70, 103], y: [70.0, 103.0], loss: 0	
+Filename: 466_B08_wName2.data, score: 57.321746089808, y_hat: [60, 89], y: [60.0, 88.0], loss: 0	
+Filename: 466_B08_wName3.data, score: 57.070360537707, y_hat: [90, 133], y: [90.0, 133.0], loss: 0	
+Filename: 466_B10_wName1.data, score: 39.630517417753, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 466_B10_wName3.data, score: 59.9039156676, y_hat: [99, 148], y: [100.0, 149.0], loss: 0	
+Filename: 467_B09_wName1.data, score: 52.138933196655, y_hat: [50, 75], y: [50.0, 76.0], loss: 0	
+Filename: 467_B09_wName2.data, score: 44.156285446039, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 467_B09_wName3.data, score: 63.796036977758, y_hat: [140, 209], y: [140.0, 210.0], loss: 0	
+Filename: 468_B08_wName2.data, score: 70.702813173817, y_hat: [89, 138], y: [90.0, 134.0], loss: 1	
+Filename: 468_B10_wName1.data, score: 32.686781312716, y_hat: [49, 71], y: [50.0, 70.0], loss: 0	
+Filename: 468_B10_wName3.data, score: 50.615089529343, y_hat: [70, 104], y: [70.0, 104.0], loss: 0	
+Filename: 469_B09_wName1.data, score: -3.327902963271, y_hat: [48, 68], y: [50.0, 65.0], loss: 0.5	
+Filename: 469_B09_wName2.data, score: 24.369004129385, y_hat: [48, 68], y: [50.0, 64.0], loss: 1	
+Filename: 469_B09_wName3.data, score: 70.867794822719, y_hat: [111, 164], y: [110.0, 165.0], loss: 0	
+Filename: 469_B10_wName2.data, score: -29.768166956086, y_hat: [46, 66], y: [50.0, 66.0], loss: 1	
+Filename: 470_B08_wName1.data, score: 46.434547044929, y_hat: [89, 134], y: [90.0, 135.0], loss: 0	
+Filename: 470_B08_wName3.data, score: 62.908087901393, y_hat: [140, 214], y: [140.0, 211.0], loss: 0.5	
+Filename: 470_B10_wName1.data, score: -14.647791642261, y_hat: [48, 68], y: [50.0, 62.0], loss: 2	
+Filename: 470_B10_wName3.data, score: 48.469758530848, y_hat: [80, 123], y: [80.0, 123.0], loss: 0	
+Filename: 471_B09_wName1.data, score: 1.0280560707455, y_hat: [50, 70], y: [50.0, 67.0], loss: 0.5	
+Filename: 471_B09_wName2.data, score: -33.581638967756, y_hat: [44, 64], y: [50.0, 62.0], loss: 2	
+Filename: 471_B09_wName3.data, score: 46.717056455866, y_hat: [70, 104], y: [70.0, 107.0], loss: 0.5	
+Filename: 471_B10_wName2.data, score: 34.714388312531, y_hat: [51, 76], y: [50.0, 75.0], loss: 0	
+Filename: 472_B08_wName1.data, score: 21.236385415635, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 472_B08_wName3.data, score: -32.728387388224, y_hat: [50, 70], y: [50.0, 59.0], loss: 4.5	
+Filename: 472_B10_wName1.data, score: 49.242289193857, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 472_B10_wName3.data, score: 40.506578337448, y_hat: [50, 78], y: [50.0, 76.0], loss: 0	
+Filename: 473_B09_wName1.data, score: 67.831661043735, y_hat: [119, 186], y: [120.0, 182.0], loss: 1	
+Filename: 473_B09_wName2.data, score: 61.192693572769, y_hat: [60, 91], y: [60.0, 92.0], loss: 0	
+Filename: 473_B09_wName3.data, score: 73.092873869996, y_hat: [70, 106], y: [70.0, 105.0], loss: 0	
+Filename: 473_B10_wName2.data, score: 53.957023585185, y_hat: [90, 135], y: [90.0, 134.0], loss: 0	
+Filename: 474_B08_wName2.data, score: 75.464123353595, y_hat: [50, 74], y: [50.0, 75.0], loss: 0	
+Filename: 474_B10_wName1.data, score: 51.468163572481, y_hat: [80, 124], y: [80.0, 119.0], loss: 1.5	
+Filename: 474_B10_wName3.data, score: 32.497182111241, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 475_B09_wName1.data, score: 80.596081382905, y_hat: [161, 242], y: [160.0, 241.0], loss: 0	
+Filename: 475_B09_wName2.data, score: 61.445169507599, y_hat: [149, 226], y: [150.0, 226.0], loss: 0	
+Filename: 475_B09_wName3.data, score: 61.077306228276, y_hat: [50, 70], y: [50.0, 71.0], loss: 0	
+Filename: 476_B08_wName1.data, score: -25.089421407661, y_hat: [48, 68], y: [50.0, 56.0], loss: 5	
+Filename: 476_B08_wName2.data, score: 84.968947534181, y_hat: [231, 349], y: [230.0, 345.0], loss: 1	
+Filename: 476_B10_wName1.data, score: 46.543406575597, y_hat: [90, 137], y: [90.0, 137.0], loss: 0	
+Filename: 476_B10_wName3.data, score: 62.831861285962, y_hat: [89, 140], y: [90.0, 137.0], loss: 0.5	
+Filename: 477_B09_wName1.data, score: 52.669365859743, y_hat: [61, 90], y: [60.0, 90.0], loss: 0	
+Filename: 477_B09_wName2.data, score: 85.221706551356, y_hat: [170, 258], y: [170.0, 254.0], loss: 1	
+Filename: 477_B09_wName3.data, score: 39.648844128317, y_hat: [80, 123], y: [80.0, 122.0], loss: 0	
+Filename: 477_B10_wName2.data, score: 12.393522390664, y_hat: [44, 64], y: [50.0, 60.0], loss: 3	
+Filename: 478_B08_wName1.data, score: 54.044252385116, y_hat: [60, 89], y: [60.0, 88.0], loss: 0	
+Filename: 478_B08_wName2.data, score: -15.159576577663, y_hat: [50, 70], y: [50.0, 71.0], loss: 0	
+Filename: 478_B10_wName1.data, score: 48.622518360628, y_hat: [80, 123], y: [80.0, 123.0], loss: 0	
+Filename: 478_B10_wName3.data, score: 66.964314722611, y_hat: [100, 152], y: [100.0, 150.0], loss: 0	
+Filename: 479_B09_wName1.data, score: 54.149055347715, y_hat: [51, 75], y: [50.0, 72.0], loss: 0.5	
+Filename: 479_B09_wName2.data, score: 52.52891854276, y_hat: [190, 289], y: [190.0, 286.0], loss: 0.5	
+Filename: 479_B09_wName3.data, score: 56.524011881922, y_hat: [91, 139], y: [90.0, 137.0], loss: 0	
+Filename: 479_B10_wName2.data, score: 58.441341276215, y_hat: [100, 155], y: [100.0, 151.0], loss: 1	
+Filename: 480_B08_wName1.data, score: 45.435822191009, y_hat: [51, 72], y: [50.0, 69.0], loss: 0.5	
+Filename: 480_B08_wName3.data, score: 76.778417518559, y_hat: [59, 79], y: [60.0, 88.0], loss: 3.5	
+Filename: 480_B10_wName1.data, score: 61.619832742808, y_hat: [89, 144], y: [90.0, 137.0], loss: 2.5	
+Filename: 480_B10_wName3.data, score: 55.952591210381, y_hat: [99, 153], y: [100.0, 150.0], loss: 0.5	
+Filename: 481_B09_wName1.data, score: 52.943102367955, y_hat: [90, 141], y: [90.0, 136.0], loss: 1.5	
+Filename: 481_B09_wName2.data, score: 86.460187505135, y_hat: [209, 317], y: [210.0, 314.0], loss: 0.5	
+Filename: 481_B09_wName3.data, score: 83.843220276506, y_hat: [70, 101], y: [70.0, 105.0], loss: 1	
+Filename: 481_B10_wName2.data, score: -49.982611461226, y_hat: [66, 106], y: [50.0, 69.0], loss: 24.5	
+Filename: 482_B08_wName1.data, score: 51.036629531834, y_hat: [101, 162], y: [100.0, 151.0], loss: 4.5	
+Filename: 482_B08_wName2.data, score: -23.909195374413, y_hat: [50, 70], y: [50.0, 66.0], loss: 1	
+Filename: 482_B08_wName3.data, score: -27.116650849225, y_hat: [50, 70], y: [50.0, 64.0], loss: 2	
+Filename: 482_B10_wName1.data, score: 59.322118224281, y_hat: [88, 137], y: [90.0, 137.0], loss: 0	
+Filename: 482_B10_wName3.data, score: 54.722832559771, y_hat: [70, 102], y: [70.0, 103.0], loss: 0	
+Filename: 483_B09_wName1.data, score: 52.030654157721, y_hat: [50, 78], y: [50.0, 77.0], loss: 0	
+Filename: 483_B09_wName2.data, score: 97.970692004418, y_hat: [230, 348], y: [230.0, 346.0], loss: 0	
+Filename: 483_B09_wName3.data, score: 78.520928855858, y_hat: [101, 149], y: [100.0, 150.0], loss: 0	
+Filename: 483_B10_wName2.data, score: 67.413112907783, y_hat: [81, 122], y: [80.0, 123.0], loss: 0	
+Filename: 484_B08_wName1.data, score: 61.933501258484, y_hat: [111, 182], y: [110.0, 164.0], loss: 8	
+Filename: 484_B08_wName2.data, score: 79.612103710388, y_hat: [60, 92], y: [60.0, 91.0], loss: 0	
+Filename: 484_B08_wName3.data, score: 59.318489188209, y_hat: [140, 209], y: [140.0, 211.0], loss: 0	
+Filename: 484_B10_wName3.data, score: 46.55284859713, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 485_B09_wName1.data, score: -17.864504921815, y_hat: [52, 72], y: [50.0, 68.0], loss: 1	
+Filename: 485_B09_wName2.data, score: 39.595460285134, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 485_B09_wName3.data, score: 56.007197087407, y_hat: [90, 139], y: [90.0, 137.0], loss: 0	
+Filename: 485_B10_wName2.data, score: -22.297481919515, y_hat: [46, 66], y: [50.0, 65.0], loss: 1	
+Filename: 486_B08_wName1.data, score: 45.693916743506, y_hat: [80, 122], y: [80.0, 122.0], loss: 0	
+Filename: 486_B10_wName1.data, score: -41.729788787596, y_hat: [50, 70], y: [50.0, 62.0], loss: 3	
+Filename: 486_B10_wName3.data, score: 45.913994756124, y_hat: [90, 136], y: [90.0, 134.0], loss: 0	
+Filename: 487_B09_wName1.data, score: 68.494226943004, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 487_B09_wName2.data, score: 61.43100530218, y_hat: [90, 137], y: [90.0, 135.0], loss: 0	
+Filename: 487_B09_wName3.data, score: 62.949028367168, y_hat: [149, 224], y: [150.0, 223.0], loss: 0	
+Filename: 487_B10_wName2.data, score: 63.809365446409, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 488_B08_wName1.data, score: 70.871387315816, y_hat: [50, 70], y: [50.0, 70.0], loss: 0	
+Filename: 488_B10_wName1.data, score: 67.441390363931, y_hat: [49, 72], y: [50.0, 72.0], loss: 0	
+Filename: 489_B09_wName1.data, score: 42.699991460812, y_hat: [50, 76], y: [50.0, 76.0], loss: 0	
+Filename: 489_B09_wName2.data, score: 67.123687487994, y_hat: [100, 153], y: [100.0, 150.0], loss: 0.5	
+Filename: 489_B09_wName3.data, score: 59.412171791625, y_hat: [70, 105], y: [70.0, 106.0], loss: 0	
+Filename: 489_B10_wName2.data, score: 56.462541226382, y_hat: [60, 92], y: [60.0, 88.0], loss: 1	
+Filename: 490_B08_wName1.data, score: -51.152493305372, y_hat: [50, 70], y: [50.0, 59.0], loss: 4.5	
+Filename: 490_B08_wName2.data, score: -61.234632594611, y_hat: [44, 64], y: [50.0, 63.0], loss: 2	
+Filename: 490_B10_wName3.data, score: -26.171683577407, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 491_B09_wName1.data, score: 66.913731669489, y_hat: [100, 154], y: [100.0, 151.0], loss: 0.5	
+Filename: 491_B09_wName2.data, score: 85.282389279985, y_hat: [190, 281], y: [190.0, 287.0], loss: 2	
+Filename: 491_B09_wName3.data, score: 59.026844169091, y_hat: [90, 136], y: [90.0, 137.0], loss: 0	
+Filename: 491_B10_wName2.data, score: 45.217193398638, y_hat: [49, 71], y: [50.0, 72.0], loss: 0	
+Filename: 492_B08_wName1.data, score: 46.669887118697, y_hat: [70, 108], y: [70.0, 108.0], loss: 0	
+Filename: 492_B08_wName2.data, score: 80.261624736088, y_hat: [150, 225], y: [150.0, 226.0], loss: 0	
+Filename: 492_B08_wName3.data, score: 57.469590803307, y_hat: [119, 183], y: [120.0, 182.0], loss: 0	
+Filename: 492_B10_wName1.data, score: 45.114734526232, y_hat: [69, 104], y: [70.0, 103.0], loss: 0	
+Filename: 492_B10_wName3.data, score: 36.520513840894, y_hat: [50, 70], y: [50.0, 68.0], loss: 0	
+Filename: 493_B09_wName1.data, score: 61.624643344167, y_hat: [130, 197], y: [130.0, 194.0], loss: 0.5	
+Filename: 493_B09_wName2.data, score: 71.682964021184, y_hat: [69, 108], y: [70.0, 106.0], loss: 0	
+Filename: 493_B09_wName3.data, score: 51.936814589816, y_hat: [60, 88], y: [60.0, 89.0], loss: 0	
+Filename: 493_B10_wName2.data, score: 70.001472266571, y_hat: [69, 102], y: [70.0, 107.0], loss: 1.5	
+Filename: 494_B08_wName1.data, score: 18.717685191541, y_hat: [59, 91], y: [60.0, 91.0], loss: 0	
+Filename: 494_B08_wName2.data, score: -91.786290352421, y_hat: [12, 51], y: [50.0, 60.0], loss: 21.5	
+Filename: 494_B08_wName3.data, score: 75.1506276153, y_hat: [50, 72], y: [50.0, 72.0], loss: 0	
+Filename: 494_B10_wName1.data, score: 20.821285346441, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 494_B10_wName3.data, score: 44.583215122591, y_hat: [80, 121], y: [80.0, 121.0], loss: 0	
+Filename: 495_B09_wName1.data, score: 66.188334973522, y_hat: [110, 163], y: [110.0, 164.0], loss: 0	
+Filename: 495_B09_wName2.data, score: 88.600970727461, y_hat: [47, 67], y: [50.0, 65.0], loss: 0.5	
+Filename: 495_B09_wName3.data, score: 34.044622238717, y_hat: [48, 68], y: [50.0, 66.0], loss: 0	
+Filename: 496_B08_wName1.data, score: 64.777552817031, y_hat: [100, 155], y: [100.0, 152.0], loss: 0.5	
+Filename: 496_B08_wName3.data, score: 52.430217274004, y_hat: [130, 199], y: [130.0, 198.0], loss: 0	
+Filename: 496_B10_wName1.data, score: 37.611085163105, y_hat: [60, 92], y: [60.0, 92.0], loss: 0	
+Filename: 496_B10_wName3.data, score: 40.40810462528, y_hat: [61, 85], y: [60.0, 89.0], loss: 1	
+Filename: 497_B09_wName1.data, score: 49.882632284377, y_hat: [50, 70], y: [50.0, 70.0], loss: 0	
+Filename: 497_B09_wName2.data, score: 93.969996298255, y_hat: [120, 173], y: [120.0, 183.0], loss: 4	
+Filename: 497_B09_wName3.data, score: -24.692525633862, y_hat: [43, 63], y: [50.0, 63.0], loss: 2.5	
+Filename: 498_B08_wName1.data, score: -2.3608228126802, y_hat: [51, 71], y: [50.0, 68.0], loss: 0.5	
+Filename: 498_B08_wName2.data, score: 57.026858459817, y_hat: [90, 134], y: [90.0, 134.0], loss: 0	
+Filename: 498_B08_wName3.data, score: 68.375495816812, y_hat: [129, 198], y: [130.0, 195.0], loss: 0.5	
+Filename: 498_B10_wName3.data, score: 41.343933206228, y_hat: [70, 104], y: [70.0, 104.0], loss: 0	
+Filename: 499_B09_wName1.data, score: 44.073945468273, y_hat: [62, 93], y: [60.0, 93.0], loss: 0	
+Filename: 499_B09_wName2.data, score: 88.079286683005, y_hat: [160, 240], y: [160.0, 239.0], loss: 0	
+Filename: 499_B09_wName3.data, score: 68.046610992848, y_hat: [50, 71], y: [50.0, 70.0], loss: 0	
+Filename: 499_B10_wName2.data, score: 81.79736793104, y_hat: [128, 196], y: [130.0, 197.0], loss: 0	
+Filename: 500_B08_wName2.data, score: 70.168917186241, y_hat: [61, 90], y: [60.0, 89.0], loss: 0	
+Filename: 500_B08_wName3.data, score: 62.174870517917, y_hat: [70, 106], y: [70.0, 106.0], loss: 0	
+Filename: 500_B10_wName1.data, score: 65.562424067504, y_hat: [51, 73], y: [50.0, 74.0], loss: 0	
+Filename: 500_B10_wName3.data, score: 71.724741563293, y_hat: [60, 89], y: [60.0, 90.0], loss: 0	
+Filename: 501_B09_wName1.data, score: 72.768652133575, y_hat: [119, 181], y: [120.0, 183.0], loss: 0	
+Filename: 501_B09_wName2.data, score: 59.241259076471, y_hat: [149, 225], y: [150.0, 224.0], loss: 0	
+Filename: 501_B09_wName3.data, score: 50.120947337457, y_hat: [89, 138], y: [90.0, 137.0], loss: 0	
+Filename: 502_B08_wName1.data, score: 67.506362495614, y_hat: [110, 168], y: [110.0, 166.0], loss: 0	
+Filename: 502_B08_wName2.data, score: 40.38041677986, y_hat: [50, 70], y: [50.0, 68.0], loss: 0	
+Filename: 502_B08_wName3.data, score: 79.211522288899, y_hat: [49, 73], y: [50.0, 74.0], loss: 0	
+Filename: 502_B10_wName3.data, score: 79.935382605613, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 503_B09_wName1.data, score: 48.287547059953, y_hat: [60, 93], y: [60.0, 91.0], loss: 0	
+Filename: 503_B09_wName2.data, score: 52.868822906204, y_hat: [60, 90], y: [60.0, 89.0], loss: 0	
+Filename: 503_B09_wName3.data, score: 83.063815616697, y_hat: [169, 258], y: [170.0, 254.0], loss: 1	
+Filename: 503_B10_wName2.data, score: 65.424102435435, y_hat: [50, 74], y: [50.0, 75.0], loss: 0	
+Filename: 504_B08_wName1.data, score: 44.335028517127, y_hat: [60, 88], y: [60.0, 89.0], loss: 0	
+Filename: 504_B10_wName1.data, score: -0.95797293700591, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 504_B10_wName3.data, score: 5.7017919179531, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 505_B09_wName1.data, score: 49.272266280245, y_hat: [71, 107], y: [70.0, 104.0], loss: 0.5	
+Filename: 505_B09_wName2.data, score: 50.815551798847, y_hat: [70, 106], y: [70.0, 106.0], loss: 0	
+Filename: 505_B10_wName2.data, score: 9.4552899598492, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 506_B08_wName1.data, score: 43.672436669442, y_hat: [79, 130], y: [80.0, 123.0], loss: 2.5	
+Filename: 506_B10_wName1.data, score: 79.297088948387, y_hat: [60, 90], y: [60.0, 89.0], loss: 0	
+Filename: 506_B10_wName3.data, score: 45.644860618523, y_hat: [80, 121], y: [80.0, 121.0], loss: 0	
+Filename: 507_B09_wName1.data, score: 65.641659825912, y_hat: [61, 86], y: [60.0, 89.0], loss: 0.5	
+Filename: 507_B09_wName2.data, score: 91.336997079599, y_hat: [239, 360], y: [240.0, 358.0], loss: 0	
+Filename: 507_B09_wName3.data, score: 38.298413550784, y_hat: [60, 88], y: [60.0, 88.0], loss: 0	
+Filename: 508_B08_wName1.data, score: 66.740186613928, y_hat: [61, 92], y: [60.0, 89.0], loss: 0.5	
+Filename: 508_B08_wName3.data, score: 83.021458198117, y_hat: [100, 154], y: [100.0, 149.0], loss: 1.5	
+Filename: 508_B10_wName1.data, score: 64.623811037856, y_hat: [49, 71], y: [50.0, 71.0], loss: 0	
+Filename: 508_B10_wName3.data, score: 42.458305828344, y_hat: [50, 71], y: [50.0, 71.0], loss: 0	
+Filename: 509_B09_wName1.data, score: 85.322548449119, y_hat: [150, 229], y: [150.0, 224.0], loss: 1.5	
+Filename: 509_B09_wName2.data, score: 26.27399979422, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 509_B10_wName2.data, score: -6.2885710284729, y_hat: [48, 68], y: [50.0, 63.0], loss: 1.5	
+Filename: 510_B08_wName1.data, score: 60.169808683163, y_hat: [111, 166], y: [110.0, 164.0], loss: 0	
+Filename: 510_B08_wName3.data, score: 67.560398526409, y_hat: [50, 75], y: [50.0, 75.0], loss: 0	
+Filename: 510_B10_wName1.data, score: 1.4255886396067, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 510_B10_wName3.data, score: 15.232437776894, y_hat: [60, 91], y: [60.0, 92.0], loss: 0	
+Filename: 511_B09_wName1.data, score: 57.968085411887, y_hat: [130, 195], y: [130.0, 195.0], loss: 0	
+Filename: 511_B09_wName2.data, score: 82.752755488062, y_hat: [150, 230], y: [150.0, 225.0], loss: 1.5	
+Filename: 511_B09_wName3.data, score: 35.010720570287, y_hat: [50, 76], y: [50.0, 75.0], loss: 0	
+Filename: 511_B10_wName2.data, score: 56.904829475518, y_hat: [110, 164], y: [110.0, 165.0], loss: 0	
+Filename: 512_B08_wName1.data, score: -15.261490245251, y_hat: [50, 70], y: [50.0, 67.0], loss: 0.5	
+Filename: 512_B10_wName1.data, score: -20.901887466613, y_hat: [50, 70], y: [50.0, 65.0], loss: 1.5	
+Filename: 513_B09_wName1.data, score: 80.776368032042, y_hat: [80, 115], y: [80.0, 119.0], loss: 1	
+Filename: 513_B09_wName2.data, score: 81.952254604453, y_hat: [120, 182], y: [120.0, 180.0], loss: 0	
+Filename: 513_B09_wName3.data, score: 46.394394467961, y_hat: [60, 93], y: [60.0, 90.0], loss: 0.5	
+Filename: 513_B10_wName2.data, score: 49.491503982073, y_hat: [60, 91], y: [60.0, 91.0], loss: 0	
+Filename: 514_B08_wName1.data, score: 58.245259866638, y_hat: [110, 166], y: [110.0, 165.0], loss: 0	
+Filename: 514_B10_wName1.data, score: 21.23188027604, y_hat: [48, 68], y: [50.0, 64.0], loss: 1	
+Filename: 514_B10_wName3.data, score: 56.897808194937, y_hat: [50, 73], y: [50.0, 73.0], loss: 0	
+Filename: 515_B09_wName1.data, score: 50.297598268672, y_hat: [70, 106], y: [70.0, 104.0], loss: 0	
+Filename: 515_B09_wName2.data, score: 51.980879402291, y_hat: [60, 91], y: [60.0, 91.0], loss: 0	
+Filename: 515_B09_wName3.data, score: 67.684511513414, y_hat: [101, 152], y: [100.0, 152.0], loss: 0	
+Filename: 515_B10_wName2.data, score: 67.204308155467, y_hat: [60, 91], y: [60.0, 92.0], loss: 0	
+Filename: 516_B08_wName3.data, score: 76.264014165696, y_hat: [60, 89], y: [60.0, 88.0], loss: 0	
+Filename: 516_B10_wName3.data, score: 50.521984776455, y_hat: [100, 152], y: [100.0, 152.0], loss: 0	
+Filename: 517_B08_wName1.data, score: -20.58704499008, y_hat: [50, 70], y: [50.0, 64.0], loss: 2	
+Filename: 517_B09_wName1.data, score: 84.440957863028, y_hat: [181, 269], y: [180.0, 269.0], loss: 0	
+Filename: 517_B09_wName2.data, score: 65.205959344992, y_hat: [90, 133], y: [90.0, 134.0], loss: 0	
+Filename: 517_B09_wName3.data, score: 73.191038224563, y_hat: [110, 178], y: [110.0, 168.0], loss: 4	
+Filename: 518_B08_wName3.data, score: -18.445576671188, y_hat: [50, 70], y: [50.0, 58.0], loss: 5	
+Filename: 518_B10_wName1.data, score: 4.4023345001675, y_hat: [53, 73], y: [50.0, 68.0], loss: 2	
+Filename: 518_B10_wName3.data, score: 48.013026650795, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 519_B09_wName1.data, score: 57.49667156096, y_hat: [71, 109], y: [70.0, 106.0], loss: 0.5	
+Filename: 519_B09_wName2.data, score: 66.123351682591, y_hat: [160, 246], y: [160.0, 241.0], loss: 1.5	
+Filename: 519_B09_wName3.data, score: 77.595118365627, y_hat: [139, 211], y: [140.0, 208.0], loss: 0.5	
+Filename: 519_B10_wName2.data, score: 44.25426247604, y_hat: [109, 132], y: [110.0, 167.0], loss: 16.5	
+Filename: 520_B10_wName3.data, score: 26.122323937434, y_hat: [50, 74], y: [50.0, 74.0], loss: 0	
+Filename: 521_B09_wName1.data, score: 72.601095693304, y_hat: [141, 212], y: [140.0, 211.0], loss: 0	
+Filename: 521_B09_wName2.data, score: 86.216690259892, y_hat: [180, 274], y: [180.0, 272.0], loss: 0	
+Filename: 521_B09_wName3.data, score: -11.383252797389, y_hat: [49, 69], y: [50.0, 62.0], loss: 2.5	
+Filename: 521_B10_wName2.data, score: 53.938362810264, y_hat: [70, 105], y: [70.0, 105.0], loss: 0	
+Filename: 523_B09_wName1.data, score: 102.46691338995, y_hat: [50, 70], y: [50.0, 71.0], loss: 0	
+Filename: 523_B09_wName2.data, score: 74.961467688422, y_hat: [129, 200], y: [130.0, 195.0], loss: 1.5	
+Filename: 523_B09_wName3.data, score: 77.745580347477, y_hat: [130, 199], y: [130.0, 197.0], loss: 0	
+Filename: 523_B10_wName2.data, score: 44.572106805281, y_hat: [50, 75], y: [50.0, 75.0], loss: 0	
+Filename: 524_B10_wName1.data, score: 49.650711327546, y_hat: [119, 179], y: [120.0, 179.0], loss: 0	
+Filename: 525_B09_wName1.data, score: 65.822163327107, y_hat: [149, 224], y: [150.0, 224.0], loss: 0	
+Filename: 525_B09_wName2.data, score: 50.000200258226, y_hat: [50, 70], y: [50.0, 68.0], loss: 0	
+Filename: 525_B09_wName3.data, score: 82.930756563711, y_hat: [210, 317], y: [210.0, 315.0], loss: 0	
+Filename: 525_B10_wName2.data, score: 58.735918753371, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 526_B10_wName1.data, score: 45.448825472448, y_hat: [69, 109], y: [70.0, 107.0], loss: 0	
+Filename: 526_B10_wName3.data, score: 39.466429087791, y_hat: [122, 166], y: [110.0, 166.0], loss: 5	
+Filename: 527_B09_wName1.data, score: 67.917037785083, y_hat: [50, 70], y: [50.0, 70.0], loss: 0	
+Filename: 527_B09_wName2.data, score: 62.309859482257, y_hat: [110, 165], y: [110.0, 165.0], loss: 0	
+Filename: 527_B09_wName3.data, score: 74.152462097951, y_hat: [120, 181], y: [120.0, 182.0], loss: 0	
+Filename: 527_B10_wName2.data, score: 40.100624559149, y_hat: [80, 121], y: [80.0, 119.0], loss: 0	
+Filename: 528_B10_wName1.data, score: -19.360380540775, y_hat: [49, 69], y: [50.0, 62.0], loss: 2.5	
+Filename: 528_B10_wName3.data, score: 3.4479825417644, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 529_B09_wName1.data, score: 73.411627447346, y_hat: [150, 229], y: [150.0, 227.0], loss: 0	
+Filename: 529_B09_wName2.data, score: 88.99311394714, y_hat: [170, 257], y: [170.0, 254.0], loss: 0.5	
+Filename: 529_B09_wName3.data, score: 73.427917264225, y_hat: [110, 160], y: [110.0, 164.0], loss: 1	
+Filename: 530_B10_wName1.data, score: -24.234474481616, y_hat: [49, 69], y: [50.0, 63.0], loss: 2	
+Filename: 531_B09_wName1.data, score: 76.384299296287, y_hat: [239, 361], y: [240.0, 360.0], loss: 0	
+Filename: 531_B09_wName2.data, score: 69.571863088276, y_hat: [110, 166], y: [110.0, 167.0], loss: 0	
+Filename: 531_B09_wName3.data, score: 63.769553963159, y_hat: [151, 223], y: [150.0, 223.0], loss: 0	
+Filename: 531_B10_wName2.data, score: 64.672016332948, y_hat: [109, 148], y: [110.0, 163.0], loss: 6.5	
+Filename: 532_B10_wName3.data, score: 42.413399600376, y_hat: [59, 91], y: [60.0, 89.0], loss: 0	
+Filename: 533_B09_wName1.data, score: 28.888137501161, y_hat: [115, 182], y: [120.0, 182.0], loss: 1.5	
+Filename: 533_B09_wName2.data, score: 68.705163657029, y_hat: [50, 74], y: [50.0, 77.0], loss: 0.5	
+Filename: 533_B09_wName3.data, score: 41.744639599328, y_hat: [71, 103], y: [70.0, 104.0], loss: 0	
+Filename: 533_B10_wName2.data, score: 54.2302310632, y_hat: [59, 85], y: [60.0, 89.0], loss: 1	
+Filename: 534_B10_wName3.data, score: 5.3752386162016, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 535_B09_wName1.data, score: -16.086553506972, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 535_B09_wName2.data, score: 74.973978088724, y_hat: [170, 267], y: [170.0, 257.0], loss: 4	
+Filename: 535_B09_wName3.data, score: 69.054547797332, y_hat: [120, 183], y: [120.0, 182.0], loss: 0	
+Filename: 535_B10_wName1.data, score: 57.714254801023, y_hat: [139, 203], y: [140.0, 209.0], loss: 2	
+Filename: 536_B10_wName3.data, score: 46.510846577149, y_hat: [60, 88], y: [60.0, 89.0], loss: 0	
+Filename: 537_B09_wName1.data, score: 85.267500101812, y_hat: [161, 235], y: [160.0, 242.0], loss: 2.5	
+Filename: 537_B09_wName2.data, score: 69.158748195923, y_hat: [49, 75], y: [50.0, 76.0], loss: 0	
+Filename: 537_B09_wName3.data, score: 60.871277988335, y_hat: [110, 167], y: [110.0, 164.0], loss: 0.5	
+Filename: 537_B10_wName2.data, score: 60.664103761403, y_hat: [170, 204], y: [170.0, 256.0], loss: 25	
+Filename: 538_B10_wName3.data, score: 33.936834410713, y_hat: [49, 73], y: [50.0, 72.0], loss: 0	
+Filename: 539_B09_wName1.data, score: -27.133856583327, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 539_B09_wName2.data, score: 66.680653999089, y_hat: [80, 122], y: [80.0, 119.0], loss: 0.5	
+Filename: 539_B09_wName3.data, score: 54.178245167434, y_hat: [69, 104], y: [70.0, 104.0], loss: 0	
+Filename: 539_B10_wName2.data, score: 77.500127404935, y_hat: [119, 181], y: [120.0, 183.0], loss: 0	
+Filename: 540_B10_wName1.data, score: -4.1085446377873, y_hat: [46, 66], y: [50.0, 66.0], loss: 1	
+Filename: 540_B10_wName3.data, score: 41.181369549701, y_hat: [81, 121], y: [80.0, 118.0], loss: 0.5	
+Filename: 541_B09_wName1.data, score: 70.184800152255, y_hat: [120, 180], y: [120.0, 180.0], loss: 0	
+Filename: 541_B09_wName2.data, score: 67.015975997643, y_hat: [140, 208], y: [140.0, 210.0], loss: 0	
+Filename: 541_B09_wName3.data, score: 97.069827295165, y_hat: [181, 271], y: [180.0, 271.0], loss: 0	
+Filename: 541_B10_wName2.data, score: -43.129681294947, y_hat: [50, 70], y: [50.0, 62.0], loss: 3	
+Filename: 542_B10_wName1.data, score: 94.200885926971, y_hat: [80, 111], y: [80.0, 119.0], loss: 3	
+Filename: 542_B10_wName3.data, score: 43.286072557907, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 543_B09_wName1.data, score: 50.766042438519, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 543_B09_wName2.data, score: 14.551972152787, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 543_B09_wName3.data, score: 77.389119680582, y_hat: [130, 195], y: [130.0, 195.0], loss: 0	
+Filename: 543_B10_wName2.data, score: -50.379663613915, y_hat: [49, 97], y: [50.0, 60.0], loss: 17.5	
+Filename: 544_B10_wName1.data, score: 50.059965047928, y_hat: [80, 115], y: [80.0, 118.0], loss: 0.5	
+Filename: 545_B09_wName1.data, score: 73.582054675956, y_hat: [199, 300], y: [200.0, 299.0], loss: 0	
+Filename: 545_B09_wName2.data, score: 52.744179251085, y_hat: [70, 92], y: [70.0, 108.0], loss: 7	
+Filename: 545_B09_wName3.data, score: 21.719394356157, y_hat: [47, 67], y: [50.0, 66.0], loss: 0.5	
+Filename: 545_B10_wName2.data, score: 73.610696916918, y_hat: [50, 70], y: [50.0, 73.0], loss: 0.5	
+Filename: 545_B10_wName3.data, score: -18.522359946869, y_hat: [55, 75], y: [50.0, 69.0], loss: 3.5	
+Filename: 546_B10_wName1.data, score: 46.744266370219, y_hat: [68, 106], y: [70.0, 107.0], loss: 0	
+Filename: 547_B09_wName1.data, score: 89.677910783873, y_hat: [209, 320], y: [210.0, 315.0], loss: 1.5	
+Filename: 547_B09_wName2.data, score: 56.42530472455, y_hat: [109, 165], y: [110.0, 167.0], loss: 0	
+Filename: 547_B09_wName3.data, score: 72.262695336796, y_hat: [100, 148], y: [100.0, 149.0], loss: 0	
+Filename: 547_B10_wName2.data, score: -39.474657918408, y_hat: [48, 68], y: [50.0, 61.0], loss: 2.5	
+Filename: 547_B10_wName3.data, score: 61.759854322285, y_hat: [60, 90], y: [60.0, 89.0], loss: 0	
+Filename: 548_B10_wName1.data, score: 47.927046094733, y_hat: [59, 89], y: [60.0, 91.0], loss: 0	
+Filename: 549_B09_wName1.data, score: 87.345924584061, y_hat: [181, 271], y: [180.0, 269.0], loss: 0	
+Filename: 549_B09_wName2.data, score: 60.172645233651, y_hat: [121, 181], y: [120.0, 179.0], loss: 0	
+Filename: 549_B09_wName3.data, score: -16.359360982314, y_hat: [46, 66], y: [50.0, 65.0], loss: 1	
+Filename: 549_B10_wName2.data, score: 40.943878062446, y_hat: [47, 72], y: [50.0, 75.0], loss: 1	
+Filename: 549_B10_wName3.data, score: 33.097481114466, y_hat: [80, 115], y: [80.0, 118.0], loss: 0.5	
+Filename: 550_B10_wName1.data, score: 46.153152582294, y_hat: [79, 123], y: [80.0, 122.0], loss: 0	
+Filename: 551_B09_wName1.data, score: 17.754577988861, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 551_B09_wName2.data, score: 26.688034339312, y_hat: [48, 68], y: [50.0, 70.0], loss: 0	
+Filename: 551_B09_wName3.data, score: 83.104005937996, y_hat: [110, 163], y: [110.0, 166.0], loss: 0.5	
+Filename: 551_B10_wName2.data, score: 35.243451113875, y_hat: [46, 71], y: [50.0, 71.0], loss: 1	
+Filename: 551_B10_wName3.data, score: 21.049745559291, y_hat: [76, 104], y: [70.0, 104.0], loss: 2	
+Filename: 553_B09_wName1.data, score: 91.852675373348, y_hat: [230, 349], y: [230.0, 346.0], loss: 0.5	
+Filename: 553_B09_wName2.data, score: 71.97420393071, y_hat: [129, 197], y: [130.0, 195.0], loss: 0	
+Filename: 553_B09_wName3.data, score: 73.017902816956, y_hat: [140, 215], y: [140.0, 212.0], loss: 0.5	
+Filename: 554_B10_wName1.data, score: 53.252775280078, y_hat: [81, 120], y: [80.0, 120.0], loss: 0	
+Filename: 555_B09_wName1.data, score: 69.397443501598, y_hat: [80, 121], y: [80.0, 118.0], loss: 0.5	
+Filename: 555_B09_wName2.data, score: -26.915190772083, y_hat: [50, 70], y: [50.0, 61.0], loss: 3.5	
+Filename: 555_B09_wName3.data, score: 53.171783392504, y_hat: [48, 68], y: [50.0, 65.0], loss: 0.5	
+Filename: 555_B10_wName2.data, score: 49.631283123809, y_hat: [59, 92], y: [60.0, 92.0], loss: 0	
+Filename: 555_B10_wName3.data, score: 32.311108121609, y_hat: [51, 76], y: [50.0, 77.0], loss: 0	
+Filename: 556_B10_wName1.data, score: 56.621572787717, y_hat: [50, 75], y: [50.0, 77.0], loss: 0	
+Filename: 557_B09_wName1.data, score: 78.517795884696, y_hat: [161, 242], y: [160.0, 239.0], loss: 0.5	
+Filename: 557_B09_wName2.data, score: 55.924164131343, y_hat: [81, 124], y: [80.0, 122.0], loss: 0	
+Filename: 557_B09_wName3.data, score: 47.563782068375, y_hat: [69, 107], y: [70.0, 107.0], loss: 0	
+Filename: 557_B10_wName2.data, score: 91.821792083494, y_hat: [50, 70], y: [50.0, 76.0], loss: 2	
+Filename: 557_B10_wName3.data, score: 69.170409964257, y_hat: [100, 153], y: [100.0, 150.0], loss: 0.5	
+Filename: 558_B10_wName1.data, score: 87.409873751417, y_hat: [50, 70], y: [50.0, 72.0], loss: 0	
+Filename: 559_B09_wName1.data, score: 85.322398515795, y_hat: [201, 309], y: [200.0, 303.0], loss: 2	
+Filename: 559_B09_wName2.data, score: 72.397037885943, y_hat: [110, 161], y: [110.0, 167.0], loss: 2	
+Filename: 559_B09_wName3.data, score: 61.620806654697, y_hat: [139, 209], y: [140.0, 210.0], loss: 0	
+Filename: 559_B10_wName2.data, score: 45.728653161235, y_hat: [51, 71], y: [50.0, 71.0], loss: 0	
+Filename: 559_B10_wName3.data, score: 48.128042495392, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 561_B09_wName1.data, score: 44.571368814098, y_hat: [69, 105], y: [70.0, 105.0], loss: 0	
+Filename: 561_B09_wName2.data, score: 77.615218154877, y_hat: [159, 249], y: [160.0, 240.0], loss: 3.5	
+Filename: 561_B09_wName3.data, score: 49.999324881972, y_hat: [59, 92], y: [60.0, 89.0], loss: 0.5	
+Filename: 561_B10_wName2.data, score: -23.60027026429, y_hat: [50, 70], y: [50.0, 66.0], loss: 1	
+Filename: 561_B10_wName3.data, score: 46.155525478438, y_hat: [60, 93], y: [60.0, 93.0], loss: 0	
+Filename: 562_B10_wName1.data, score: 59.936721638368, y_hat: [120, 190], y: [120.0, 179.0], loss: 4.5	
+Filename: 563_B09_wName1.data, score: 69.129737718667, y_hat: [170, 253], y: [170.0, 254.0], loss: 0	
+Filename: 563_B09_wName2.data, score: 77.222755652275, y_hat: [119, 192], y: [120.0, 181.0], loss: 4.5	
+Filename: 563_B09_wName3.data, score: 68.459700632104, y_hat: [90, 143], y: [90.0, 137.0], loss: 2	
+Filename: 564_B10_wName2.data, score: 57.255388901955, y_hat: [49, 69], y: [50.0, 72.0], loss: 0.5	
+Filename: 565_B09_wName1.data, score: 67.556424883841, y_hat: [149, 227], y: [150.0, 223.0], loss: 1	
+Filename: 565_B09_wName2.data, score: -12.10805073681, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 565_B09_wName3.data, score: -23.03873663884, y_hat: [50, 70], y: [50.0, 65.0], loss: 1.5	
+Filename: 565_B10_wName3.data, score: 60.521489759558, y_hat: [109, 164], y: [110.0, 163.0], loss: 0	
+Filename: 566_B10_wName2.data, score: 42.450744274022, y_hat: [49, 73], y: [50.0, 74.0], loss: 0	
+Filename: 567_B09_wName1.data, score: 79.217680836782, y_hat: [209, 315], y: [210.0, 314.0], loss: 0	
+Filename: 567_B09_wName2.data, score: 83.724852889733, y_hat: [220, 338], y: [220.0, 333.0], loss: 1.5	
+Filename: 567_B09_wName3.data, score: -0.088473761770331, y_hat: [49, 69], y: [50.0, 66.0], loss: 0.5	
+Filename: 567_B10_wName3.data, score: 44.384922041077, y_hat: [50, 75], y: [50.0, 75.0], loss: 0	
+Filename: 568_B10_wName1.data, score: 57.213616565033, y_hat: [101, 152], y: [100.0, 151.0], loss: 0	
+Filename: 569_B09_wName1.data, score: 86.37591065061, y_hat: [199, 306], y: [200.0, 302.0], loss: 1	
+Filename: 569_B09_wName2.data, score: 63.383251344929, y_hat: [119, 186], y: [120.0, 183.0], loss: 0.5	
+Filename: 569_B09_wName3.data, score: 65.964620284582, y_hat: [130, 199], y: [130.0, 197.0], loss: 0	
+Filename: 569_B10_wName3.data, score: 32.103478581503, y_hat: [50, 71], y: [50.0, 75.0], loss: 1	
+Filename: 570_B10_wName1.data, score: 48.752848814848, y_hat: [81, 122], y: [80.0, 120.0], loss: 0	
+Filename: 570_B10_wName2.data, score: 39.187417766936, y_hat: [100, 154], y: [100.0, 150.0], loss: 1	
+Filename: 571_B09_wName1.data, score: 78.741892095342, y_hat: [127, 193], y: [130.0, 195.0], loss: 0.5	
+Filename: 571_B09_wName2.data, score: 48.711187607377, y_hat: [70, 105], y: [70.0, 104.0], loss: 0	
+Filename: 571_B09_wName3.data, score: 97.552670885874, y_hat: [230, 346], y: [230.0, 346.0], loss: 0	
+Filename: 571_B10_wName3.data, score: 33.127848453659, y_hat: [60, 93], y: [60.0, 90.0], loss: 0.5	
+Filename: 572_B10_wName1.data, score: 51.614806817662, y_hat: [60, 87], y: [60.0, 89.0], loss: 0	
+Filename: 572_B10_wName2.data, score: 61.266133915874, y_hat: [120, 179], y: [120.0, 182.0], loss: 0.5	
+Filename: 573_B09_wName1.data, score: 64.046457380623, y_hat: [110, 164], y: [110.0, 166.0], loss: 0	
+Filename: 573_B09_wName2.data, score: -32.915256533114, y_hat: [50, 70], y: [50.0, 63.0], loss: 2.5	
+Filename: 573_B09_wName3.data, score: 96.028936150474, y_hat: [140, 213], y: [140.0, 211.0], loss: 0	
+Filename: 574_B10_wName1.data, score: 45.941667794088, y_hat: [50, 70], y: [50.0, 70.0], loss: 0	
+Filename: 574_B10_wName2.data, score: 53.894261002605, y_hat: [60, 88], y: [60.0, 88.0], loss: 0	
+Filename: 575_B09_wName1.data, score: 97.112561620596, y_hat: [259, 390], y: [260.0, 388.0], loss: 0	
+Filename: 575_B09_wName2.data, score: 86.128674191778, y_hat: [180, 266], y: [180.0, 268.0], loss: 0	
+Filename: 575_B09_wName3.data, score: 57.707180090032, y_hat: [80, 124], y: [80.0, 121.0], loss: 0.5	
+Filename: 576_B10_wName1.data, score: 44.586853805093, y_hat: [90, 138], y: [90.0, 135.0], loss: 0.5	
+Filename: 576_B10_wName2.data, score: 50.279607193327, y_hat: [44, 66], y: [50.0, 69.0], loss: 2.5	
+Filename: 577_B09_wName1.data, score: 57.403523465679, y_hat: [60, 92], y: [60.0, 92.0], loss: 0	
+Filename: 577_B09_wName2.data, score: 77.050465117312, y_hat: [147, 227], y: [150.0, 225.0], loss: 0.5	
+Filename: 577_B09_wName3.data, score: 26.969355506927, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 577_B10_wName3.data, score: 28.794146276863, y_hat: [50, 76], y: [50.0, 76.0], loss: 0	
+Filename: 578_B10_wName1.data, score: 63.637015254235, y_hat: [90, 136], y: [90.0, 136.0], loss: 0	
+Filename: 578_B10_wName2.data, score: 58.366022700768, y_hat: [49, 69], y: [50.0, 72.0], loss: 0.5	
+Filename: 579_B09_wName1.data, score: 95.011423809248, y_hat: [210, 317], y: [210.0, 315.0], loss: 0	
+Filename: 579_B09_wName2.data, score: 93.101934905395, y_hat: [230, 353], y: [230.0, 347.0], loss: 2	
+Filename: 579_B09_wName3.data, score: 62.220093243825, y_hat: [189, 298], y: [190.0, 283.0], loss: 6.5	
+Filename: 580_B10_wName2.data, score: 33.007669582712, y_hat: [52, 74], y: [50.0, 75.0], loss: 0	
+Filename: 581_B09_wName1.data, score: 55.69042231732, y_hat: [91, 135], y: [90.0, 134.0], loss: 0	
+Filename: 581_B09_wName2.data, score: 66.985948313012, y_hat: [60, 93], y: [60.0, 91.0], loss: 0	
+Filename: 581_B09_wName3.data, score: 33.852550251499, y_hat: [59, 93], y: [60.0, 93.0], loss: 0	
+Filename: 581_B10_wName3.data, score: 35.151862274463, y_hat: [50, 75], y: [50.0, 74.0], loss: 0	
+Filename: 582_B10_wName1.data, score: 74.777866799008, y_hat: [49, 69], y: [50.0, 71.0], loss: 0	
+Filename: 582_B10_wName2.data, score: 56.528477160842, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 583_B09_wName1.data, score: 88.568034129128, y_hat: [240, 361], y: [240.0, 362.0], loss: 0	
+Filename: 583_B09_wName2.data, score: 88.448628056814, y_hat: [210, 316], y: [210.0, 315.0], loss: 0	
+Filename: 583_B09_wName3.data, score: 71.922732927802, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 584_B10_wName1.data, score: 67.119330276352, y_hat: [89, 141], y: [90.0, 137.0], loss: 1	
+Filename: 584_B10_wName2.data, score: 10.528313984304, y_hat: [48, 68], y: [50.0, 68.0], loss: 0	
+Filename: 585_B09_wName1.data, score: -28.810272384771, y_hat: [49, 69], y: [50.0, 63.0], loss: 2	
+Filename: 585_B09_wName2.data, score: 64.722114558375, y_hat: [119, 181], y: [120.0, 183.0], loss: 0	
+Filename: 585_B09_wName3.data, score: 62.629002716547, y_hat: [129, 196], y: [130.0, 193.0], loss: 0.5	
+Filename: 585_B10_wName3.data, score: 20.752637020473, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 586_B10_wName1.data, score: 28.113069549549, y_hat: [49, 74], y: [50.0, 74.0], loss: 0	
+Filename: 586_B10_wName2.data, score: 47.094904906043, y_hat: [70, 105], y: [70.0, 105.0], loss: 0	
+Filename: 587_B09_wName1.data, score: 99.244234006258, y_hat: [252, 376], y: [250.0, 374.0], loss: 0	
+Filename: 587_B09_wName2.data, score: 104.86745758438, y_hat: [230, 345], y: [230.0, 345.0], loss: 0	
+Filename: 587_B09_wName3.data, score: 75.656509148076, y_hat: [120, 179], y: [120.0, 181.0], loss: 0	
+Filename: 587_B10_wName3.data, score: 61.483022767412, y_hat: [48, 70], y: [50.0, 73.0], loss: 0.5	
+Filename: 588_B10_wName2.data, score: 49.296006726616, y_hat: [91, 139], y: [90.0, 135.0], loss: 1	
+Filename: 589_B09_wName1.data, score: 48.950294619541, y_hat: [80, 123], y: [80.0, 123.0], loss: 0	
+Filename: 589_B09_wName2.data, score: 46.426823428645, y_hat: [70, 104], y: [70.0, 104.0], loss: 0	
+Filename: 589_B09_wName3.data, score: 77.762805004725, y_hat: [140, 214], y: [140.0, 209.0], loss: 1.5	
+Filename: 589_B10_wName3.data, score: 61.409088686454, y_hat: [110, 168], y: [110.0, 168.0], loss: 0	
+Filename: 590_B10_wName1.data, score: 35.01707308676, y_hat: [71, 103], y: [70.0, 103.0], loss: 0	
+Filename: 591_B09_wName1.data, score: 63.522961368791, y_hat: [50, 72], y: [50.0, 72.0], loss: 0	
+Filename: 591_B09_wName2.data, score: 73.259876796364, y_hat: [119, 183], y: [120.0, 183.0], loss: 0	
+Filename: 591_B09_wName3.data, score: 71.597903520606, y_hat: [90, 142], y: [90.0, 138.0], loss: 1	
+Filename: 591_B10_wName3.data, score: -33.813290947769, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 592_B10_wName1.data, score: 19.416303576787, y_hat: [50, 75], y: [50.0, 75.0], loss: 0	
+Filename: 592_B10_wName2.data, score: 39.460533974944, y_hat: [90, 135], y: [90.0, 133.0], loss: 0	
+Filename: 593_B09_wName1.data, score: 87.524105656123, y_hat: [130, 197], y: [130.0, 194.0], loss: 0.5	
+Filename: 593_B09_wName2.data, score: 64.545063531091, y_hat: [149, 227], y: [150.0, 225.0], loss: 0	
+Filename: 593_B09_wName3.data, score: 49.669786550219, y_hat: [50, 76], y: [50.0, 75.0], loss: 0	
+Filename: 593_B10_wName3.data, score: 51.692360658, y_hat: [50, 70], y: [50.0, 67.0], loss: 0.5	
+Filename: 594_B10_wName1.data, score: 15.208411802321, y_hat: [45, 65], y: [50.0, 63.0], loss: 1.5	
+Filename: 594_B10_wName2.data, score: -36.175308177456, y_hat: [47, 67], y: [50.0, 67.0], loss: 0.5	
+Filename: 595_B09_wName1.data, score: 77.062607799104, y_hat: [181, 269], y: [180.0, 269.0], loss: 0	
+Filename: 595_B09_wName2.data, score: -13.740138671335, y_hat: [49, 69], y: [50.0, 65.0], loss: 1	
+Filename: 595_B09_wName3.data, score: 51.625159729297, y_hat: [50, 75], y: [50.0, 77.0], loss: 0	
+Filename: 595_B10_wName3.data, score: 42.301620279667, y_hat: [70, 108], y: [70.0, 106.0], loss: 0	
+Filename: 596_B10_wName1.data, score: -23.642305533354, y_hat: [50, 70], y: [50.0, 62.0], loss: 3	
+Filename: 597_B09_wName1.data, score: 82.841549375369, y_hat: [50, 73], y: [50.0, 74.0], loss: 0	
+Filename: 597_B09_wName2.data, score: 49.497386352739, y_hat: [69, 109], y: [70.0, 107.0], loss: 0	
+Filename: 597_B09_wName3.data, score: 73.350855513063, y_hat: [140, 213], y: [140.0, 212.0], loss: 0	
+Filename: 597_B10_wName3.data, score: 49.643477790564, y_hat: [142, 178], y: [110.0, 166.0], loss: 20	
+Filename: 599_B09_wName1.data, score: 92.323944747243, y_hat: [250, 377], y: [250.0, 376.0], loss: 0	
+Filename: 599_B09_wName2.data, score: 60.810574591512, y_hat: [49, 69], y: [50.0, 69.0], loss: 0	
+Filename: 599_B09_wName3.data, score: 68.242679816402, y_hat: [170, 260], y: [170.0, 257.0], loss: 0.5	
+Filename: 599_B10_wName3.data, score: 35.310764950101, y_hat: [50, 72], y: [50.0, 72.0], loss: 0	
+Filename: 601_B09_wName1.data, score: 38.048357271346, y_hat: [51, 78], y: [50.0, 78.0], loss: 0	
+Filename: 601_B09_wName2.data, score: 86.780773039189, y_hat: [169, 257], y: [170.0, 254.0], loss: 0.5	
+Filename: 601_B09_wName3.data, score: 61.093659641363, y_hat: [129, 201], y: [130.0, 197.0], loss: 1	
+Filename: 601_B10_wName3.data, score: -39.415632162009, y_hat: [46, 66], y: [50.0, 65.0], loss: 1	
+Filename: 602_B10_wName1.data, score: 50.734150046615, y_hat: [70, 107], y: [70.0, 107.0], loss: 0	
+Filename: 603_B09_wName1.data, score: 82.112100777563, y_hat: [180, 272], y: [180.0, 272.0], loss: 0	
+Filename: 603_B09_wName2.data, score: -16.901860471346, y_hat: [50, 70], y: [50.0, 66.0], loss: 1	
+Filename: 603_B09_wName3.data, score: 96.618531871749, y_hat: [200, 301], y: [200.0, 300.0], loss: 0	
+Filename: 603_B10_wName3.data, score: 5.6327182076166, y_hat: [49, 72], y: [50.0, 72.0], loss: 0	
+Filename: 605_B09_wName1.data, score: 92.44527995139, y_hat: [191, 283], y: [190.0, 287.0], loss: 1	
+Filename: 605_B09_wName2.data, score: 66.412885685028, y_hat: [99, 149], y: [100.0, 149.0], loss: 0	
+Filename: 605_B09_wName3.data, score: 73.356997913246, y_hat: [150, 232], y: [150.0, 228.0], loss: 1	
+Filename: 605_B10_wName3.data, score: 33.822535569416, y_hat: [51, 71], y: [50.0, 70.0], loss: 0	
+Filename: 607_B09_wName1.data, score: 89.330817877028, y_hat: [219, 334], y: [220.0, 330.0], loss: 1	
+Filename: 607_B09_wName2.data, score: 68.574476811645, y_hat: [50, 72], y: [50.0, 72.0], loss: 0	
+Filename: 607_B09_wName3.data, score: 90.239821278587, y_hat: [190, 289], y: [190.0, 285.0], loss: 1	
+Filename: 609_B09_wName1.data, score: 89.049904425192, y_hat: [270, 409], y: [270.0, 404.0], loss: 1.5	
+Filename: 609_B09_wName2.data, score: 67.328532018574, y_hat: [50, 75], y: [50.0, 77.0], loss: 0	
+Filename: 609_B09_wName3.data, score: 75.763344561078, y_hat: [201, 300], y: [200.0, 299.0], loss: 0	
+Filename: 611_B09_wName1.data, score: 79.379390732209, y_hat: [221, 333], y: [220.0, 331.0], loss: 0	
+Filename: 611_B09_wName2.data, score: 77.414116116436, y_hat: [119, 183], y: [120.0, 183.0], loss: 0	
+Filename: 611_B09_wName3.data, score: 68.004478293166, y_hat: [90, 141], y: [90.0, 138.0], loss: 0.5	
+Filename: 613_B09_wName1.data, score: 75.772818756756, y_hat: [130, 195], y: [130.0, 195.0], loss: 0	
+Filename: 613_B09_wName2.data, score: 77.154443216536, y_hat: [49, 69], y: [50.0, 68.0], loss: 0	
+Filename: 613_B09_wName3.data, score: 73.133548682453, y_hat: [149, 228], y: [150.0, 226.0], loss: 0	
+Filename: 615_B09_wName1.data, score: 10.770037753588, y_hat: [47, 67], y: [50.0, 67.0], loss: 0.5	
+Filename: 615_B09_wName2.data, score: 73.953948843589, y_hat: [129, 201], y: [130.0, 195.0], loss: 2	
+Filename: 615_B09_wName3.data, score: 60.143553962447, y_hat: [130, 198], y: [130.0, 194.0], loss: 1	
+Filename: 617_B09_wName1.data, score: 87.677065583085, y_hat: [180, 275], y: [180.0, 272.0], loss: 0.5	
+Filename: 617_B09_wName2.data, score: -17.728700244123, y_hat: [48, 68], y: [50.0, 62.0], loss: 2	
+Filename: 617_B09_wName3.data, score: 69.669755446416, y_hat: [119, 182], y: [120.0, 179.0], loss: 0.5	
+Filename: 619_B09_wName1.data, score: 53.670939308858, y_hat: [60, 89], y: [60.0, 89.0], loss: 0	
+Filename: 619_B09_wName2.data, score: 62.720791346414, y_hat: [100, 153], y: [100.0, 151.0], loss: 0	
+Filename: 619_B09_wName3.data, score: 30.263944101592, y_hat: [47, 67], y: [50.0, 66.0], loss: 0.5	
+Filename: 621_B09_wName1.data, score: 47.217313818875, y_hat: [60, 94], y: [60.0, 92.0], loss: 0	
+Filename: 621_B09_wName2.data, score: 76.244369147507, y_hat: [138, 211], y: [140.0, 210.0], loss: 0	
+Filename: 621_B09_wName3.data, score: 70.851325922766, y_hat: [110, 168], y: [110.0, 168.0], loss: 0	
+Filename: 623_B09_wName1.data, score: 55.80495792132, y_hat: [51, 74], y: [50.0, 74.0], loss: 0	
+Filename: 623_B09_wName2.data, score: 97.224806267478, y_hat: [190, 284], y: [190.0, 283.0], loss: 0	
+Filename: 623_B09_wName3.data, score: 59.396552296444, y_hat: [140, 215], y: [140.0, 211.0], loss: 1	
+Filename: 625_B09_wName1.data, score: -12.331837037253, y_hat: [49, 69], y: [50.0, 62.0], loss: 2.5	
+Filename: 625_B09_wName2.data, score: 40.182660281144, y_hat: [80, 120], y: [80.0, 120.0], loss: 0	
+Filename: 625_B09_wName3.data, score: 42.815666622649, y_hat: [48, 68], y: [50.0, 66.0], loss: 0	
+Filename: 627_B09_wName1.data, score: 69.457957288284, y_hat: [89, 140], y: [90.0, 136.0], loss: 1	
+Filename: 627_B09_wName2.data, score: 78.789265336017, y_hat: [219, 334], y: [220.0, 331.0], loss: 0.5	
+Filename: 627_B09_wName3.data, score: 91.927936479441, y_hat: [160, 241], y: [160.0, 239.0], loss: 0	
+Filename: 629_B09_wName1.data, score: 71.480190453946, y_hat: [49, 69], y: [50.0, 70.0], loss: 0	
+Filename: 629_B09_wName2.data, score: -1.3918057252365, y_hat: [48, 68], y: [50.0, 62.0], loss: 2	
+Filename: 629_B09_wName3.data, score: 46.858700278273, y_hat: [89, 136], y: [90.0, 133.0], loss: 0.5	
+Filename: 631_B09_wName1.data, score: 80.619082210547, y_hat: [170, 258], y: [170.0, 255.0], loss: 0.5	
+Filename: 631_B09_wName2.data, score: 44.809054598205, y_hat: [139, 216], y: [140.0, 212.0], loss: 1	
+Filename: 631_B09_wName3.data, score: 41.925479823123, y_hat: [50, 70], y: [50.0, 69.0], loss: 0	
+Filename: 633_B09_wName1.data, score: 62.204791321889, y_hat: [90, 144], y: [90.0, 138.0], loss: 2	
+Filename: 633_B09_wName2.data, score: 38.604212677936, y_hat: [49, 69], y: [50.0, 67.0], loss: 0	
+Filename: 633_B09_wName3.data, score: 47.267420821203, y_hat: [61, 92], y: [60.0, 92.0], loss: 0	
+Filename: 635_B09_wName1.data, score: 69.219734070128, y_hat: [194, 304], y: [200.0, 301.0], loss: 2.5	
+Filename: 635_B09_wName2.data, score: 51.015085420636, y_hat: [70, 108], y: [70.0, 106.0], loss: 0	
+Filename: 635_B09_wName3.data, score: 35.345004949993, y_hat: [50, 78], y: [50.0, 78.0], loss: 0	
+Filename: 637_B09_wName1.data, score: -17.790230830027, y_hat: [50, 70], y: [50.0, 65.0], loss: 1.5	
+Filename: 637_B09_wName2.data, score: 28.712962253815, y_hat: [48, 68], y: [50.0, 68.0], loss: 0	
+Filename: 637_B09_wName3.data, score: 77.298222428484, y_hat: [199, 305], y: [200.0, 301.0], loss: 1	
+Filename: 639_B09_wName1.data, score: 77.296050303686, y_hat: [161, 244], y: [160.0, 240.0], loss: 1	
+Filename: 639_B09_wName2.data, score: 27.74203302935, y_hat: [48, 68], y: [50.0, 68.0], loss: 0	
+Filename: 639_B09_wName3.data, score: 11.387804000432, y_hat: [49, 69], y: [50.0, 64.0], loss: 1.5	
+Filename: 641_B09_wName1.data, score: 53.332115357148, y_hat: [50, 74], y: [50.0, 75.0], loss: 0	
+Filename: 641_B09_wName2.data, score: 69.892327025649, y_hat: [119, 186], y: [120.0, 180.0], loss: 2	
+Filename: 641_B09_wName3.data, score: 75.016207995329, y_hat: [90, 136], y: [90.0, 133.0], loss: 0.5	
+Filename: 643_B09_wName1.data, score: 92.875820368158, y_hat: [219, 326], y: [220.0, 330.0], loss: 1	
+Filename: 643_B09_wName2.data, score: 50.320038346848, y_hat: [60, 93], y: [60.0, 92.0], loss: 0	
+Filename: 645_B09_wName2.data, score: 100.2957321873, y_hat: [239, 361], y: [240.0, 361.0], loss: 0	
+Filename: 647_B09_wName2.data, score: 75.22572625557, y_hat: [200, 305], y: [200.0, 300.0], loss: 1.5	
+Filename: 649_B09_wName2.data, score: 69.319109882491, y_hat: [50, 78], y: [50.0, 78.0], loss: 0	
+
+Average score: 49.365924929612	
+Average cumulative loss: 0.92965204236006

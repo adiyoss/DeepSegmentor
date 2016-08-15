@@ -1,0 +1,17 @@
+seed: 1234
+learningRate: 0.1
+input_dim: 13
+n_layers: 2
+plot: false
+clipping: 2
+features_path: data/word_duration/
+labels_path: data/word_duration/
+patience: 5
+momentum: 0.9
+eps: 5
+save: results/model_8_new_db/
+optimization: ADAGRAD
+dropout: 0.8
+weightDecay: 0
+type: double
+hidden_size: 100

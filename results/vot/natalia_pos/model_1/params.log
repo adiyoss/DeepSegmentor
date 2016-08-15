@@ -1,0 +1,17 @@
+seed: 1234
+learningRate: 0.01
+input_dim: 63
+n_layers: 2
+plot: false
+clipping: 2
+features_path: data/vot/pos/
+labels_path: data/vot/pos/
+patience: 5
+momentum: 0.9
+eps: 2
+save: results
+optimization: ADAGRAD
+dropout: 0.8
+weightDecay: 0
+type: double
+hidden_size: 100

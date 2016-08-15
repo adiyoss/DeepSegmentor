@@ -1,0 +1,1320 @@
+==> processing options	
+==> Loading data set	
+==> define loss	
+nn.StructuredHingeLoss
+==> build the model and initialize weights	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> output]
+  (1): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (2): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (3): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (4): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (5): nn.StructLayer
+}
+==> configuring optimizer	
+==> training! 	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m53s | Step: 185ms      
+
+==> Average score: 0	
+==> Average cumulative loss: 187.87055837563	
+==> online epoch # 1	
+ [================================================================ 3406/3406 ==========>] Tot: 25m59s | Step: 460ms     
+
+==> time to learn 1 sample = 4267.8600584512ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m53s | Step: 187ms      
+
+==> Average score: 75.30446416398	
+==> Average cumulative loss: 5.4957698815567	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 2	
+ [================================================================ 3406/3406 ==========>] Tot: 25m59s | Step: 461ms     
+
+==> time to learn 1 sample = 8535.8618059533ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m50s | Step: 181ms      
+
+==> Average score: 70.110346092439	
+==> Average cumulative loss: 4.6099830795262	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 3	
+ [================================================================ 3406/3406 ==========>] Tot: 25m58s | Step: 460ms     
+
+==> time to learn 1 sample = 12801.272557683ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m50s | Step: 183ms      
+
+==> Average score: 71.258022804355	
+==> Average cumulative loss: 5.1505922165821	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 4	
+ [================================================================ 3406/3406 ==========>] Tot: 25m59s | Step: 461ms     
+
+==> time to learn 1 sample = 17072.795347476ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m52s | Step: 186ms      
+
+==> Average score: 66.671643234286	
+==> Average cumulative loss: 3.1489001692047	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 5	
+ [================================================================ 3406/3406 ==========>] Tot: 25m49s | Step: 459ms     
+
+==> time to learn 1 sample = 21315.443243425ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m49s | Step: 180ms      
+
+==> Average score: 64.995240276998	
+==> Average cumulative loss: 3.6412859560068	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 6	
+ [================================================================ 3406/3406 ==========>] Tot: 25m48s | Step: 458ms     
+
+==> time to learn 1 sample = 25557.390650711ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m49s | Step: 181ms      
+
+==> Average score: 72.890811273353	
+==> Average cumulative loss: 4.1472081218274	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 7	
+ [================================================================ 3406/3406 ==========>] Tot: 25m45s | Step: 460ms     
+
+==> time to learn 1 sample = 29790.453127153ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 69.299370287057	
+==> Average cumulative loss: 3.0820642978003	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 8	
+ [================================================================ 3406/3406 ==========>] Tot: 25m47s | Step: 456ms     
+
+==> time to learn 1 sample = 34026.049017474ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m49s | Step: 181ms      
+
+==> Average score: 65.37229261413	
+==> Average cumulative loss: 3.0575296108291	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 9	
+ [================================================================ 3406/3406 ==========>] Tot: 25m50s | Step: 457ms     
+
+==> time to learn 1 sample = 38271.345816321ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m49s | Step: 181ms      
+
+==> Average score: 62.655592953281	
+==> Average cumulative loss: 3.3832487309645	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 10	
+ [================================================================ 3406/3406 ==========>] Tot: 25m55s | Step: 460ms     
+
+==> time to learn 1 sample = 42529.969651234ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 180ms      
+
+==> Average score: 58.691059505273	
+==> Average cumulative loss: 2.5329949238579	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 11	
+ [================================================================ 3406/3406 ==========>] Tot: 25m54s | Step: 460ms     
+
+==> time to learn 1 sample = 46786.749878986ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m52s | Step: 185ms      
+
+==> Average score: 59.738370648221	
+==> Average cumulative loss: 2.2673434856176	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 12	
+ [================================================================ 3406/3406 ==========>] Tot: 25m43s | Step: 457ms     
+
+==> time to learn 1 sample = 51012.576697368ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 62.48267795038	
+==> Average cumulative loss: 2.5626057529611	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 13	
+ [================================================================ 3406/3406 ==========>] Tot: 25m42s | Step: 455ms     
+
+==> time to learn 1 sample = 55236.166604981ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 61.272829539107	
+==> Average cumulative loss: 2.7318104906937	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 14	
+ [================================================================ 3406/3406 ==========>] Tot: 25m42s | Step: 455ms     
+
+==> time to learn 1 sample = 59461.076848821ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 180ms      
+
+==> Average score: 57.675566429583	
+==> Average cumulative loss: 2.8646362098139	
+
+========================================	
+==> Loss did not improved, iteration: 3	
+========================================
+	
+==> online epoch # 15	
+ [================================================================ 3406/3406 ==========>] Tot: 25m43s | Step: 456ms     
+
+==> time to learn 1 sample = 63689.231923973ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 53.770699082523	
+==> Average cumulative loss: 1.8274111675127	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/model_8_new_db/model.net	
+==> online epoch # 16	
+ [================================================================ 3406/3406 ==========>] Tot: 25m47s | Step: 457ms     
+
+==> time to learn 1 sample = 67923.925030028ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 180ms      
+
+==> Average score: 56.324545545052	
+==> Average cumulative loss: 2.4001692047377	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 17	
+ [================================================================ 3406/3406 ==========>] Tot: 25m48s | Step: 457ms     
+
+==> time to learn 1 sample = 72163.793170681ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 47.574325583589	
+==> Average cumulative loss: 2.1988155668359	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 18	
+ [================================================================ 3406/3406 ==========>] Tot: 25m47s | Step: 465ms     
+
+==> time to learn 1 sample = 76401.422195975ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 179ms      
+
+==> Average score: 47.310526802029	
+==> Average cumulative loss: 2.5922165820643	
+
+========================================	
+==> Loss did not improved, iteration: 3	
+========================================
+	
+==> online epoch # 19	
+ [================================================================ 3406/3406 ==========>] Tot: 25m48s | Step: 459ms     
+
+==> time to learn 1 sample = 80644.043253767ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m48s | Step: 180ms      
+
+==> Average score: 51.521958736052	
+==> Average cumulative loss: 1.922165820643	
+
+========================================	
+==> Loss did not improved, iteration: 4	
+========================================
+	
+==> online epoch # 20	
+ [================================================================ 3406/3406 ==========>] Tot: 28m26s | Step: 479ms     
+
+==> time to learn 1 sample = 85322.19228345ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 1m53s | Step: 186ms      
+
+==> Average score: 50.230484523922	
+==> Average cumulative loss: 2.0473773265651	
+
+========================================	
+==> Loss did not improved, iteration: 5	
+========================================
+	
+==> online epoch # 21	
+ [================================================================ 3406/3406 ==========>] Tot: 29m25s | Step: 552ms     
+
+==> time to learn 1 sample = 90168.163949505ms	
+==> evaluating on validation set	
+ [=============================================================== 591/591 =============>] Tot: 2m19s | Step: 207ms      
+
+==> Average score: 50.345866304019	
+==> Average cumulative loss: 2.2859560067682	
+
+========================================	
+==> Loss did not improved, iteration: 6	
+========================================
+	
+==> evaluating on test set	
+Filename: 087_post_interval10_glass.txt, score: 43.430461613578, y_hat: [161, 230], y: [162.0, 225.0], loss: 0	
+Filename: 087_post_interval11_skunk.txt, score: 63.023586689784, y_hat: [193, 252], y: [193.0, 252.0], loss: 0	
+Filename: 087_post_interval12_lettuce.txt, score: 57.396227224214, y_hat: [190, 253], y: [190.0, 252.0], loss: 0	
+Filename: 087_post_interval13_knife.txt, score: 31.003283851811, y_hat: [174, 247], y: [173.0, 238.0], loss: 2	
+Filename: 087_post_interval14_raccoon.txt, score: 58.016049368646, y_hat: [179, 244], y: [180.0, 242.0], loss: 0	
+Filename: 087_post_interval15_carrot.txt, score: 58.487801230164, y_hat: [163, 231], y: [163.0, 231.0], loss: 0	
+Filename: 087_post_interval16_fork.txt, score: 34.45903806142, y_hat: [240, 260], y: [176.0, 241.0], loss: 36.5	
+Filename: 087_post_interval17_horse.txt, score: 53.201927192408, y_hat: [193, 255], y: [194.0, 252.0], loss: 0	
+Filename: 087_post_interval18_axe.txt, score: 53.952170122587, y_hat: [192, 276], y: [193.0, 267.0], loss: 2	
+Filename: 087_post_interval19_barn.txt, score: 47.002011844295, y_hat: [193, 261], y: [193.0, 261.0], loss: 0	
+Filename: 087_post_interval20_sheep.txt, score: 64.565884603293, y_hat: [177, 243], y: [178.0, 242.0], loss: 0	
+Filename: 087_post_interval21_hammer.txt, score: 52.781538152585, y_hat: [186, 260], y: [186.0, 252.0], loss: 1.5	
+Filename: 087_post_interval22_house.txt, score: 44.246614637594, y_hat: [190, 258], y: [190.0, 259.0], loss: 0	
+Filename: 087_post_interval23_chicken.txt, score: 53.667726726117, y_hat: [172, 240], y: [173.0, 239.0], loss: 0	
+Filename: 087_post_interval24_screwdriver.txt, score: 46.917287559112, y_hat: [174, 246], y: [174.0, 247.0], loss: 0	
+Filename: 087_post_interval26_donkey.txt, score: 60.460283365361, y_hat: [168, 236], y: [169.0, 234.0], loss: 0	
+Filename: 087_post_interval27_saw.txt, score: 55.549418284248, y_hat: [170, 240], y: [171.0, 234.0], loss: 0.5	
+Filename: 087_post_interval28_windmill.txt, score: 57.642958226416, y_hat: [184, 261], y: [184.0, 252.0], loss: 2	
+Filename: 087_post_interval29_pig.txt, score: 61.338788742673, y_hat: [187, 245], y: [188.0, 245.0], loss: 0	
+Filename: 087_post_interval2_fox.txt, score: 57.584564745939, y_hat: [182, 241], y: [182.0, 240.0], loss: 0	
+Filename: 087_post_interval30_wrench.txt, score: 22.341496574831, y_hat: [206, 229], y: [210.0, 276.0], loss: 21	
+Filename: 087_post_interval31_church.txt, score: 47.147398013869, y_hat: [178, 245], y: [178.0, 246.0], loss: 0	
+Filename: 087_post_interval32_guitar.txt, score: 37.181558656745, y_hat: [211, 273], y: [211.0, 271.0], loss: 0	
+Filename: 087_post_interval33_dress.txt, score: 61.456609734766, y_hat: [213, 285], y: [214.0, 286.0], loss: 0	
+Filename: 087_post_interval34_tiger.txt, score: 56.242524932053, y_hat: [162, 230], y: [163.0, 229.0], loss: 0	
+Filename: 087_post_interval35_trumpet.txt, score: 24.219269982892, y_hat: [226, 256], y: [197.0, 257.0], loss: 12	
+Filename: 087_post_interval36_sock.txt, score: 51.324131183791, y_hat: [204, 266], y: [205.0, 267.0], loss: 0	
+Filename: 087_post_interval37_zebra.txt, score: 59.816978749485, y_hat: [173, 234], y: [174.0, 234.0], loss: 0	
+Filename: 087_post_interval38_violin.txt, score: 54.662484607522, y_hat: [194, 252], y: [194.0, 253.0], loss: 0	
+Filename: 087_post_interval39_skirt.txt, score: 43.438454594543, y_hat: [169, 234], y: [169.0, 234.0], loss: 0	
+Filename: 087_post_interval3_onion.txt, score: 55.409628842987, y_hat: [179, 243], y: [181.0, 242.0], loss: 0	
+Filename: 087_post_interval40_elephant.txt, score: 53.664568562348, y_hat: [184, 255], y: [186.0, 254.0], loss: 0	
+Filename: 087_post_interval41_drum.txt, score: 31.060026991868, y_hat: [214, 252], y: [178.0, 247.0], loss: 15.5	
+Filename: 087_post_interval42_coat.txt, score: 48.488296149076, y_hat: [171, 244], y: [172.0, 239.0], loss: 0	
+Filename: 087_post_interval43_monkey.txt, score: 57.917991727906, y_hat: [181, 255], y: [181.0, 253.0], loss: 0	
+Filename: 087_post_interval44_piano.txt, score: 39.753062726863, y_hat: [172, 245], y: [172.0, 246.0], loss: 0	
+Filename: 087_post_interval45_shirt.txt, score: 42.75789797365, y_hat: [237, 257], y: [160.0, 238.0], loss: 43	
+Filename: 087_post_interval46_gorilla.txt, score: 51.746834845667, y_hat: [175, 249], y: [176.0, 248.0], loss: 0	
+Filename: 087_post_interval4_cup.txt, score: 42.933660516173, y_hat: [166, 231], y: [166.0, 226.0], loss: 0	
+Filename: 087_post_interval5_squirrel.txt, score: 55.813994428876, y_hat: [183, 242], y: [183.0, 241.0], loss: 0	
+Filename: 087_post_interval6_celery.txt, score: 58.755023150071, y_hat: [188, 252], y: [189.0, 252.0], loss: 0	
+Filename: 087_post_interval7_spoon.txt, score: 37.66253337815, y_hat: [232, 269], y: [201.0, 261.0], loss: 14.5	
+Filename: 087_post_interval8_deer.txt, score: 53.238923097408, y_hat: [163, 225], y: [163.0, 225.0], loss: 0	
+Filename: 087_post_interval9_potato.txt, score: 56.818425985958, y_hat: [168, 229], y: [168.0, 228.0], loss: 0	
+Filename: 087_pre_interval10_peacock.txt, score: 61.204662188023, y_hat: [167, 231], y: [167.0, 231.0], loss: 0	
+Filename: 087_pre_interval11_table.txt, score: 56.765779904728, y_hat: [163, 232], y: [163.0, 228.0], loss: 0	
+Filename: 087_pre_interval12_plane.txt, score: 39.666513538978, y_hat: [175, 241], y: [176.0, 241.0], loss: 0	
+Filename: 087_pre_interval13_duck.txt, score: 52.284673747767, y_hat: [176, 239], y: [177.0, 238.0], loss: 0	
+Filename: 087_pre_interval14_bed.txt, score: 44.41845241103, y_hat: [174, 252], y: [174.0, 246.0], loss: 0.5	
+Filename: 087_pre_interval15_bus.txt, score: 56.079949707558, y_hat: [168, 249], y: [169.0, 243.0], loss: 0.5	
+Filename: 087_pre_interval16_swan.txt, score: 59.367658900402, y_hat: [184, 252], y: [185.0, 250.0], loss: 0	
+Filename: 087_pre_interval17_stool.txt, score: 50.024012094876, y_hat: [167, 249], y: [167.0, 244.0], loss: 0	
+Filename: 087_pre_interval18_train.txt, score: 56.737947813545, y_hat: [169, 240], y: [170.0, 236.0], loss: 0	
+Filename: 087_pre_interval19_eagle.txt, score: 63.266948258592, y_hat: [156, 229], y: [156.0, 228.0], loss: 0	
+Filename: 087_pre_interval20_desk.txt, score: 52.289245862848, y_hat: [187, 262], y: [187.0, 258.0], loss: 0	
+Filename: 087_pre_interval21_car.txt, score: 54.876374038845, y_hat: [172, 241], y: [173.0, 241.0], loss: 0	
+Filename: 087_pre_interval22_orange.txt, score: 62.621082812951, y_hat: [162, 226], y: [163.0, 225.0], loss: 0	
+Filename: 087_pre_interval23_pitcher.txt, score: 56.416413305434, y_hat: [154, 219], y: [155.0, 220.0], loss: 0	
+Filename: 087_pre_interval24_ant.txt, score: 58.866904334685, y_hat: [151, 218], y: [154.0, 217.0], loss: 0	
+Filename: 087_pre_interval25_banana.txt, score: 53.761423876434, y_hat: [167, 232], y: [167.0, 231.0], loss: 0	
+Filename: 087_pre_interval26_pan.txt, score: 55.962093707504, y_hat: [159, 225], y: [160.0, 226.0], loss: 0	
+Filename: 087_pre_interval27_beetle.txt, score: 54.402859731053, y_hat: [170, 232], y: [172.0, 231.0], loss: 0	
+Filename: 087_pre_interval28_pear.txt, score: 55.370023085347, y_hat: [167, 235], y: [167.0, 237.0], loss: 0	
+Filename: 087_pre_interval29_pot.txt, score: 18.672596344769, y_hat: [212, 234], y: [163.0, 234.0], loss: 22	
+Filename: 087_pre_interval30_spider.txt, score: 55.702008206251, y_hat: [183, 253], y: [184.0, 252.0], loss: 0	
+Filename: 087_pre_interval31_apple.txt, score: 58.181392404657, y_hat: [162, 227], y: [163.0, 227.0], loss: 0	
+Filename: 087_pre_interval32_rolling_pin.txt, score: 53.650565580506, y_hat: [155, 225], y: [155.0, 225.0], loss: 0	
+Filename: 087_pre_interval33_butterfly.txt, score: 56.779736614274, y_hat: [166, 235], y: [167.0, 235.0], loss: 0	
+Filename: 087_pre_interval34_lemon.txt, score: 65.642497851576, y_hat: [154, 223], y: [155.0, 222.0], loss: 0	
+Filename: 087_pre_interval35_kettle.txt, score: 50.823357802148, y_hat: [194, 261], y: [194.0, 261.0], loss: 0	
+Filename: 087_pre_interval36_caterpillar.txt, score: 61.007011922002, y_hat: [178, 252], y: [179.0, 252.0], loss: 0	
+Filename: 087_pre_interval38_finger.txt, score: 57.964610424026, y_hat: [281, 346], y: [281.0, 345.0], loss: 0	
+Filename: 087_pre_interval39_seahorse.txt, score: 58.432655562259, y_hat: [192, 262], y: [192.0, 261.0], loss: 0	
+Filename: 087_pre_interval40_sled.txt, score: 49.32540696998, y_hat: [156, 223], y: [156.0, 217.0], loss: 0.5	
+Filename: 087_pre_interval41_nose.txt, score: 60.120236038886, y_hat: [203, 269], y: [203.0, 268.0], loss: 0	
+Filename: 087_pre_interval42_sea_lion.txt, score: 54.932164048078, y_hat: [188, 253], y: [188.0, 253.0], loss: 0	
+Filename: 087_pre_interval43_top.txt, score: 52.867461661683, y_hat: [172, 246], y: [172.0, 238.0], loss: 1.5	
+Filename: 087_pre_interval44_eye.txt, score: 63.126324411416, y_hat: [194, 258], y: [194.0, 258.0], loss: 0	
+Filename: 087_pre_interval45_lobster.txt, score: 47.98090544912, y_hat: [219, 258], y: [192.0, 257.0], loss: 11	
+Filename: 087_pre_interval46_kite.txt, score: 36.353146275683, y_hat: [198, 231], y: [172.0, 231.0], loss: 10.5	
+Filename: 087_pre_interval47_hand.txt, score: 59.905003007244, y_hat: [264, 320], y: [263.0, 320.0], loss: 0	
+Filename: 087_pre_interval48_penguin.txt, score: 58.104055079529, y_hat: [176, 243], y: [176.0, 242.0], loss: 0	
+Filename: 087_pre_interval49_ball.txt, score: 50.641738602795, y_hat: [155, 218], y: [156.0, 218.0], loss: 0	
+Filename: 087_pre_interval50_ear.txt, score: 64.932632231976, y_hat: [177, 244], y: [177.0, 245.0], loss: 0	
+Filename: 087_pre_interval51_fish.txt, score: 60.789841735708, y_hat: [164, 233], y: [165.0, 231.0], loss: 0	
+Filename: 087_pre_interval7_owl.txt, score: 54.934202713929, y_hat: [183, 241], y: [185.0, 240.0], loss: 0	
+Filename: 087_pre_interval8_chair.txt, score: 43.128870041241, y_hat: [170, 240], y: [170.0, 234.0], loss: 0.5	
+Filename: 087_pre_interval9_helicopter.txt, score: 56.950685411322, y_hat: [179, 256], y: [179.0, 247.0], loss: 2	
+Filename: 089_post_interval10_kite.txt, score: 38.059741022313, y_hat: [178, 227], y: [178.0, 226.0], loss: 0	
+Filename: 089_post_interval11_kettle.txt, score: 44.475527060446, y_hat: [181, 228], y: [181.0, 229.0], loss: 0	
+Filename: 089_post_interval12_pig.txt, score: 63.113678897663, y_hat: [180, 226], y: [179.0, 226.0], loss: 0	
+Filename: 089_post_interval13_ball.txt, score: 52.917016057694, y_hat: [169, 219], y: [169.0, 219.0], loss: 0	
+Filename: 089_post_interval14_pitcher.txt, score: 51.055696594334, y_hat: [205, 252], y: [205.0, 252.0], loss: 0	
+Filename: 089_post_interval15_horse.txt, score: 52.207034778115, y_hat: [174, 224], y: [173.0, 224.0], loss: 0	
+Filename: 089_post_interval16_doll.txt, score: 50.504843773263, y_hat: [189, 240], y: [190.0, 240.0], loss: 0	
+Filename: 089_post_interval18_spoon.txt, score: 50.528649040399, y_hat: [185, 234], y: [185.0, 230.0], loss: 0	
+Filename: 089_post_interval19_plane.txt, score: 51.489535965314, y_hat: [188, 237], y: [189.0, 237.0], loss: 0	
+Filename: 089_post_interval20_elephant.txt, score: 54.985584148333, y_hat: [180, 229], y: [179.0, 227.0], loss: 0	
+Filename: 089_post_interval21_glass.txt, score: 35.790553649296, y_hat: [199, 255], y: [199.0, 247.0], loss: 1.5	
+Filename: 089_post_interval22_bus.txt, score: 43.440627589731, y_hat: [229, 278], y: [229.0, 278.0], loss: 0	
+Filename: 089_post_interval23_monkey.txt, score: 52.832958648847, y_hat: [183, 234], y: [182.0, 234.0], loss: 0	
+Filename: 089_post_interval24_knife.txt, score: 53.816897535369, y_hat: [189, 238], y: [189.0, 238.0], loss: 0	
+Filename: 089_post_interval25_train.txt, score: 52.567231684933, y_hat: [162, 211], y: [162.0, 211.0], loss: 0	
+Filename: 089_post_interval26_gorilla.txt, score: 53.383279034621, y_hat: [162, 214], y: [162.0, 213.0], loss: 0	
+Filename: 089_post_interval27_fork.txt, score: 48.357923116362, y_hat: [167, 215], y: [167.0, 215.0], loss: 0	
+Filename: 089_post_interval28_car.txt, score: 43.616036555797, y_hat: [198, 248], y: [198.0, 243.0], loss: 0	
+Filename: 089_post_interval29_tiger.txt, score: 57.932189431596, y_hat: [206, 254], y: [206.0, 254.0], loss: 0	
+Filename: 089_post_interval2_pan.txt, score: 46.393175655595, y_hat: [169, 224], y: [169.0, 221.0], loss: 0	
+Filename: 089_post_interval30_cup.txt, score: 39.084609169842, y_hat: [264, 317], y: [264.0, 314.0], loss: 0	
+Filename: 089_post_interval31_helicopter.txt, score: 51.171849247818, y_hat: [189, 239], y: [189.0, 239.0], loss: 0	
+Filename: 089_post_interval32_hammer.txt, score: 45.538442974485, y_hat: [163, 212], y: [163.0, 213.0], loss: 0	
+Filename: 089_post_interval33_celery.txt, score: 57.748026281642, y_hat: [179, 226], y: [179.0, 226.0], loss: 0	
+Filename: 089_post_interval34_trumpet.txt, score: 39.754645573799, y_hat: [170, 222], y: [170.0, 220.0], loss: 0	
+Filename: 089_post_interval35_screwdriver.txt, score: 55.184991147486, y_hat: [171, 221], y: [171.0, 221.0], loss: 0	
+Filename: 089_post_interval36_potato.txt, score: 58.720800778029, y_hat: [183, 229], y: [183.0, 230.0], loss: 0	
+Filename: 089_post_interval37_violin.txt, score: 51.822480638229, y_hat: [187, 238], y: [187.0, 238.0], loss: 0	
+Filename: 089_post_interval38_saw.txt, score: 52.936682442264, y_hat: [171, 222], y: [171.0, 222.0], loss: 0	
+Filename: 089_post_interval39_lettuce.txt, score: 24.789619282227, y_hat: [182, 210], y: [159.0, 210.0], loss: 9	
+Filename: 089_post_interval3_sheep.txt, score: 32.790533785347, y_hat: [192, 216], y: [168.0, 216.0], loss: 9.5	
+Filename: 089_post_interval40_drum.txt, score: 53.243817988626, y_hat: [161, 210], y: [161.0, 210.0], loss: 0	
+Filename: 089_post_interval41_wrench.txt, score: 41.826863336782, y_hat: [169, 220], y: [170.0, 220.0], loss: 0	
+Filename: 089_post_interval42_carrot.txt, score: 51.154786627742, y_hat: [172, 222], y: [172.0, 222.0], loss: 0	
+Filename: 089_post_interval43_piano.txt, score: 40.505988209483, y_hat: [177, 228], y: [178.0, 223.0], loss: 0	
+Filename: 089_post_interval44_axe.txt, score: 45.23675799849, y_hat: [165, 212], y: [165.0, 208.0], loss: 0	
+Filename: 089_post_interval45_onion.txt, score: 52.13392262977, y_hat: [197, 245], y: [197.0, 245.0], loss: 0	
+Filename: 089_post_interval46_guitar.txt, score: 48.183291353352, y_hat: [173, 221], y: [172.0, 221.0], loss: 0	
+Filename: 089_post_interval4_sled.txt, score: 49.969728744284, y_hat: [177, 230], y: [177.0, 225.0], loss: 0	
+Filename: 089_post_interval5_pot.txt, score: 39.476301863417, y_hat: [186, 241], y: [185.0, 236.0], loss: 0	
+Filename: 089_post_interval6_chicken.txt, score: 56.577316331601, y_hat: [171, 221], y: [171.0, 221.0], loss: 0	
+Filename: 089_post_interval7_top.txt, score: 52.43038276929, y_hat: [194, 244], y: [194.0, 244.0], loss: 0	
+Filename: 089_post_interval8_rolling_pin.txt, score: 47.79399692533, y_hat: [189, 239], y: [190.0, 239.0], loss: 0	
+Filename: 089_post_interval9_donkey.txt, score: 22.88617552103, y_hat: [193, 219], y: [175.0, 219.0], loss: 6.5	
+Filename: 089_pre_interval10_eye.txt, score: 40.508503757552, y_hat: [177, 224], y: [178.0, 223.0], loss: 0	
+Filename: 089_pre_interval11_duck.txt, score: 17.0949641337, y_hat: [211, 234], y: [184.0, 233.0], loss: 11	
+Filename: 089_pre_interval12_bed.txt, score: 45.598964335239, y_hat: [166, 224], y: [165.0, 219.0], loss: 0	
+Filename: 089_pre_interval13_hand.txt, score: 33.100404310866, y_hat: [172, 206], y: [156.0, 205.0], loss: 5.5	
+Filename: 089_pre_interval14_swan.txt, score: 51.061879826242, y_hat: [178, 221], y: [177.0, 222.0], loss: 0	
+Filename: 089_pre_interval15_stool.txt, score: 18.207940675233, y_hat: [249, 276], y: [223.0, 276.0], loss: 10.5	
+Filename: 089_pre_interval16_ear.txt, score: 20.43417971718, y_hat: [212, 232], y: [179.0, 232.0], loss: 14	
+Filename: 089_pre_interval17_eagle.txt, score: 29.416728778884, y_hat: [210, 236], y: [180.0, 236.0], loss: 12.5	
+Filename: 089_pre_interval18_desk.txt, score: 52.639015011584, y_hat: [178, 239], y: [178.0, 239.0], loss: 0	
+Filename: 089_pre_interval19_finger.txt, score: 56.705909568884, y_hat: [184, 237], y: [183.0, 236.0], loss: 0	
+Filename: 089_pre_interval20_owl.txt, score: 51.323577311832, y_hat: [175, 227], y: [173.0, 227.0], loss: 0	
+Filename: 089_pre_interval21_chair.txt, score: 34.301653023213, y_hat: [189, 213], y: [159.0, 213.0], loss: 12.5	
+Filename: 089_pre_interval22_beetle.txt, score: 20.2943628557, y_hat: [211, 234], y: [180.0, 233.0], loss: 13	
+Filename: 089_pre_interval23_house.txt, score: 49.302964469907, y_hat: [194, 248], y: [195.0, 248.0], loss: 0	
+Filename: 089_pre_interval24_squirrel.txt, score: 35.142344019006, y_hat: [181, 230], y: [178.0, 230.0], loss: 0	
+Filename: 089_pre_interval25_spider.txt, score: 56.29605086801, y_hat: [176, 229], y: [175.0, 229.0], loss: 0	
+Filename: 089_pre_interval26_well.txt, score: 38.115261155707, y_hat: [177, 234], y: [176.0, 230.0], loss: 0	
+Filename: 089_pre_interval27_deer.txt, score: 22.6230384995, y_hat: [212, 234], y: [182.0, 234.0], loss: 12.5	
+Filename: 089_pre_interval28_butterfly.txt, score: 16.44914371998, y_hat: [187, 211], y: [157.0, 210.0], loss: 12.5	
+Filename: 089_pre_interval29_windmill.txt, score: 45.053731455545, y_hat: [164, 216], y: [164.0, 216.0], loss: 0	
+Filename: 089_pre_interval30_skunk.txt, score: 35.766394224412, y_hat: [198, 225], y: [167.0, 225.0], loss: 13	
+Filename: 089_pre_interval31_caterpillar.txt, score: 24.638115517178, y_hat: [190, 216], y: [156.0, 216.0], loss: 14.5	
+Filename: 089_pre_interval32_church.txt, score: 58.096607637261, y_hat: [158, 210], y: [158.0, 211.0], loss: 0	
+Filename: 089_pre_interval33_raccoon.txt, score: 19.390901121581, y_hat: [201, 224], y: [170.0, 224.0], loss: 13	
+Filename: 089_pre_interval34_ant.txt, score: 35.942992932284, y_hat: [171, 221], y: [170.0, 221.0], loss: 0	
+Filename: 089_pre_interval35_barn.txt, score: 33.577436168575, y_hat: [165, 220], y: [165.0, 213.0], loss: 1	
+Filename: 089_pre_interval36_fox.txt, score: 24.916474263801, y_hat: [199, 220], y: [169.0, 219.0], loss: 12.5	
+Filename: 089_pre_interval37_banana.txt, score: 23.83441165776, y_hat: [199, 222], y: [167.0, 222.0], loss: 13.5	
+Filename: 089_pre_interval38_sock.txt, score: 46.810299014333, y_hat: [181, 235], y: [181.0, 236.0], loss: 0	
+Filename: 089_pre_interval39_sea_lion.txt, score: 15.939754907927, y_hat: [204, 224], y: [174.0, 224.0], loss: 12.5	
+Filename: 089_pre_interval40_pear.txt, score: 25.405495179064, y_hat: [208, 228], y: [176.0, 228.0], loss: 13.5	
+Filename: 089_pre_interval41_skirt.txt, score: 37.523424129648, y_hat: [191, 248], y: [191.0, 242.0], loss: 0.5	
+Filename: 089_pre_interval42_lobster.txt, score: 24.925992185603, y_hat: [204, 234], y: [182.0, 233.0], loss: 8.5	
+Filename: 089_pre_interval43_apple.txt, score: 29.114166178674, y_hat: [189, 217], y: [165.0, 216.0], loss: 9.5	
+Filename: 089_pre_interval44_coat.txt, score: 30.880753354461, y_hat: [170, 227], y: [169.0, 221.0], loss: 0.5	
+Filename: 089_pre_interval45_penguin.txt, score: 23.676623581758, y_hat: [198, 218], y: [169.0, 217.0], loss: 12	
+Filename: 089_pre_interval46_lemon.txt, score: 55.103472547196, y_hat: [153, 204], y: [153.0, 204.0], loss: 0	
+Filename: 089_pre_interval47_shirt.txt, score: 38.013695495579, y_hat: [182, 240], y: [182.0, 236.0], loss: 0	
+Filename: 089_pre_interval48_fish.txt, score: 55.953301220842, y_hat: [166, 216], y: [165.0, 215.0], loss: 0	
+Filename: 089_pre_interval49_orange.txt, score: 30.081161733568, y_hat: [188, 220], y: [168.0, 219.0], loss: 7.5	
+Filename: 089_pre_interval50_dress.txt, score: 33.146298160839, y_hat: [165, 224], y: [166.0, 218.0], loss: 0.5	
+Filename: 089_pre_interval51_seahorse.txt, score: 29.596819435108, y_hat: [186, 211], y: [159.0, 211.0], loss: 11	
+Filename: 089_pre_interval7_nose.txt, score: 29.857133486684, y_hat: [197, 228], y: [180.0, 229.0], loss: 6	
+Filename: 089_pre_interval8_peacock.txt, score: 30.617254496446, y_hat: [199, 234], y: [181.0, 233.0], loss: 6.5	
+Filename: 089_pre_interval9_table.txt, score: 49.727999616719, y_hat: [190, 243], y: [190.0, 243.0], loss: 0	
+Filename: 090_post_interval10_kettle.txt, score: 48.435726063382, y_hat: [153, 200], y: [154.0, 199.0], loss: 0	
+Filename: 090_post_interval11_guitar.txt, score: 44.800892144106, y_hat: [146, 191], y: [146.0, 190.0], loss: 0	
+Filename: 090_post_interval12_owl.txt, score: 52.546101734467, y_hat: [147, 201], y: [148.0, 200.0], loss: 0	
+Filename: 090_post_interval13_pitcher.txt, score: 50.855130423196, y_hat: [156, 203], y: [157.0, 200.0], loss: 0	
+Filename: 090_post_interval14_trumpet.txt, score: 39.096251325443, y_hat: [169, 207], y: [169.0, 207.0], loss: 0	
+Filename: 090_post_interval15_peacock.txt, score: 52.972821511978, y_hat: [143, 185], y: [143.0, 185.0], loss: 0	
+Filename: 090_post_interval16_pan.txt, score: 42.737670704484, y_hat: [142, 187], y: [143.0, 184.0], loss: 0	
+Filename: 090_post_interval17_skirt.txt, score: 46.90564183792, y_hat: [149, 195], y: [150.0, 195.0], loss: 0	
+Filename: 090_post_interval18_potato.txt, score: 27.542049283994, y_hat: [145, 192], y: [145.0, 193.0], loss: 0	
+Filename: 090_post_interval19_spider.txt, score: 42.734022613097, y_hat: [130, 179], y: [131.0, 179.0], loss: 0	
+Filename: 090_post_interval20_coat.txt, score: 52.297016688919, y_hat: [143, 192], y: [144.0, 191.0], loss: 0	
+Filename: 090_post_interval21_lettuce.txt, score: 46.85944986506, y_hat: [144, 194], y: [145.0, 191.0], loss: 0	
+Filename: 090_post_interval22_butterfly.txt, score: 42.820943668066, y_hat: [153, 200], y: [152.0, 201.0], loss: 0	
+Filename: 090_post_interval23_shirt.txt, score: 48.859261938537, y_hat: [156, 201], y: [156.0, 199.0], loss: 0	
+Filename: 090_post_interval24_carrot.txt, score: 24.369587344049, y_hat: [151, 196], y: [151.0, 197.0], loss: 0	
+Filename: 090_post_interval25_caterpillar.txt, score: 46.67472918915, y_hat: [148, 196], y: [148.0, 195.0], loss: 0	
+Filename: 090_post_interval26_dress.txt, score: 34.655506482441, y_hat: [149, 198], y: [151.0, 198.0], loss: 0	
+Filename: 090_post_interval27_onion.txt, score: 11.930705046317, y_hat: [146, 166], y: [146.0, 191.0], loss: 10	
+Filename: 090_post_interval28_ant.txt, score: 43.959245625997, y_hat: [121, 141], y: [141.0, 189.0], loss: 29	
+Filename: 090_post_interval29_sock.txt, score: 43.516743657248, y_hat: [144, 194], y: [143.0, 193.0], loss: 0	
+Filename: 090_post_interval2_violin.txt, score: 49.912706951017, y_hat: [157, 196], y: [157.0, 196.0], loss: 0	
+Filename: 090_post_interval30_celery.txt, score: 48.840476540333, y_hat: [156, 209], y: [157.0, 209.0], loss: 0	
+Filename: 090_post_interval31_beetle.txt, score: 41.691141988133, y_hat: [149, 194], y: [149.0, 194.0], loss: 0	
+Filename: 090_post_interval32_top.txt, score: 35.527786826165, y_hat: [183, 227], y: [183.0, 227.0], loss: 0	
+Filename: 090_post_interval33_deer.txt, score: 48.683174441372, y_hat: [160, 210], y: [160.0, 210.0], loss: 0	
+Filename: 090_post_interval34_bed.txt, score: 41.112143578003, y_hat: [150, 201], y: [150.0, 201.0], loss: 0	
+Filename: 090_post_interval35_kite.txt, score: 54.895121802967, y_hat: [141, 195], y: [142.0, 195.0], loss: 0	
+Filename: 090_post_interval36_skunk.txt, score: 35.573398004134, y_hat: [152, 202], y: [153.0, 202.0], loss: 0	
+Filename: 090_post_interval37_stool.txt, score: 36.957600096736, y_hat: [144, 190], y: [144.0, 190.0], loss: 0	
+Filename: 090_post_interval38_ball.txt, score: 45.809780137471, y_hat: [145, 195], y: [147.0, 194.0], loss: 0	
+Filename: 090_post_interval39_raccoon.txt, score: 32.536042372549, y_hat: [155, 198], y: [156.0, 197.0], loss: 0	
+Filename: 090_post_interval3_duck.txt, score: 47.419764543263, y_hat: [150, 204], y: [155.0, 203.0], loss: 0	
+Filename: 090_post_interval40_desk.txt, score: 36.899500442975, y_hat: [145, 192], y: [146.0, 192.0], loss: 0	
+Filename: 090_post_interval41_doll.txt, score: 20.727397091248, y_hat: [161, 183], y: [162.0, 212.0], loss: 12	
+Filename: 090_post_interval42_fox.txt, score: 31.176837672753, y_hat: [148, 200], y: [148.0, 200.0], loss: 0	
+Filename: 090_post_interval43_chair.txt, score: 39.379525088413, y_hat: [136, 187], y: [136.0, 188.0], loss: 0	
+Filename: 090_post_interval45_squirrel.txt, score: 45.067345167652, y_hat: [155, 207], y: [155.0, 202.0], loss: 0	
+Filename: 090_post_interval46_table.txt, score: 61.325946515786, y_hat: [153, 199], y: [154.0, 199.0], loss: 0	
+Filename: 090_post_interval4_pot.txt, score: 2.2629766365584, y_hat: [154, 174], y: [125.0, 167.0], loss: 13	
+Filename: 090_post_interval5_drum.txt, score: 42.934830953611, y_hat: [134, 180], y: [135.0, 180.0], loss: 0	
+Filename: 090_post_interval6_swan.txt, score: 43.682371950315, y_hat: [157, 201], y: [158.0, 201.0], loss: 0	
+Filename: 090_post_interval7_rolling_pin.txt, score: 38.209471971163, y_hat: [115, 197], y: [150.0, 198.0], loss: 15	
+Filename: 090_post_interval8_piano.txt, score: 54.191999281657, y_hat: [163, 206], y: [164.0, 205.0], loss: 0	
+Filename: 090_post_interval9_eagle.txt, score: 47.296176704042, y_hat: [140, 181], y: [140.0, 179.0], loss: 0	
+Filename: 090_pre_interval10_pot.txt, score: 53.230389242563, y_hat: [154, 212], y: [153.0, 208.0], loss: 0	
+Filename: 090_pre_interval11_chicken.txt, score: 59.007860263361, y_hat: [149, 196], y: [149.0, 197.0], loss: 0	
+Filename: 090_pre_interval12_top.txt, score: 55.354774223758, y_hat: [159, 214], y: [159.0, 210.0], loss: 0	
+Filename: 090_pre_interval13_rolling_pin.txt, score: 54.489966245855, y_hat: [155, 211], y: [155.0, 205.0], loss: 0.5	
+Filename: 090_pre_interval14_donkey.txt, score: 65.55029782709, y_hat: [154, 200], y: [155.0, 200.0], loss: 0	
+Filename: 090_pre_interval15_kite.txt, score: 63.239461130467, y_hat: [161, 209], y: [161.0, 209.0], loss: 0	
+Filename: 090_pre_interval16_kettle.txt, score: 49.605305850462, y_hat: [158, 215], y: [159.0, 212.0], loss: 0	
+Filename: 090_pre_interval17_pig.txt, score: 62.13925894204, y_hat: [154, 206], y: [154.0, 240.0], loss: 14.5	
+Filename: 090_pre_interval18_ball.txt, score: 58.388183977528, y_hat: [153, 199], y: [153.0, 199.0], loss: 0	
+Filename: 090_pre_interval19_pitcher.txt, score: 51.588386128809, y_hat: [164, 213], y: [164.0, 214.0], loss: 0	
+Filename: 090_pre_interval20_horse.txt, score: 59.016770666812, y_hat: [164, 203], y: [165.0, 202.0], loss: 0	
+Filename: 090_pre_interval21_doll.txt, score: 44.580829070216, y_hat: [160, 205], y: [160.0, 205.0], loss: 0	
+Filename: 090_pre_interval22_zebra.txt, score: 58.826264909361, y_hat: [154, 196], y: [154.0, 196.0], loss: 0	
+Filename: 090_pre_interval24_plane.txt, score: 58.992423631342, y_hat: [166, 210], y: [167.0, 210.0], loss: 0	
+Filename: 090_pre_interval25_elephant.txt, score: 55.38309478289, y_hat: [162, 206], y: [163.0, 206.0], loss: 0	
+Filename: 090_pre_interval26_glass.txt, score: 48.971019399976, y_hat: [167, 209], y: [168.0, 208.0], loss: 0	
+Filename: 090_pre_interval27_bus.txt, score: 52.774449341834, y_hat: [152, 197], y: [153.0, 198.0], loss: 0	
+Filename: 090_pre_interval28_monkey.txt, score: 58.44336068828, y_hat: [157, 202], y: [158.0, 201.0], loss: 0	
+Filename: 090_pre_interval29_knife.txt, score: 54.126072308969, y_hat: [153, 199], y: [154.0, 199.0], loss: 0	
+Filename: 090_pre_interval30_train.txt, score: 59.247749978434, y_hat: [162, 204], y: [162.0, 205.0], loss: 0	
+Filename: 090_pre_interval31_gorilla.txt, score: 63.763783113373, y_hat: [154, 198], y: [155.0, 197.0], loss: 0	
+Filename: 090_pre_interval32_fork.txt, score: 50.914349891818, y_hat: [146, 189], y: [146.0, 188.0], loss: 0	
+Filename: 090_pre_interval33_car.txt, score: 56.86520895304, y_hat: [162, 206], y: [161.0, 207.0], loss: 0	
+Filename: 090_pre_interval34_tiger.txt, score: 55.825547862268, y_hat: [149, 193], y: [149.0, 193.0], loss: 0	
+Filename: 090_pre_interval35_cup.txt, score: 53.252884339036, y_hat: [156, 203], y: [157.0, 199.0], loss: 0	
+Filename: 090_pre_interval36_helicopter.txt, score: 54.03472246903, y_hat: [152, 203], y: [152.0, 203.0], loss: 0	
+Filename: 090_pre_interval37_hammer.txt, score: 57.716381132845, y_hat: [151, 200], y: [151.0, 200.0], loss: 0	
+Filename: 090_pre_interval38_celery.txt, score: 58.424223419174, y_hat: [151, 197], y: [151.0, 197.0], loss: 0	
+Filename: 090_pre_interval39_trumpet.txt, score: 53.881977247009, y_hat: [157, 202], y: [157.0, 201.0], loss: 0	
+Filename: 090_pre_interval40_screwdriver.txt, score: 55.39432796251, y_hat: [164, 207], y: [164.0, 207.0], loss: 0	
+Filename: 090_pre_interval41_potato.txt, score: 57.779320837802, y_hat: [151, 196], y: [151.0, 196.0], loss: 0	
+Filename: 090_pre_interval42_violin.txt, score: 59.694144690072, y_hat: [146, 191], y: [147.0, 191.0], loss: 0	
+Filename: 090_pre_interval43_saw.txt, score: 56.41244607112, y_hat: [143, 186], y: [144.0, 186.0], loss: 0	
+Filename: 090_pre_interval44_lettuce.txt, score: 59.898713798721, y_hat: [139, 182], y: [138.0, 181.0], loss: 0	
+Filename: 090_pre_interval45_drum.txt, score: 61.215474614104, y_hat: [139, 190], y: [139.0, 189.0], loss: 0	
+Filename: 090_pre_interval46_wrench.txt, score: 66.061954823164, y_hat: [150, 195], y: [150.0, 195.0], loss: 0	
+Filename: 090_pre_interval47_carrot.txt, score: 57.555087583007, y_hat: [136, 185], y: [136.0, 185.0], loss: 0	
+Filename: 090_pre_interval48_piano.txt, score: 55.574937112677, y_hat: [146, 192], y: [147.0, 190.0], loss: 0	
+Filename: 090_pre_interval49_axe.txt, score: 53.836583884829, y_hat: [141, 192], y: [141.0, 191.0], loss: 0	
+Filename: 090_pre_interval50_onion.txt, score: 63.810945552675, y_hat: [156, 203], y: [156.0, 203.0], loss: 0	
+Filename: 090_pre_interval51_guitar.txt, score: 55.078310216131, y_hat: [157, 200], y: [157.0, 200.0], loss: 0	
+Filename: 090_pre_interval7_pan.txt, score: 47.107144112145, y_hat: [176, 227], y: [176.0, 221.0], loss: 0.5	
+Filename: 090_pre_interval8_sheep.txt, score: 58.824170743589, y_hat: [180, 226], y: [180.0, 226.0], loss: 0	
+Filename: 090_pre_interval9_sled.txt, score: 52.494627710559, y_hat: [154, 208], y: [153.0, 202.0], loss: 0.5	
+Filename: 091_post_interval10_kettle.txt, score: -49.331354707543, y_hat: [154, 192], y: [154.0, 191.0], loss: 0	
+Filename: 091_post_interval11_guitar.txt, score: 54.341844130767, y_hat: [158, 199], y: [157.0, 198.0], loss: 0	
+Filename: 091_post_interval13_pitcher.txt, score: 50.410858196385, y_hat: [159, 197], y: [158.0, 194.0], loss: 0	
+Filename: 091_post_interval14_trumpet.txt, score: 54.17903391357, y_hat: [151, 189], y: [151.0, 188.0], loss: 0	
+Filename: 091_post_interval15_peacock.txt, score: 61.252626701967, y_hat: [154, 196], y: [153.0, 195.0], loss: 0	
+Filename: 091_post_interval16_pan.txt, score: 45.61044483934, y_hat: [157, 192], y: [156.0, 190.0], loss: 0	
+Filename: 091_post_interval17_skirt.txt, score: 43.48483415769, y_hat: [171, 206], y: [170.0, 205.0], loss: 0	
+Filename: 091_post_interval18_potato.txt, score: 49.980446860235, y_hat: [150, 191], y: [149.0, 186.0], loss: 0	
+Filename: 091_post_interval19_spider.txt, score: 63.889027762999, y_hat: [165, 208], y: [164.0, 207.0], loss: 0	
+Filename: 091_post_interval20_coat.txt, score: 49.464279469905, y_hat: [157, 195], y: [157.0, 191.0], loss: 0	
+Filename: 091_post_interval21_lettuce.txt, score: 54.101693567233, y_hat: [172, 214], y: [172.0, 215.0], loss: 0	
+Filename: 091_post_interval22_butterfly.txt, score: 54.932848496496, y_hat: [168, 212], y: [167.0, 212.0], loss: 0	
+Filename: 091_post_interval23_shirt.txt, score: 59.234774390052, y_hat: [146, 185], y: [146.0, 185.0], loss: 0	
+Filename: 091_post_interval24_carrot.txt, score: 63.934292303756, y_hat: [162, 204], y: [162.0, 204.0], loss: 0	
+Filename: 091_post_interval25_caterpillar.txt, score: 59.927628101437, y_hat: [165, 209], y: [164.0, 208.0], loss: 0	
+Filename: 091_post_interval26_dress.txt, score: 52.809512173759, y_hat: [149, 188], y: [149.0, 187.0], loss: 0	
+Filename: 091_post_interval27_onion.txt, score: 57.379776880789, y_hat: [172, 216], y: [171.0, 214.0], loss: 0	
+Filename: 091_post_interval28_ant.txt, score: 57.537369002411, y_hat: [164, 209], y: [163.0, 208.0], loss: 0	
+Filename: 091_post_interval29_sock.txt, score: 43.266270281487, y_hat: [142, 184], y: [142.0, 183.0], loss: 0	
+Filename: 091_post_interval2_violin.txt, score: 35.222605343689, y_hat: [161, 197], y: [160.0, 197.0], loss: 0	
+Filename: 091_post_interval30_celery.txt, score: 55.381023609924, y_hat: [169, 212], y: [168.0, 212.0], loss: 0	
+Filename: 091_post_interval31_beetle.txt, score: 55.739708699624, y_hat: [183, 226], y: [183.0, 226.0], loss: 0	
+Filename: 091_post_interval32_top.txt, score: 15.833443526469, y_hat: [168, 192], y: [168.0, 210.0], loss: 6.5	
+Filename: 091_post_interval33_deer.txt, score: 61.858209675955, y_hat: [171, 216], y: [170.0, 216.0], loss: 0	
+Filename: 091_post_interval34_bed.txt, score: 15.83241618796, y_hat: [161, 205], y: [161.0, 206.0], loss: 0	
+Filename: 091_post_interval35_kite.txt, score: 46.829378833315, y_hat: [185, 224], y: [185.0, 225.0], loss: 0	
+Filename: 091_post_interval36_skunk.txt, score: 59.852153122532, y_hat: [162, 205], y: [161.0, 204.0], loss: 0	
+Filename: 091_post_interval37_stool.txt, score: 50.794526848776, y_hat: [161, 202], y: [160.0, 201.0], loss: 0	
+Filename: 091_post_interval38_ball.txt, score: 46.706379186085, y_hat: [165, 207], y: [165.0, 206.0], loss: 0	
+Filename: 091_post_interval39_raccoon.txt, score: 46.375563904336, y_hat: [163, 205], y: [161.0, 204.0], loss: 0	
+Filename: 091_post_interval3_duck.txt, score: 58.494930917867, y_hat: [155, 194], y: [155.0, 192.0], loss: 0	
+Filename: 091_post_interval40_desk.txt, score: 52.242774518847, y_hat: [152, 191], y: [152.0, 192.0], loss: 0	
+Filename: 091_post_interval41_doll.txt, score: 58.463880280695, y_hat: [180, 218], y: [180.0, 217.0], loss: 0	
+Filename: 091_post_interval42_fox.txt, score: 60.807524111235, y_hat: [159, 203], y: [158.0, 203.0], loss: 0	
+Filename: 091_post_interval43_chair.txt, score: 50.138303303975, y_hat: [151, 192], y: [150.0, 191.0], loss: 0	
+Filename: 091_post_interval44_sled.txt, score: 50.711830283875, y_hat: [158, 203], y: [158.0, 202.0], loss: 0	
+Filename: 091_post_interval45_squirrel.txt, score: 63.369414053811, y_hat: [161, 205], y: [160.0, 205.0], loss: 0	
+Filename: 091_post_interval46_table.txt, score: 58.469812968542, y_hat: [165, 208], y: [164.0, 207.0], loss: 0	
+Filename: 091_post_interval4_pot.txt, score: 56.025580202798, y_hat: [152, 189], y: [153.0, 189.0], loss: 0	
+Filename: 091_post_interval5_drum.txt, score: 53.860702056177, y_hat: [175, 212], y: [175.0, 212.0], loss: 0	
+Filename: 091_post_interval6_swan.txt, score: 54.795772114487, y_hat: [163, 201], y: [161.0, 201.0], loss: 0	
+Filename: 091_post_interval7_rolling_pin.txt, score: 56.050326461677, y_hat: [168, 202], y: [168.0, 201.0], loss: 0	
+Filename: 091_post_interval8_piano.txt, score: 53.202234984266, y_hat: [163, 200], y: [163.0, 200.0], loss: 0	
+Filename: 091_post_interval9_eagle.txt, score: 60.036834073458, y_hat: [160, 205], y: [159.0, 204.0], loss: 0	
+Filename: 091_pre_interval10_penguin.txt, score: 52.535359014104, y_hat: [153, 189], y: [152.0, 188.0], loss: 0	
+Filename: 091_pre_interval11_train.txt, score: 38.648482302313, y_hat: [149, 184], y: [149.0, 181.0], loss: 0	
+Filename: 091_pre_interval12_saw.txt, score: 38.098021024486, y_hat: [149, 182], y: [149.0, 181.0], loss: 0	
+Filename: 091_pre_interval13_fish.txt, score: 55.275448493391, y_hat: [169, 206], y: [168.0, 204.0], loss: 0	
+Filename: 091_pre_interval14_car.txt, score: 49.723043202783, y_hat: [156, 189], y: [156.0, 188.0], loss: 0	
+Filename: 091_pre_interval15_wrench.txt, score: 37.159468019619, y_hat: [148, 180], y: [146.0, 179.0], loss: 0	
+Filename: 091_pre_interval16_seahorse.txt, score: 60.524280585545, y_hat: [158, 191], y: [158.0, 190.0], loss: 0	
+Filename: 091_pre_interval17_helicopter.txt, score: 45.581523460762, y_hat: [146, 179], y: [145.0, 176.0], loss: 0	
+Filename: 091_pre_interval18_axe.txt, score: 9.3566557054074, y_hat: [193, 213], y: [176.0, 208.0], loss: 6	
+Filename: 091_pre_interval19_sea_lion.txt, score: 55.4864634946, y_hat: [156, 188], y: [154.0, 187.0], loss: 0	
+Filename: 091_pre_interval20_plane.txt, score: 56.39792093705, y_hat: [157, 192], y: [156.0, 191.0], loss: 0	
+Filename: 091_pre_interval21_hammer.txt, score: 58.639060344903, y_hat: [147, 180], y: [146.0, 180.0], loss: 0	
+Filename: 091_pre_interval22_well.txt, score: 54.071448068705, y_hat: [172, 209], y: [171.0, 208.0], loss: 0	
+Filename: 091_pre_interval23_pear.txt, score: 59.569610407538, y_hat: [163, 196], y: [162.0, 196.0], loss: 0	
+Filename: 091_pre_interval24_elephant.txt, score: 62.822249789675, y_hat: [166, 201], y: [165.0, 200.0], loss: 0	
+Filename: 091_pre_interval25_windmill.txt, score: 54.5054119699, y_hat: [151, 185], y: [151.0, 185.0], loss: 0	
+Filename: 091_pre_interval26_apple.txt, score: 57.483470562816, y_hat: [163, 199], y: [164.0, 199.0], loss: 0	
+Filename: 091_pre_interval27_monkey.txt, score: 54.813442870904, y_hat: [168, 202], y: [168.0, 202.0], loss: 0	
+Filename: 091_pre_interval28_church.txt, score: 27.543232882465, y_hat: [167, 187], y: [154.0, 186.0], loss: 4	
+Filename: 091_pre_interval29_lemon.txt, score: 54.653676180408, y_hat: [149, 184], y: [148.0, 184.0], loss: 0	
+Filename: 091_pre_interval30_gorilla.txt, score: 55.603342718755, y_hat: [152, 190], y: [152.0, 190.0], loss: 0	
+Filename: 091_pre_interval31_barn.txt, score: 5.0042493315911, y_hat: [146, 179], y: [146.0, 179.0], loss: 0	
+Filename: 091_pre_interval32_orange.txt, score: 49.257439255057, y_hat: [144, 179], y: [144.0, 171.0], loss: 1.5	
+Filename: 091_pre_interval33_tiger.txt, score: 52.396342683897, y_hat: [160, 198], y: [159.0, 197.0], loss: 0	
+Filename: 091_pre_interval34_house.txt, score: 57.000712583183, y_hat: [148, 181], y: [148.0, 180.0], loss: 0	
+Filename: 091_pre_interval35_banana.txt, score: 60.414455087955, y_hat: [148, 187], y: [148.0, 186.0], loss: 0	
+Filename: 091_pre_interval36_zebra.txt, score: 55.338357588976, y_hat: [176, 212], y: [175.0, 212.0], loss: 0	
+Filename: 091_pre_interval37_chicken.txt, score: 66.924500435144, y_hat: [153, 196], y: [153.0, 197.0], loss: 0	
+Filename: 091_pre_interval38_eye.txt, score: 62.674562599796, y_hat: [153, 193], y: [152.0, 194.0], loss: 0	
+Filename: 091_pre_interval39_glass.txt, score: 59.179639617731, y_hat: [160, 192], y: [160.0, 191.0], loss: 0	
+Filename: 091_pre_interval40_donkey.txt, score: 56.45931248668, y_hat: [160, 197], y: [160.0, 197.0], loss: 0	
+Filename: 091_pre_interval42_knife.txt, score: 60.414664249237, y_hat: [169, 204], y: [168.0, 203.0], loss: 0	
+Filename: 091_pre_interval43_pig.txt, score: 60.399407152909, y_hat: [149, 185], y: [149.0, 185.0], loss: 0	
+Filename: 091_pre_interval44_ear.txt, score: 55.05917348558, y_hat: [151, 187], y: [151.0, 187.0], loss: 0	
+Filename: 091_pre_interval45_fork.txt, score: 50.009222957017, y_hat: [169, 204], y: [169.0, 203.0], loss: 0	
+Filename: 091_pre_interval46_horse.txt, score: 53.525703271579, y_hat: [160, 194], y: [159.0, 194.0], loss: 0	
+Filename: 091_pre_interval47_finger.txt, score: 65.147804637981, y_hat: [160, 198], y: [159.0, 197.0], loss: 0	
+Filename: 091_pre_interval48_cup.txt, score: 45.437704994107, y_hat: [166, 197], y: [165.0, 197.0], loss: 0	
+Filename: 091_pre_interval49_sheep.txt, score: 48.776420106264, y_hat: [160, 196], y: [159.0, 197.0], loss: 0	
+Filename: 091_pre_interval50_nose.txt, score: 57.541543415474, y_hat: [155, 194], y: [154.0, 193.0], loss: 0	
+Filename: 091_pre_interval51_spoon.txt, score: 58.373978968159, y_hat: [148, 183], y: [147.0, 182.0], loss: 0	
+Filename: 091_pre_interval7_lobster.txt, score: 53.54794815716, y_hat: [162, 197], y: [162.0, 197.0], loss: 0	
+Filename: 091_pre_interval8_bus.txt, score: 27.71541034541, y_hat: [171, 191], y: [155.0, 191.0], loss: 5.5	
+Filename: 091_pre_interval9_screwdriver.txt, score: 47.793870110819, y_hat: [154, 185], y: [153.0, 184.0], loss: 0	
+Filename: 093_post_interval10_seahorse.txt, score: 55.802987156065, y_hat: [227, 287], y: [227.0, 286.0], loss: 0	
+Filename: 093_post_interval11_table.txt, score: 53.130385985826, y_hat: [189, 256], y: [192.0, 256.0], loss: 0	
+Filename: 093_post_interval12_celery.txt, score: 59.145702980744, y_hat: [216, 286], y: [216.0, 285.0], loss: 0	
+Filename: 093_post_interval14_bed.txt, score: 55.443831901395, y_hat: [162, 216], y: [162.0, 217.0], loss: 0	
+Filename: 093_post_interval15_potato.txt, score: 63.032654573624, y_hat: [180, 235], y: [180.0, 236.0], loss: 0	
+Filename: 093_post_interval16_lobster.txt, score: 45.081811523969, y_hat: [154, 214], y: [154.0, 213.0], loss: 0	
+Filename: 093_post_interval17_donkey.txt, score: 59.655073095351, y_hat: [181, 249], y: [181.0, 249.0], loss: 0	
+Filename: 093_post_interval18_apple.txt, score: 60.989437141033, y_hat: [167, 240], y: [167.0, 240.0], loss: 0	
+Filename: 093_post_interval19_drum.txt, score: 58.771018518256, y_hat: [161, 238], y: [161.0, 236.0], loss: 0	
+Filename: 093_post_interval20_pig.txt, score: 63.221655216574, y_hat: [174, 242], y: [174.0, 242.0], loss: 0	
+Filename: 093_post_interval21_lemon.txt, score: 59.100281411365, y_hat: [195, 266], y: [195.0, 266.0], loss: 0	
+Filename: 093_post_interval22_piano.txt, score: 55.195015586988, y_hat: [178, 249], y: [179.0, 250.0], loss: 0	
+Filename: 093_post_interval23_horse.txt, score: 59.936907798853, y_hat: [165, 241], y: [165.0, 241.0], loss: 0	
+Filename: 093_post_interval24_orange.txt, score: 52.427664993483, y_hat: [174, 247], y: [174.0, 247.0], loss: 0	
+Filename: 093_post_interval26_sheep.txt, score: 57.70454717712, y_hat: [182, 248], y: [181.0, 248.0], loss: 0	
+Filename: 093_post_interval27_banana.txt, score: 59.122415411405, y_hat: [194, 260], y: [195.0, 259.0], loss: 0	
+Filename: 093_post_interval28_trumpet.txt, score: 42.948659331742, y_hat: [196, 255], y: [196.0, 254.0], loss: 0	
+Filename: 093_post_interval29_chicken.txt, score: 56.983919272545, y_hat: [173, 245], y: [173.0, 244.0], loss: 0	
+Filename: 093_post_interval2_stool.txt, score: 33.826109713584, y_hat: [143, 163], y: [163.0, 215.0], loss: 31	
+Filename: 093_post_interval30_pear.txt, score: 64.601096916385, y_hat: [199, 274], y: [198.0, 273.0], loss: 0	
+Filename: 093_post_interval31_violin.txt, score: 59.779319731756, y_hat: [243, 315], y: [242.0, 315.0], loss: 0	
+Filename: 093_post_interval32_coat.txt, score: 55.414211147397, y_hat: [180, 243], y: [181.0, 244.0], loss: 0	
+Filename: 093_post_interval33_skunk.txt, score: 52.872394088668, y_hat: [164, 244], y: [164.0, 244.0], loss: 0	
+Filename: 093_post_interval34_rolling_pin.txt, score: 52.477928121512, y_hat: [210, 273], y: [210.0, 274.0], loss: 0	
+Filename: 093_post_interval35_shirt.txt, score: 36.930782849956, y_hat: [269, 322], y: [269.0, 322.0], loss: 0	
+Filename: 093_post_interval36_raccoon.txt, score: 58.051355233177, y_hat: [170, 235], y: [170.0, 235.0], loss: 0	
+Filename: 093_post_interval37_kettle.txt, score: 32.795949173372, y_hat: [161, 215], y: [162.0, 215.0], loss: 0	
+Filename: 093_post_interval38_dress.txt, score: 38.632894879075, y_hat: [165, 222], y: [165.0, 218.0], loss: 0	
+Filename: 093_post_interval39_fox.txt, score: 52.008030696638, y_hat: [169, 230], y: [168.0, 229.0], loss: 0	
+Filename: 093_post_interval3_lettuce.txt, score: 48.124516198241, y_hat: [150, 209], y: [150.0, 208.0], loss: 0	
+Filename: 093_post_interval40_pitcher.txt, score: 54.080602158556, y_hat: [174, 240], y: [174.0, 234.0], loss: 0.5	
+Filename: 093_post_interval41_sock.txt, score: 62.310580521659, y_hat: [201, 269], y: [202.0, 260.0], loss: 2	
+Filename: 093_post_interval42_squirrel.txt, score: 58.284165822555, y_hat: [182, 255], y: [182.0, 254.0], loss: 0	
+Filename: 093_post_interval43_pan.txt, score: 50.890744179677, y_hat: [204, 273], y: [204.0, 273.0], loss: 0	
+Filename: 093_post_interval44_skirt.txt, score: 61.655664939178, y_hat: [217, 287], y: [216.0, 283.0], loss: 0	
+Filename: 093_post_interval45_deer.txt, score: 52.220240542195, y_hat: [219, 274], y: [217.0, 274.0], loss: 0	
+Filename: 093_post_interval46_pot.txt, score: 54.301997548736, y_hat: [183, 250], y: [183.0, 244.0], loss: 0.5	
+Filename: 093_post_interval4_penguin.txt, score: 61.431212158426, y_hat: [204, 271], y: [204.0, 270.0], loss: 0	
+Filename: 093_post_interval5_desk.txt, score: 46.250171937165, y_hat: [176, 242], y: [176.0, 242.0], loss: 0	
+Filename: 093_post_interval6_carrot.txt, score: 62.494314450454, y_hat: [163, 239], y: [163.0, 238.0], loss: 0	
+Filename: 093_post_interval7_fish.txt, score: 61.272112470884, y_hat: [172, 275], y: [172.0, 240.0], loss: 15	
+Filename: 093_post_interval8_chair.txt, score: 59.550091251901, y_hat: [171, 242], y: [171.0, 242.0], loss: 0	
+Filename: 093_post_interval9_onion.txt, score: 60.363180716174, y_hat: [174, 246], y: [173.0, 246.0], loss: 0	
+Filename: 093_pre_interval10_ball.txt, score: 58.908657106795, y_hat: [173, 241], y: [173.0, 241.0], loss: 0	
+Filename: 093_pre_interval11_church.txt, score: 60.83716659069, y_hat: [212, 285], y: [213.0, 284.0], loss: 0	
+Filename: 093_pre_interval12_eagle.txt, score: 55.140684484909, y_hat: [169, 242], y: [170.0, 244.0], loss: 0	
+Filename: 093_pre_interval14_barn.txt, score: 54.819688382638, y_hat: [195, 259], y: [196.0, 260.0], loss: 0	
+Filename: 093_pre_interval15_owl.txt, score: 50.608793743009, y_hat: [171, 235], y: [172.0, 232.0], loss: 0	
+Filename: 093_pre_interval16_sled.txt, score: 55.969316552189, y_hat: [167, 230], y: [165.0, 231.0], loss: 0	
+Filename: 093_pre_interval17_house.txt, score: 47.697199061551, y_hat: [202, 269], y: [204.0, 270.0], loss: 0	
+Filename: 093_pre_interval18_peacock.txt, score: 51.597286626467, y_hat: [199, 266], y: [202.0, 266.0], loss: 0	
+Filename: 093_pre_interval19_top.txt, score: 57.653000128065, y_hat: [156, 221], y: [156.0, 220.0], loss: 0	
+Filename: 093_pre_interval20_well.txt, score: 44.071175677675, y_hat: [204, 263], y: [204.0, 257.0], loss: 0.5	
+Filename: 093_pre_interval21_duck.txt, score: 44.121353647862, y_hat: [156, 214], y: [157.0, 215.0], loss: 0	
+Filename: 093_pre_interval22_knife.txt, score: 60.946848071079, y_hat: [168, 232], y: [169.0, 231.0], loss: 0	
+Filename: 093_pre_interval23_saw.txt, score: 55.818415323954, y_hat: [190, 246], y: [190.0, 246.0], loss: 0	
+Filename: 093_pre_interval24_butterfly.txt, score: 47.073469728926, y_hat: [159, 221], y: [160.0, 221.0], loss: 0	
+Filename: 093_pre_interval25_fork.txt, score: 61.32520162906, y_hat: [175, 248], y: [175.0, 247.0], loss: 0	
+Filename: 093_pre_interval26_wrench.txt, score: 59.293425767544, y_hat: [174, 244], y: [174.0, 245.0], loss: 0	
+Filename: 093_pre_interval27_caterpillar.txt, score: 55.87563696092, y_hat: [170, 242], y: [171.0, 238.0], loss: 0	
+Filename: 093_pre_interval28_cup.txt, score: 58.980840716153, y_hat: [164, 235], y: [164.0, 236.0], loss: 0	
+Filename: 093_pre_interval29_axe.txt, score: 24.040930043652, y_hat: [206, 227], y: [172.0, 227.0], loss: 14.5	
+Filename: 093_pre_interval30_ant.txt, score: 50.613095729943, y_hat: [145, 203], y: [145.0, 203.0], loss: 0	
+Filename: 093_pre_interval31_spoon.txt, score: 56.382660415749, y_hat: [153, 214], y: [154.0, 214.0], loss: 0	
+Filename: 093_pre_interval32_hammer.txt, score: 52.282500827871, y_hat: [174, 242], y: [175.0, 242.0], loss: 0	
+Filename: 093_pre_interval33_beetle.txt, score: 50.091850880095, y_hat: [257, 322], y: [257.0, 314.0], loss: 1.5	
+Filename: 093_pre_interval34_glass.txt, score: 60.572511561063, y_hat: [231, 291], y: [232.0, 290.0], loss: 0	
+Filename: 093_pre_interval35_screwdriver.txt, score: 56.828314921592, y_hat: [173, 258], y: [173.0, 257.0], loss: 0	
+Filename: 093_pre_interval36_spider.txt, score: 49.910650809728, y_hat: [211, 271], y: [210.0, 271.0], loss: 0	
+Filename: 093_pre_interval37_monkey.txt, score: 59.5331980007, y_hat: [164, 235], y: [165.0, 234.0], loss: 0	
+Filename: 093_pre_interval38_train.txt, score: 53.940693872812, y_hat: [204, 279], y: [204.0, 279.0], loss: 0	
+Filename: 093_pre_interval39_hand.txt, score: 53.317929200359, y_hat: [204, 270], y: [203.0, 260.0], loss: 2.5	
+Filename: 093_pre_interval40_gorilla.txt, score: 60.27527137257, y_hat: [180, 248], y: [180.0, 248.0], loss: 0	
+Filename: 093_pre_interval41_car.txt, score: 60.575009978593, y_hat: [184, 252], y: [184.0, 252.0], loss: 0	
+Filename: 093_pre_interval42_ear.txt, score: 38.518124571783, y_hat: [181, 254], y: [181.0, 243.0], loss: 3	
+Filename: 093_pre_interval43_tiger.txt, score: 58.369264742195, y_hat: [178, 245], y: [179.0, 245.0], loss: 0	
+Filename: 093_pre_interval44_helicopter.txt, score: 50.836524096065, y_hat: [163, 226], y: [164.0, 226.0], loss: 0	
+Filename: 093_pre_interval45_finger.txt, score: 52.928699295351, y_hat: [157, 213], y: [157.0, 213.0], loss: 0	
+Filename: 093_pre_interval46_zebra.txt, score: 63.48971893864, y_hat: [190, 257], y: [190.0, 256.0], loss: 0	
+Filename: 093_pre_interval47_plane.txt, score: 61.424017271892, y_hat: [165, 235], y: [165.0, 234.0], loss: 0	
+Filename: 093_pre_interval48_nose.txt, score: 42.972086337515, y_hat: [236, 261], y: [178.0, 236.0], loss: 36.5	
+Filename: 093_pre_interval49_elephant.txt, score: 50.247056608237, y_hat: [163, 228], y: [164.0, 229.0], loss: 0	
+Filename: 093_pre_interval7_kite.txt, score: 62.419363092116, y_hat: [185, 257], y: [185.0, 257.0], loss: 0	
+Filename: 093_pre_interval8_windmill.txt, score: 44.657420481859, y_hat: [202, 269], y: [202.0, 270.0], loss: 0	
+Filename: 093_pre_interval9_swan.txt, score: 44.146723398601, y_hat: [200, 272], y: [201.0, 265.0], loss: 1	
+Filename: 094_post_interval10_owl.txt, score: 60.461653521083, y_hat: [164, 224], y: [164.0, 223.0], loss: 0	
+Filename: 094_post_interval11_sled.txt, score: 56.968728932165, y_hat: [158, 218], y: [159.0, 218.0], loss: 0	
+Filename: 094_post_interval12_house.txt, score: 50.546687303124, y_hat: [148, 209], y: [149.0, 209.0], loss: 0	
+Filename: 094_post_interval13_peacock.txt, score: 51.503064728888, y_hat: [164, 227], y: [164.0, 227.0], loss: 0	
+Filename: 094_post_interval14_top.txt, score: 52.770463881692, y_hat: [157, 214], y: [158.0, 214.0], loss: 0	
+Filename: 094_post_interval15_well.txt, score: 62.306960989135, y_hat: [158, 221], y: [159.0, 221.0], loss: 0	
+Filename: 094_post_interval16_duck.txt, score: 52.609076482298, y_hat: [154, 218], y: [155.0, 217.0], loss: 0	
+Filename: 094_post_interval17_knife.txt, score: 56.851300573231, y_hat: [146, 210], y: [147.0, 208.0], loss: 0	
+Filename: 094_post_interval18_saw.txt, score: 63.58990406643, y_hat: [146, 211], y: [147.0, 211.0], loss: 0	
+Filename: 094_post_interval19_butterfly.txt, score: 63.552018448582, y_hat: [149, 211], y: [150.0, 211.0], loss: 0	
+Filename: 094_post_interval20_fork.txt, score: 49.089395096543, y_hat: [157, 221], y: [158.0, 220.0], loss: 0	
+Filename: 094_post_interval21_wrench.txt, score: 50.63173398965, y_hat: [148, 213], y: [149.0, 210.0], loss: 0	
+Filename: 094_post_interval22_caterpillar.txt, score: 52.649272625673, y_hat: [161, 224], y: [162.0, 223.0], loss: 0	
+Filename: 094_post_interval23_cup.txt, score: 48.637197868855, y_hat: [162, 225], y: [163.0, 224.0], loss: 0	
+Filename: 094_post_interval24_axe.txt, score: 44.428117165652, y_hat: [153, 217], y: [153.0, 216.0], loss: 0	
+Filename: 094_post_interval25_ant.txt, score: 55.419364517965, y_hat: [162, 226], y: [162.0, 225.0], loss: 0	
+Filename: 094_post_interval26_spoon.txt, score: 53.146705608473, y_hat: [161, 221], y: [161.0, 221.0], loss: 0	
+Filename: 094_post_interval27_hammer.txt, score: 52.99975900232, y_hat: [150, 215], y: [152.0, 213.0], loss: 0	
+Filename: 094_post_interval28_beetle.txt, score: 53.098780132351, y_hat: [169, 227], y: [169.0, 226.0], loss: 0	
+Filename: 094_post_interval29_glass.txt, score: 56.492807010775, y_hat: [169, 230], y: [169.0, 229.0], loss: 0	
+Filename: 094_post_interval2_kite.txt, score: 57.058124855617, y_hat: [165, 222], y: [166.0, 218.0], loss: 0	
+Filename: 094_post_interval30_screwdriver.txt, score: 54.543117389256, y_hat: [160, 228], y: [161.0, 225.0], loss: 0	
+Filename: 094_post_interval31_spider.txt, score: 55.722272541417, y_hat: [162, 223], y: [162.0, 222.0], loss: 0	
+Filename: 094_post_interval32_monkey.txt, score: 50.724966755325, y_hat: [149, 211], y: [150.0, 211.0], loss: 0	
+Filename: 094_post_interval33_train.txt, score: 43.449467550857, y_hat: [155, 217], y: [155.0, 217.0], loss: 0	
+Filename: 094_post_interval34_hand.txt, score: 53.113224967584, y_hat: [158, 219], y: [159.0, 218.0], loss: 0	
+Filename: 094_post_interval35_gorilla.txt, score: 59.51610575917, y_hat: [154, 217], y: [154.0, 215.0], loss: 0	
+Filename: 094_post_interval36_car.txt, score: 59.328786664146, y_hat: [154, 217], y: [155.0, 215.0], loss: 0	
+Filename: 094_post_interval37_ear.txt, score: 52.288568733896, y_hat: [181, 243], y: [183.0, 242.0], loss: 0	
+Filename: 094_post_interval38_tiger.txt, score: 64.950367712368, y_hat: [168, 233], y: [169.0, 232.0], loss: 0	
+Filename: 094_post_interval39_helicopter.txt, score: 57.626375910224, y_hat: [184, 244], y: [185.0, 242.0], loss: 0	
+Filename: 094_post_interval3_windmill.txt, score: 65.622564978463, y_hat: [163, 227], y: [164.0, 226.0], loss: 0	
+Filename: 094_post_interval40_finger.txt, score: 43.034441386158, y_hat: [152, 206], y: [153.0, 205.0], loss: 0	
+Filename: 094_post_interval41_zebra.txt, score: 60.080530619096, y_hat: [161, 217], y: [162.0, 217.0], loss: 0	
+Filename: 094_post_interval42_plane.txt, score: 58.876969525772, y_hat: [161, 221], y: [161.0, 220.0], loss: 0	
+Filename: 094_post_interval43_nose.txt, score: 67.032656125335, y_hat: [143, 202], y: [144.0, 201.0], loss: 0	
+Filename: 094_post_interval44_elephant.txt, score: 30.941444049001, y_hat: [204, 228], y: [167.0, 227.0], loss: 16	
+Filename: 094_post_interval45_bus.txt, score: 46.469553785848, y_hat: [149, 212], y: [150.0, 211.0], loss: 0	
+Filename: 094_post_interval46_eye.txt, score: 54.951097535953, y_hat: [169, 229], y: [170.0, 229.0], loss: 0	
+Filename: 094_post_interval4_swan.txt, score: 52.949576782806, y_hat: [170, 225], y: [171.0, 225.0], loss: 0	
+Filename: 094_post_interval5_ball.txt, score: 52.972099150933, y_hat: [175, 233], y: [175.0, 230.0], loss: 0	
+Filename: 094_post_interval6_church.txt, score: 52.349833442874, y_hat: [161, 221], y: [161.0, 219.0], loss: 0	
+Filename: 094_post_interval7_eagle.txt, score: 57.917420693463, y_hat: [147, 204], y: [148.0, 203.0], loss: 0	
+Filename: 094_post_interval8_doll.txt, score: 53.294018837014, y_hat: [183, 237], y: [183.0, 236.0], loss: 0	
+Filename: 094_post_interval9_barn.txt, score: 52.572095319884, y_hat: [221, 241], y: [159.0, 220.0], loss: 36.5	
+Filename: 094_pre_interval10_desk.txt, score: 43.840611512547, y_hat: [150, 206], y: [151.0, 206.0], loss: 0	
+Filename: 094_pre_interval11_carrot.txt, score: 53.419745087315, y_hat: [170, 225], y: [170.0, 224.0], loss: 0	
+Filename: 094_pre_interval12_fish.txt, score: 50.40860104087, y_hat: [155, 213], y: [156.0, 212.0], loss: 0	
+Filename: 094_pre_interval13_chair.txt, score: 40.053718536063, y_hat: [160, 214], y: [160.0, 211.0], loss: 0	
+Filename: 094_pre_interval14_onion.txt, score: 44.224492902054, y_hat: [173, 229], y: [173.0, 229.0], loss: 0	
+Filename: 094_pre_interval15_seahorse.txt, score: 31.689032038487, y_hat: [187, 221], y: [166.0, 221.0], loss: 8	
+Filename: 094_pre_interval16_table.txt, score: 43.650185078679, y_hat: [154, 209], y: [154.0, 210.0], loss: 0	
+Filename: 094_pre_interval17_celery.txt, score: 59.010316168288, y_hat: [143, 200], y: [144.0, 199.0], loss: 0	
+Filename: 094_pre_interval18_sea_lion.txt, score: 45.360577527049, y_hat: [142, 201], y: [143.0, 201.0], loss: 0	
+Filename: 094_pre_interval19_bed.txt, score: 52.444819171602, y_hat: [158, 213], y: [158.0, 212.0], loss: 0	
+Filename: 094_pre_interval20_potato.txt, score: 55.802895525025, y_hat: [149, 208], y: [150.0, 208.0], loss: 0	
+Filename: 094_pre_interval21_lobster.txt, score: 38.044980735309, y_hat: [179, 234], y: [179.0, 235.0], loss: 0	
+Filename: 094_pre_interval22_donkey.txt, score: 58.273902296917, y_hat: [160, 216], y: [161.0, 216.0], loss: 0	
+Filename: 094_pre_interval23_apple.txt, score: 43.602948743987, y_hat: [142, 202], y: [143.0, 200.0], loss: 0	
+Filename: 094_pre_interval24_drum.txt, score: 44.565674530137, y_hat: [143, 199], y: [144.0, 200.0], loss: 0	
+Filename: 094_pre_interval25_pig.txt, score: 41.003043867133, y_hat: [162, 218], y: [162.0, 218.0], loss: 0	
+Filename: 094_pre_interval26_lemon.txt, score: 44.351899763201, y_hat: [154, 212], y: [155.0, 212.0], loss: 0	
+Filename: 094_pre_interval27_piano.txt, score: 37.279496663209, y_hat: [155, 214], y: [157.0, 213.0], loss: 0	
+Filename: 094_pre_interval28_horse.txt, score: 52.268568033636, y_hat: [178, 232], y: [178.0, 232.0], loss: 0	
+Filename: 094_pre_interval30_guitar.txt, score: 55.251489835745, y_hat: [168, 222], y: [169.0, 223.0], loss: 0	
+Filename: 094_pre_interval31_sheep.txt, score: 49.096429989854, y_hat: [189, 242], y: [189.0, 242.0], loss: 0	
+Filename: 094_pre_interval32_banana.txt, score: 59.029957841614, y_hat: [147, 205], y: [148.0, 204.0], loss: 0	
+Filename: 094_pre_interval33_trumpet.txt, score: 20.759206017092, y_hat: [160, 180], y: [160.0, 218.0], loss: 16.5	
+Filename: 094_pre_interval34_chicken.txt, score: 43.118270372418, y_hat: [163, 219], y: [163.0, 219.0], loss: 0	
+Filename: 094_pre_interval35_pear.txt, score: 40.310581898157, y_hat: [162, 221], y: [162.0, 220.0], loss: 0	
+Filename: 094_pre_interval36_violin.txt, score: 36.728410894896, y_hat: [150, 210], y: [152.0, 209.0], loss: 0	
+Filename: 094_pre_interval37_coat.txt, score: 36.718728920509, y_hat: [162, 219], y: [162.0, 220.0], loss: 0	
+Filename: 094_pre_interval38_skunk.txt, score: 50.429409472781, y_hat: [162, 221], y: [163.0, 220.0], loss: 0	
+Filename: 094_pre_interval39_rolling_pin.txt, score: 35.490442398938, y_hat: [159, 216], y: [160.0, 217.0], loss: 0	
+Filename: 094_pre_interval40_shirt.txt, score: 18.899763973377, y_hat: [156, 176], y: [156.0, 216.0], loss: 17.5	
+Filename: 094_pre_interval41_raccoon.txt, score: 43.312934325524, y_hat: [162, 220], y: [162.0, 219.0], loss: 0	
+Filename: 094_pre_interval42_kettle.txt, score: 55.583720590198, y_hat: [170, 233], y: [170.0, 231.0], loss: 0	
+Filename: 094_pre_interval43_dress.txt, score: 47.267801158975, y_hat: [159, 216], y: [160.0, 216.0], loss: 0	
+Filename: 094_pre_interval44_fox.txt, score: 46.37452411874, y_hat: [152, 210], y: [152.0, 209.0], loss: 0	
+Filename: 094_pre_interval45_pitcher.txt, score: 52.347716620452, y_hat: [172, 230], y: [173.0, 229.0], loss: 0	
+Filename: 094_pre_interval46_sock.txt, score: 54.057196481474, y_hat: [152, 208], y: [153.0, 208.0], loss: 0	
+Filename: 094_pre_interval47_squirrel.txt, score: 38.801011814785, y_hat: [159, 217], y: [159.0, 217.0], loss: 0	
+Filename: 094_pre_interval48_pan.txt, score: 43.584099057584, y_hat: [169, 227], y: [170.0, 227.0], loss: 0	
+Filename: 094_pre_interval49_skirt.txt, score: 52.38474492222, y_hat: [162, 218], y: [163.0, 218.0], loss: 0	
+Filename: 094_pre_interval50_deer.txt, score: 59.604635352065, y_hat: [166, 224], y: [165.0, 224.0], loss: 0	
+Filename: 094_pre_interval51_pot.txt, score: 57.963513085321, y_hat: [155, 214], y: [155.0, 214.0], loss: 0	
+Filename: 094_pre_interval7_stool.txt, score: 39.659513907124, y_hat: [153, 208], y: [153.0, 209.0], loss: 0	
+Filename: 094_pre_interval8_lettuce.txt, score: 34.22063845229, y_hat: [174, 226], y: [173.0, 227.0], loss: 0	
+Filename: 094_pre_interval9_penguin.txt, score: 51.630338533375, y_hat: [162, 217], y: [163.0, 217.0], loss: 0	
+Filename: 219_post_interval11_skunk.txt, score: 51.178106134774, y_hat: [225, 253], y: [210.0, 263.0], loss: 7.5	
+Filename: 219_post_interval12_lettuce.txt, score: 24.069415464861, y_hat: [240, 260], y: [244.0, 329.0], loss: 32	
+Filename: 219_post_interval13_knife.txt, score: 52.548824628879, y_hat: [194, 273], y: [194.0, 283.0], loss: 2.5	
+Filename: 219_post_interval14_raccoon.txt, score: 50.602363227068, y_hat: [212, 275], y: [211.0, 274.0], loss: 0	
+Filename: 219_post_interval15_carrot.txt, score: 47.746622104933, y_hat: [224, 258], y: [223.0, 263.0], loss: 0	
+Filename: 219_post_interval16_fork.txt, score: 31.265190855619, y_hat: [196, 247], y: [193.0, 252.0], loss: 0	
+Filename: 219_post_interval17_horse.txt, score: 41.249379491339, y_hat: [182, 246], y: [184.0, 246.0], loss: 0	
+Filename: 219_post_interval18_axe.txt, score: -87.162892889937, y_hat: [208, 228], y: [181.0, 237.0], loss: 13	
+Filename: 219_post_interval19_barn.txt, score: 56.443973106912, y_hat: [206, 247], y: [195.0, 247.0], loss: 3	
+Filename: 219_post_interval20_sheep.txt, score: 54.988511997804, y_hat: [197, 242], y: [196.0, 247.0], loss: 0	
+Filename: 219_post_interval21_hammer.txt, score: 54.262904341622, y_hat: [243, 285], y: [243.0, 285.0], loss: 0	
+Filename: 219_post_interval22_house.txt, score: 20.801943900203, y_hat: [192, 212], y: [190.0, 260.0], loss: 21.5	
+Filename: 219_post_interval25_well.txt, score: 50.687087959267, y_hat: [244, 300], y: [245.0, 300.0], loss: 0	
+Filename: 219_post_interval26_donkey.txt, score: 50.795225689068, y_hat: [261, 294], y: [234.0, 294.0], loss: 11	
+Filename: 219_post_interval27_saw.txt, score: 50.420210397238, y_hat: [167, 219], y: [169.0, 221.0], loss: 0	
+Filename: 219_post_interval28_windmill.txt, score: 57.949082854932, y_hat: [254, 322], y: [254.0, 322.0], loss: 0	
+Filename: 219_post_interval29_pig.txt, score: 39.220329315699, y_hat: [172, 222], y: [171.0, 222.0], loss: 0	
+Filename: 219_post_interval2_fox.txt, score: 4.7029463762425, y_hat: [183, 203], y: [182.0, 235.0], loss: 13.5	
+Filename: 219_post_interval30_wrench.txt, score: 45.190394836494, y_hat: [174, 246], y: [175.0, 245.0], loss: 0	
+Filename: 219_post_interval31_church.txt, score: 48.225722123322, y_hat: [189, 244], y: [190.0, 246.0], loss: 0	
+Filename: 219_post_interval32_guitar.txt, score: 51.850870438387, y_hat: [223, 274], y: [224.0, 274.0], loss: 0	
+Filename: 219_post_interval33_dress.txt, score: 33.785392346241, y_hat: [174, 200], y: [174.0, 239.0], loss: 17	
+Filename: 219_post_interval37_zebra.txt, score: 25.469837290415, y_hat: [200, 234], y: [172.0, 236.0], loss: 11.5	
+Filename: 219_post_interval39_skirt.txt, score: 34.717483786462, y_hat: [202, 223], y: [195.0, 224.0], loss: 1	
+Filename: 219_post_interval3_onion.txt, score: 43.526452118018, y_hat: [160, 201], y: [160.0, 201.0], loss: 0	
+Filename: 219_post_interval40_elephant.txt, score: 53.236541302179, y_hat: [164, 220], y: [164.0, 222.0], loss: 0	
+Filename: 219_post_interval41_drum.txt, score: 54.790687208421, y_hat: [167, 212], y: [168.0, 213.0], loss: 0	
+Filename: 219_post_interval43_monkey.txt, score: 50.669882962127, y_hat: [181, 243], y: [180.0, 243.0], loss: 0	
+Filename: 219_post_interval44_piano.txt, score: 49.008681653337, y_hat: [173, 232], y: [167.0, 232.0], loss: 0.5	
+Filename: 219_post_interval45_shirt.txt, score: 49.197640086497, y_hat: [203, 259], y: [202.0, 256.0], loss: 0	
+Filename: 219_post_interval46_gorilla.txt, score: 55.759534670695, y_hat: [268, 1527], y: [208.0, 270.0], loss: 653.5	
+Filename: 219_post_interval4_cup.txt, score: 39.492521512058, y_hat: [166, 186], y: [166.0, 200.0], loss: 4.5	
+Filename: 219_post_interval5_squirrel.txt, score: 55.496199169984, y_hat: [176, 220], y: [162.0, 220.0], loss: 4.5	
+Filename: 219_post_interval7_spoon.txt, score: -102.17851775777, y_hat: [197, 232], y: [181.0, 231.0], loss: 5.5	
+Filename: 219_post_interval9_potato.txt, score: 51.143030669037, y_hat: [163, 220], y: [162.0, 219.0], loss: 0	
+Filename: 219_pre_interval11_table.txt, score: 44.789847069369, y_hat: [206, 251], y: [202.0, 252.0], loss: 0	
+Filename: 219_pre_interval12_plane.txt, score: 41.686708560452, y_hat: [180, 239], y: [179.0, 238.0], loss: 0	
+Filename: 219_pre_interval13_duck.txt, score: 50.042613746894, y_hat: [254, 296], y: [254.0, 295.0], loss: 0	
+Filename: 219_pre_interval14_bed.txt, score: 50.204247133744, y_hat: [169, 217], y: [169.0, 216.0], loss: 0	
+Filename: 219_pre_interval15_bus.txt, score: 48.515275487988, y_hat: [220, 273], y: [220.0, 272.0], loss: 0	
+Filename: 219_pre_interval16_swan.txt, score: 49.724540266862, y_hat: [247, 314], y: [247.0, 313.0], loss: 0	
+Filename: 219_pre_interval17_stool.txt, score: 44.392199498716, y_hat: [212, 242], y: [194.0, 242.0], loss: 6.5	
+Filename: 219_pre_interval18_train.txt, score: 52.301780527894, y_hat: [198, 242], y: [196.0, 243.0], loss: 0	
+Filename: 219_pre_interval20_desk.txt, score: 39.948538431001, y_hat: [200, 259], y: [200.0, 246.0], loss: 4	
+Filename: 219_pre_interval21_car.txt, score: 54.599872271286, y_hat: [163, 207], y: [163.0, 207.0], loss: 0	
+Filename: 219_pre_interval22_orange.txt, score: 36.798215155706, y_hat: [182, 239], y: [182.0, 238.0], loss: 0	
+Filename: 219_pre_interval23_pitcher.txt, score: 41.844267567934, y_hat: [204, 249], y: [203.0, 248.0], loss: 0	
+Filename: 219_pre_interval24_ant.txt, score: 37.800374830228, y_hat: [206, 244], y: [207.0, 234.0], loss: 2.5	
+Filename: 219_pre_interval25_banana.txt, score: 44.685110735772, y_hat: [183, 231], y: [183.0, 231.0], loss: 0	
+Filename: 219_pre_interval26_pan.txt, score: 55.427774693253, y_hat: [247, 291], y: [246.0, 291.0], loss: 0	
+Filename: 219_pre_interval27_beetle.txt, score: 33.73273088655, y_hat: [244, 294], y: [222.0, 283.0], loss: 11.5	
+Filename: 219_pre_interval28_pear.txt, score: 52.191498970795, y_hat: [198, 233], y: [198.0, 233.0], loss: 0	
+Filename: 219_pre_interval29_pot.txt, score: 39.5789458715, y_hat: [235, 264], y: [230.0, 262.0], loss: 0	
+Filename: 219_pre_interval30_spider.txt, score: 36.601675329059, y_hat: [198, 236], y: [183.0, 236.0], loss: 5	
+Filename: 219_pre_interval31_apple.txt, score: 51.252082506336, y_hat: [173, 216], y: [175.0, 216.0], loss: 0	
+Filename: 219_pre_interval32_rolling_pin.txt, score: 53.652014157769, y_hat: [219, 296], y: [219.0, 297.0], loss: 0	
+Filename: 219_pre_interval33_butterfly.txt, score: 46.086378980751, y_hat: [215, 280], y: [215.0, 279.0], loss: 0	
+Filename: 219_pre_interval34_lemon.txt, score: 50.825153798935, y_hat: [162, 208], y: [162.0, 208.0], loss: 0	
+Filename: 219_pre_interval35_kettle.txt, score: 46.237765960113, y_hat: [285, 313], y: [234.0, 315.0], loss: 23	
+Filename: 219_pre_interval36_caterpillar.txt, score: 46.384987615886, y_hat: [175, 246], y: [171.0, 246.0], loss: 0	
+Filename: 219_pre_interval37_doll.txt, score: 32.863479002942, y_hat: [195, 237], y: [184.0, 239.0], loss: 3	
+Filename: 219_pre_interval38_finger.txt, score: 52.876143306189, y_hat: [222, 296], y: [222.0, 296.0], loss: 0	
+Filename: 219_pre_interval41_nose.txt, score: 36.102036705631, y_hat: [167, 221], y: [167.0, 220.0], loss: 0	
+Filename: 219_pre_interval43_top.txt, score: 39.472076443252, y_hat: [242, 319], y: [242.0, 329.0], loss: 2.5	
+Filename: 219_pre_interval44_eye.txt, score: 47.66122545808, y_hat: [187, 226], y: [188.0, 227.0], loss: 0	
+Filename: 219_pre_interval45_lobster.txt, score: 43.228552923035, y_hat: [178, 245], y: [178.0, 244.0], loss: 0	
+Filename: 219_pre_interval46_kite.txt, score: 50.182207687782, y_hat: [155, 175], y: [155.0, 185.0], loss: 2.5	
+Filename: 219_pre_interval47_hand.txt, score: 44.332240375819, y_hat: [159, 204], y: [159.0, 203.0], loss: 0	
+Filename: 219_pre_interval48_penguin.txt, score: 57.370498055337, y_hat: [186, 233], y: [186.0, 234.0], loss: 0	
+Filename: 219_pre_interval49_ball.txt, score: 50.03873592854, y_hat: [236, 279], y: [237.0, 279.0], loss: 0	
+Filename: 219_pre_interval50_ear.txt, score: 38.730864201902, y_hat: [166, 199], y: [166.0, 199.0], loss: 0	
+Filename: 219_pre_interval7_owl.txt, score: 46.626209496379, y_hat: [169, 215], y: [170.0, 215.0], loss: 0	
+Filename: 219_pre_interval8_chair.txt, score: 29.522761210281, y_hat: [173, 204], y: [162.0, 206.0], loss: 3	
+Filename: 219_pre_interval9_helicopter.txt, score: 53.565764797148, y_hat: [222, 288], y: [221.0, 288.0], loss: 0	
+Filename: 220_post_interval11_swan.txt, score: 47.695459707752, y_hat: [196, 262], y: [196.0, 263.0], loss: 0	
+Filename: 220_post_interval12_stool.txt, score: 17.765979289852, y_hat: [320, 349], y: [309.0, 348.0], loss: 3	
+Filename: 220_post_interval13_train.txt, score: 42.903897297492, y_hat: [206, 255], y: [194.0, 257.0], loss: 3.5	
+Filename: 220_post_interval15_desk.txt, score: 42.486480059375, y_hat: [203, 253], y: [202.0, 244.0], loss: 2	
+Filename: 220_post_interval16_car.txt, score: 48.981971680015, y_hat: [187, 233], y: [176.0, 233.0], loss: 3	
+Filename: 220_post_interval17_orange.txt, score: 43.914226946843, y_hat: [163, 235], y: [165.0, 234.0], loss: 0	
+Filename: 220_post_interval18_pitcher.txt, score: 42.781359988971, y_hat: [259, 323], y: [255.0, 300.0], loss: 9	
+Filename: 220_post_interval19_ant.txt, score: 30.05967768678, y_hat: [187, 232], y: [189.0, 220.0], loss: 3.5	
+Filename: 220_post_interval20_banana.txt, score: 52.46417172254, y_hat: [159, 213], y: [159.0, 215.0], loss: 0	
+Filename: 220_post_interval21_pan.txt, score: 54.696140740628, y_hat: [194, 244], y: [182.0, 245.0], loss: 3.5	
+Filename: 220_post_interval22_beetle.txt, score: 55.4545043181, y_hat: [258, 299], y: [257.0, 298.0], loss: 0	
+Filename: 220_post_interval23_pear.txt, score: 52.373552070522, y_hat: [186, 232], y: [176.0, 232.0], loss: 2.5	
+Filename: 220_post_interval24_pot.txt, score: 34.754921858716, y_hat: [217, 245], y: [184.0, 224.0], loss: 22	
+Filename: 220_post_interval25_spider.txt, score: 50.052526018416, y_hat: [206, 250], y: [179.0, 250.0], loss: 11	
+Filename: 220_post_interval27_rolling_pin.txt, score: 51.99062051821, y_hat: [174, 245], y: [174.0, 244.0], loss: 0	
+Filename: 220_post_interval28_butterfly.txt, score: 43.268384416785, y_hat: [161, 236], y: [161.0, 235.0], loss: 0	
+Filename: 220_post_interval29_lemon.txt, score: 32.371803846623, y_hat: [215, 265], y: [218.0, 268.0], loss: 0	
+Filename: 220_post_interval2_owl.txt, score: 50.509436227944, y_hat: [166, 221], y: [167.0, 221.0], loss: 0	
+Filename: 220_post_interval30_kettle.txt, score: 48.858120527321, y_hat: [205, 260], y: [196.0, 260.0], loss: 2	
+Filename: 220_post_interval31_caterpillar.txt, score: 48.582145794258, y_hat: [212, 276], y: [203.0, 277.0], loss: 2	
+Filename: 220_post_interval33_finger.txt, score: 58.924279618194, y_hat: [165, 233], y: [163.0, 233.0], loss: 0	
+Filename: 220_post_interval34_seahorse.txt, score: 44.952444446672, y_hat: [194, 276], y: [174.0, 275.0], loss: 7.5	
+Filename: 220_post_interval36_nose.txt, score: 51.070085828696, y_hat: [168, 246], y: [167.0, 248.0], loss: 0	
+Filename: 220_post_interval38_top.txt, score: 33.249322078304, y_hat: [207, 237], y: [196.0, 238.0], loss: 3	
+Filename: 220_post_interval39_eye.txt, score: 19.3103901017, y_hat: [239, 259], y: [184.0, 248.0], loss: 28	
+Filename: 220_post_interval3_chair.txt, score: 43.475516250748, y_hat: [178, 223], y: [169.0, 223.0], loss: 2	
+Filename: 220_post_interval40_lobster.txt, score: 38.332473285264, y_hat: [202, 241], y: [170.0, 241.0], loss: 13.5	
+Filename: 220_post_interval41_kite.txt, score: 38.068552774517, y_hat: [190, 217], y: [190.0, 227.0], loss: 2.5	
+Filename: 220_post_interval42_hand.txt, score: -99.827552435954, y_hat: [195, 215], y: [165.0, 216.0], loss: 12.5	
+Filename: 220_post_interval43_penguin.txt, score: 2.0365706298384, y_hat: [217, 242], y: [177.0, 242.0], loss: 17.5	
+Filename: 220_post_interval44_ball.txt, score: 19.403647559969, y_hat: [229, 256], y: [201.0, 252.0], loss: 11.5	
+Filename: 220_post_interval45_ear.txt, score: 59.878096569443, y_hat: [178, 230], y: [178.0, 230.0], loss: 0	
+Filename: 220_post_interval46_fish.txt, score: 41.128189044659, y_hat: [171, 220], y: [162.0, 219.0], loss: 2	
+Filename: 220_post_interval4_helicopter.txt, score: 45.141486292542, y_hat: [173, 246], y: [163.0, 248.0], loss: 2.5	
+Filename: 220_post_interval5_peacock.txt, score: 35.307039330138, y_hat: [256, 347], y: [251.0, 294.0], loss: 24	
+Filename: 220_post_interval6_table.txt, score: 37.848877196364, y_hat: [186, 222], y: [185.0, 229.0], loss: 1	
+Filename: 220_post_interval7_plane.txt, score: 35.125443624085, y_hat: [174, 221], y: [164.0, 223.0], loss: 2.5	
+Filename: 220_post_interval8_duck.txt, score: 31.36917145884, y_hat: [197, 224], y: [186.0, 214.0], loss: 5.5	
+Filename: 220_post_interval9_bed.txt, score: 50.868514352259, y_hat: [167, 203], y: [167.0, 200.0], loss: 0	
+Filename: 220_pre_interval10_squirrel.txt, score: 49.603267929924, y_hat: [186, 232], y: [185.0, 232.0], loss: 0	
+Filename: 220_pre_interval12_spoon.txt, score: -111.42765089293, y_hat: [156, 222], y: [167.0, 222.0], loss: 3	
+Filename: 220_pre_interval13_deer.txt, score: 57.495105956409, y_hat: [188, 225], y: [187.0, 225.0], loss: 0	
+Filename: 220_pre_interval14_potato.txt, score: 56.16315192948, y_hat: [186, 220], y: [170.0, 221.0], loss: 5.5	
+Filename: 220_pre_interval15_glass.txt, score: 46.766414925906, y_hat: [170, 226], y: [170.0, 224.0], loss: 0	
+Filename: 220_pre_interval16_skunk.txt, score: 36.584978261282, y_hat: [183, 211], y: [163.0, 214.0], loss: 7.5	
+Filename: 220_pre_interval17_lettuce.txt, score: 50.880952454964, y_hat: [277, 314], y: [193.0, 265.0], loss: 61.5	
+Filename: 220_pre_interval18_knife.txt, score: 50.498217621815, y_hat: [164, 221], y: [164.0, 221.0], loss: 0	
+Filename: 220_pre_interval19_raccoon.txt, score: 46.469367786592, y_hat: [159, 225], y: [159.0, 225.0], loss: 0	
+Filename: 220_pre_interval20_carrot.txt, score: 42.331144570136, y_hat: [167, 203], y: [167.0, 221.0], loss: 6.5	
+Filename: 220_pre_interval21_fork.txt, score: 38.641852082792, y_hat: [177, 212], y: [165.0, 213.0], loss: 3.5	
+Filename: 220_pre_interval22_horse.txt, score: 56.523093734438, y_hat: [160, 212], y: [160.0, 213.0], loss: 0	
+Filename: 220_pre_interval24_barn.txt, score: 55.268544643285, y_hat: [199, 246], y: [199.0, 246.0], loss: 0	
+Filename: 220_pre_interval25_sheep.txt, score: 40.746977132217, y_hat: [162, 213], y: [162.0, 206.0], loss: 1	
+Filename: 220_pre_interval26_hammer.txt, score: 49.659978690838, y_hat: [165, 205], y: [164.0, 205.0], loss: 0	
+Filename: 220_pre_interval27_house.txt, score: 51.021518436901, y_hat: [154, 207], y: [154.0, 206.0], loss: 0	
+Filename: 220_pre_interval28_chicken.txt, score: 58.691440928392, y_hat: [187, 239], y: [188.0, 240.0], loss: 0	
+Filename: 220_pre_interval29_screwdriver.txt, score: 51.680042795422, y_hat: [184, 245], y: [164.0, 245.0], loss: 7.5	
+Filename: 220_pre_interval30_well.txt, score: 67.587274837337, y_hat: [173, 220], y: [173.0, 220.0], loss: 0	
+Filename: 220_pre_interval31_donkey.txt, score: 50.84541209514, y_hat: [221, 248], y: [198.0, 249.0], loss: 9	
+Filename: 220_pre_interval32_saw.txt, score: 48.828746446166, y_hat: [193, 245], y: [192.0, 244.0], loss: 0	
+Filename: 220_pre_interval33_windmill.txt, score: 9.5172218138138, y_hat: [253, 273], y: [252.0, 296.0], loss: 9	
+Filename: 220_pre_interval34_pig.txt, score: 28.352793537886, y_hat: [183, 213], y: [176.0, 213.0], loss: 1	
+Filename: 220_pre_interval36_church.txt, score: 60.005011177365, y_hat: [66, 237], y: [195.0, 240.0], loss: 62	
+Filename: 220_pre_interval37_guitar.txt, score: 39.316035825608, y_hat: [248, 280], y: [228.0, 281.0], loss: 7.5	
+Filename: 220_pre_interval38_dress.txt, score: 39.199807744471, y_hat: [166, 214], y: [166.0, 216.0], loss: 0	
+Filename: 220_pre_interval39_tiger.txt, score: 48.322714356105, y_hat: [184, 220], y: [177.0, 221.0], loss: 1	
+Filename: 220_pre_interval40_trumpet.txt, score: 37.648391437897, y_hat: [166, 207], y: [166.0, 207.0], loss: 0	
+Filename: 220_pre_interval41_sock.txt, score: 43.749221028066, y_hat: [150, 190], y: [144.0, 190.0], loss: 0.5	
+Filename: 220_pre_interval42_zebra.txt, score: -90.918639383192, y_hat: [194, 214], y: [162.0, 219.0], loss: 13.5	
+Filename: 220_pre_interval43_violin.txt, score: 51.982031803325, y_hat: [164, 235], y: [163.0, 234.0], loss: 0	
+Filename: 220_pre_interval44_skirt.txt, score: 41.626468416057, y_hat: [195, 238], y: [172.0, 224.0], loss: 13.5	
+Filename: 220_pre_interval45_elephant.txt, score: 44.041517929971, y_hat: [188, 253], y: [188.0, 240.0], loss: 4	
+Filename: 220_pre_interval46_drum.txt, score: 49.51154441103, y_hat: [169, 210], y: [169.0, 211.0], loss: 0	
+Filename: 220_pre_interval47_coat.txt, score: 38.283959034637, y_hat: [189, 229], y: [189.0, 221.0], loss: 1.5	
+Filename: 220_pre_interval48_monkey.txt, score: 11.291630733761, y_hat: [177, 228], y: [174.0, 230.0], loss: 0	
+Filename: 220_pre_interval49_piano.txt, score: 29.555465612473, y_hat: [163, 209], y: [155.0, 210.0], loss: 1.5	
+Filename: 220_pre_interval50_shirt.txt, score: 51.951122512043, y_hat: [209, 231], y: [177.0, 221.0], loss: 16	
+Filename: 220_pre_interval51_gorilla.txt, score: 38.113682082796, y_hat: [167, 213], y: [167.0, 213.0], loss: 0	
+Filename: 220_pre_interval8_onion.txt, score: 51.191436220321, y_hat: [181, 225], y: [180.0, 225.0], loss: 0	
+Filename: 220_pre_interval9_cup.txt, score: 35.164885175714, y_hat: [167, 189], y: [159.0, 190.0], loss: 1.5	
+Filename: 222_post_interval10_kite.txt, score: 49.271628934192, y_hat: [161, 196], y: [166.0, 194.0], loss: 0	
+Filename: 222_post_interval13_ball.txt, score: 48.995183356191, y_hat: [199, 238], y: [199.0, 239.0], loss: 0	
+Filename: 222_post_interval14_pitcher.txt, score: 30.902786657546, y_hat: [291, 313], y: [276.0, 314.0], loss: 5	
+Filename: 222_post_interval15_horse.txt, score: 45.772312890199, y_hat: [199, 241], y: [191.0, 242.0], loss: 1.5	
+Filename: 222_post_interval16_doll.txt, score: 53.178238530555, y_hat: [196, 237], y: [196.0, 236.0], loss: 0	
+Filename: 222_post_interval17_zebra.txt, score: 44.350211389649, y_hat: [179, 199], y: [148.0, 200.0], loss: 13	
+Filename: 222_post_interval18_spoon.txt, score: 46.433914798258, y_hat: [176, 233], y: [176.0, 233.0], loss: 0	
+Filename: 222_post_interval19_plane.txt, score: 34.487201177549, y_hat: [200, 243], y: [191.0, 243.0], loss: 2	
+Filename: 222_post_interval21_glass.txt, score: 35.194394380762, y_hat: [211, 238], y: [174.0, 239.0], loss: 16	
+Filename: 222_post_interval22_bus.txt, score: 45.100621609758, y_hat: [210, 272], y: [192.0, 273.0], loss: 6.5	
+Filename: 222_post_interval23_monkey.txt, score: 6.4671356277808, y_hat: [216, 237], y: [192.0, 239.0], loss: 9.5	
+Filename: 222_post_interval24_knife.txt, score: 41.319481963586, y_hat: [239, 259], y: [207.0, 260.0], loss: 13.5	
+Filename: 222_post_interval25_train.txt, score: 51.78501979863, y_hat: [250, 300], y: [250.0, 301.0], loss: 0	
+Filename: 222_post_interval26_gorilla.txt, score: 46.237359548271, y_hat: [183, 221], y: [183.0, 223.0], loss: 0	
+Filename: 222_post_interval27_fork.txt, score: 41.709316126995, y_hat: [180, 216], y: [168.0, 215.0], loss: 3.5	
+Filename: 222_post_interval28_car.txt, score: 53.11476211633, y_hat: [204, 238], y: [203.0, 240.0], loss: 0	
+Filename: 222_post_interval29_tiger.txt, score: 47.525052014544, y_hat: [228, 266], y: [228.0, 271.0], loss: 0	
+Filename: 222_post_interval2_pan.txt, score: 44.879645096558, y_hat: [249, 284], y: [201.0, 284.0], loss: 21.5	
+Filename: 222_post_interval31_helicopter.txt, score: 54.912450667476, y_hat: [45, 168], y: [174.0, 245.0], loss: 98	
+Filename: 222_post_interval32_hammer.txt, score: 51.47484227274, y_hat: [214, 252], y: [214.0, 254.0], loss: 0	
+Filename: 222_post_interval33_table.txt, score: 40.195373264264, y_hat: [215, 263], y: [224.0, 263.0], loss: 2	
+Filename: 222_post_interval35_screwdriver.txt, score: 42.295508694298, y_hat: [192, 248], y: [182.0, 249.0], loss: 2.5	
+Filename: 222_post_interval36_bed.txt, score: 49.856481674301, y_hat: [158, 190], y: [158.0, 192.0], loss: 0	
+Filename: 222_post_interval37_violin.txt, score: 50.291469635739, y_hat: [165, 222], y: [164.0, 222.0], loss: 0	
+Filename: 222_post_interval38_saw.txt, score: 46.698851327602, y_hat: [199, 243], y: [201.0, 245.0], loss: 0	
+Filename: 222_post_interval3_sheep.txt, score: 48.336059487768, y_hat: [199, 236], y: [199.0, 239.0], loss: 0	
+Filename: 222_post_interval42_desk.txt, score: 47.678234530614, y_hat: [46, 239], y: [220.0, 259.0], loss: 92	
+Filename: 222_post_interval43_piano.txt, score: 54.501811069084, y_hat: [180, 229], y: [180.0, 229.0], loss: 0	
+Filename: 222_post_interval45_chair.txt, score: 48.274718440793, y_hat: [161, 198], y: [161.0, 198.0], loss: 0	
+Filename: 222_post_interval46_guitar.txt, score: 56.89781764463, y_hat: [241, 294], y: [242.0, 294.0], loss: 0	
+Filename: 222_post_interval4_sled.txt, score: 25.63683828511, y_hat: [228, 270], y: [228.0, 274.0], loss: 0	
+Filename: 222_post_interval5_pot.txt, score: 19.194557520437, y_hat: [240, 260], y: [234.0, 260.0], loss: 0.5	
+Filename: 222_post_interval6_chicken.txt, score: 48.025706670968, y_hat: [206, 240], y: [206.0, 241.0], loss: 0	
+Filename: 222_post_interval7_top.txt, score: 49.746492221514, y_hat: [274, 325], y: [271.0, 325.0], loss: 0	
+Filename: 222_post_interval8_rolling_pin.txt, score: 26.43017315991, y_hat: [187, 209], y: [229.0, 297.0], loss: 60	
+Filename: 222_post_interval9_donkey.txt, score: 41.227392645969, y_hat: [244, 284], y: [241.0, 287.0], loss: 0	
+Filename: 222_pre_interval10_eye.txt, score: 50.916502075142, y_hat: [225, 263], y: [226.0, 262.0], loss: 0	
+Filename: 222_pre_interval11_duck.txt, score: 43.773737901507, y_hat: [172, 196], y: [171.0, 198.0], loss: 0	
+Filename: 222_pre_interval12_potato.txt, score: 51.432037973038, y_hat: [175, 225], y: [175.0, 226.0], loss: 0	
+Filename: 222_pre_interval13_hand.txt, score: 53.225306340612, y_hat: [174, 208], y: [165.0, 208.0], loss: 2	
+Filename: 222_pre_interval18_carrot.txt, score: 56.173672450047, y_hat: [173, 208], y: [174.0, 206.0], loss: 0	
+Filename: 222_pre_interval19_finger.txt, score: 29.425695165574, y_hat: [189, 211], y: [170.0, 211.0], loss: 7	
+Filename: 222_pre_interval20_owl.txt, score: 46.257723218033, y_hat: [162, 201], y: [166.0, 202.0], loss: 0	
+Filename: 222_pre_interval21_onion.txt, score: 39.383787828303, y_hat: [173, 227], y: [183.0, 226.0], loss: 2.5	
+Filename: 222_pre_interval23_house.txt, score: 56.054128476485, y_hat: [19, 53], y: [206.0, 260.0], loss: 192	
+Filename: 222_pre_interval24_squirrel.txt, score: 44.286824469921, y_hat: [166, 220], y: [166.0, 221.0], loss: 0	
+Filename: 222_pre_interval25_spider.txt, score: 48.355925475336, y_hat: [256, 294], y: [244.0, 294.0], loss: 3.5	
+Filename: 222_pre_interval26_well.txt, score: 42.812945348293, y_hat: [190, 232], y: [190.0, 233.0], loss: 0	
+Filename: 222_pre_interval27_deer.txt, score: 27.58904667541, y_hat: [184, 204], y: [161.0, 207.0], loss: 9	
+Filename: 222_pre_interval28_zebra.txt, score: 49.37194237241, y_hat: [176, 212], y: [162.0, 214.0], loss: 4.5	
+Filename: 222_pre_interval29_windmill.txt, score: 56.159886933207, y_hat: [172, 222], y: [171.0, 221.0], loss: 0	
+Filename: 222_pre_interval30_skunk.txt, score: 50.653765792629, y_hat: [159, 204], y: [158.0, 204.0], loss: 0	
+Filename: 222_pre_interval31_caterpillar.txt, score: 57.047435605269, y_hat: [192, 248], y: [192.0, 249.0], loss: 0	
+Filename: 222_pre_interval32_church.txt, score: 54.566506247374, y_hat: [171, 215], y: [171.0, 217.0], loss: 0	
+Filename: 222_pre_interval33_raccoon.txt, score: 36.307599682128, y_hat: [207, 227], y: [162.0, 227.0], loss: 20	
+Filename: 222_pre_interval34_ant.txt, score: 29.428123372255, y_hat: [172, 205], y: [171.0, 208.0], loss: 0	
+Filename: 222_pre_interval35_barn.txt, score: 18.291121071365, y_hat: [185, 210], y: [189.0, 240.0], loss: 12.5	
+Filename: 222_pre_interval36_fox.txt, score: 45.72643707106, y_hat: [183, 239], y: [178.0, 237.0], loss: 0	
+Filename: 222_pre_interval37_banana.txt, score: 50.156765296863, y_hat: [172, 215], y: [171.0, 215.0], loss: 0	
+Filename: 222_pre_interval38_sock.txt, score: 53.535373533086, y_hat: [166, 217], y: [166.0, 218.0], loss: 0	
+Filename: 222_pre_interval39_sea_lion.txt, score: 55.168685318232, y_hat: [236, 287], y: [237.0, 286.0], loss: 0	
+Filename: 222_pre_interval40_pear.txt, score: 49.193331063847, y_hat: [165, 202], y: [165.0, 206.0], loss: 0	
+Filename: 222_pre_interval41_skirt.txt, score: 37.426715658358, y_hat: [256, 277], y: [234.0, 278.0], loss: 8.5	
+Filename: 222_pre_interval42_lobster.txt, score: 46.645673308802, y_hat: [182, 234], y: [181.0, 237.0], loss: 0	
+Filename: 222_pre_interval43_apple.txt, score: 50.954354548301, y_hat: [199, 245], y: [200.0, 245.0], loss: 0	
+Filename: 222_pre_interval44_coat.txt, score: 47.330487034366, y_hat: [194, 223], y: [194.0, 222.0], loss: 0	
+Filename: 222_pre_interval45_penguin.txt, score: 5.2843481389726, y_hat: [209, 229], y: [174.0, 223.0], loss: 15.5	
+Filename: 222_pre_interval46_lemon.txt, score: 31.824672534654, y_hat: [198, 223], y: [184.0, 223.0], loss: 4.5	
+Filename: 222_pre_interval47_shirt.txt, score: 45.042520096489, y_hat: [227, 264], y: [225.0, 263.0], loss: 0	
+Filename: 222_pre_interval48_fish.txt, score: 42.355756777985, y_hat: [174, 221], y: [170.0, 223.0], loss: 0	
+Filename: 222_pre_interval49_orange.txt, score: 44.239224979125, y_hat: [176, 221], y: [175.0, 236.0], loss: 5	
+Filename: 222_pre_interval50_dress.txt, score: 36.73421442089, y_hat: [187, 215], y: [187.0, 237.0], loss: 8.5	
+Filename: 222_pre_interval51_seahorse.txt, score: 22.071246016434, y_hat: [235, 255], y: [185.0, 256.0], loss: 22.5	
+Filename: 222_pre_interval7_nose.txt, score: -30.294355203042, y_hat: [165, 185], y: [164.0, 219.0], loss: 14.5	
+Filename: 222_pre_interval8_peacock.txt, score: 34.63450395846, y_hat: [185, 209], y: [170.0, 215.0], loss: 5.5	
+Filename: 222_pre_interval9_celery.txt, score: 32.317271327829, y_hat: [274, 326], y: [274.0, 326.0], loss: 0	
+Filename: 224_post_interval10_lettuce.txt, score: 49.719022103421, y_hat: [222, 280], y: [223.0, 281.0], loss: 0	
+Filename: 224_post_interval11_ear.txt, score: 55.56200599122, y_hat: [163, 200], y: [163.0, 200.0], loss: 0	
+Filename: 224_post_interval13_carrot.txt, score: 25.740199155656, y_hat: [165, 197], y: [165.0, 199.0], loss: 0	
+Filename: 224_post_interval14_finger.txt, score: 49.948633125732, y_hat: [170, 211], y: [163.0, 214.0], loss: 1	
+Filename: 224_post_interval15_owl.txt, score: 53.146043316465, y_hat: [162, 208], y: [162.0, 209.0], loss: 0	
+Filename: 224_post_interval16_onion.txt, score: 4.7633596991576, y_hat: [248, 268], y: [248.0, 293.0], loss: 10	
+Filename: 224_post_interval17_beetle.txt, score: -103.45660292043, y_hat: [213, 251], y: [210.0, 253.0], loss: 0	
+Filename: 224_post_interval18_house.txt, score: -115.45601086593, y_hat: [150, 172], y: [149.0, 198.0], loss: 10.5	
+Filename: 224_post_interval19_squirrel.txt, score: 42.40286337456, y_hat: [169, 209], y: [152.0, 211.0], loss: 6	
+Filename: 224_post_interval1_start.txt, score: 13.690150914612, y_hat: [188, 211], y: [156.0, 194.0], loss: 19.5	
+Filename: 224_post_interval20_spider.txt, score: 44.322231983445, y_hat: [228, 260], y: [213.0, 260.0], loss: 5	
+Filename: 224_post_interval21_well.txt, score: 44.012851677826, y_hat: [183, 225], y: [183.0, 225.0], loss: 0	
+Filename: 224_post_interval22_deer.txt, score: 50.658460009534, y_hat: [198, 245], y: [195.0, 245.0], loss: 0	
+Filename: 224_post_interval23_zebra.txt, score: 52.699571273199, y_hat: [166, 208], y: [155.0, 210.0], loss: 3	
+Filename: 224_post_interval24_windmill.txt, score: 62.162781203903, y_hat: [165, 220], y: [165.0, 221.0], loss: 0	
+Filename: 224_post_interval25_skunk.txt, score: 39.002194422842, y_hat: [182, 205], y: [162.0, 205.0], loss: 7.5	
+Filename: 224_post_interval26_caterpillar.txt, score: 51.573260977138, y_hat: [196, 248], y: [196.0, 250.0], loss: 0	
+Filename: 224_post_interval27_church.txt, score: 52.103967881407, y_hat: [201, 221], y: [174.0, 223.0], loss: 11	
+Filename: 224_post_interval28_raccoon.txt, score: 53.677790171679, y_hat: [166, 220], y: [166.0, 223.0], loss: 0	
+Filename: 224_post_interval29_ant.txt, score: 46.619270672546, y_hat: [170, 199], y: [170.0, 199.0], loss: 0	
+Filename: 224_post_interval2_nose.txt, score: -61.718117237215, y_hat: [156, 192], y: [156.0, 207.0], loss: 5	
+Filename: 224_post_interval30_barn.txt, score: 49.517294332209, y_hat: [175, 229], y: [174.0, 229.0], loss: 0	
+Filename: 224_post_interval31_fox.txt, score: 50.329088918347, y_hat: [204, 227], y: [165.0, 228.0], loss: 17	
+Filename: 224_post_interval32_banana.txt, score: 20.16986507227, y_hat: [154, 174], y: [154.0, 208.0], loss: 14.5	
+Filename: 224_post_interval33_sock.txt, score: 20.171823725694, y_hat: [197, 242], y: [197.0, 243.0], loss: 0	
+Filename: 224_post_interval34_sea_lion.txt, score: 37.788003719568, y_hat: [204, 240], y: [183.0, 240.0], loss: 8	
+Filename: 224_post_interval35_pear.txt, score: 32.58255346784, y_hat: [162, 208], y: [162.0, 211.0], loss: 0	
+Filename: 224_post_interval36_skirt.txt, score: 45.233038230189, y_hat: [163, 212], y: [162.0, 213.0], loss: 0	
+Filename: 224_post_interval37_lobster.txt, score: 55.014315641671, y_hat: [164, 224], y: [164.0, 224.0], loss: 0	
+Filename: 224_post_interval38_apple.txt, score: 28.562533189234, y_hat: [196, 217], y: [196.0, 236.0], loss: 7	
+Filename: 224_post_interval39_coat.txt, score: 46.779961497672, y_hat: [187, 215], y: [185.0, 214.0], loss: 0	
+Filename: 224_post_interval3_peacock.txt, score: 9.0749528703787, y_hat: [188, 208], y: [158.0, 201.0], loss: 13.5	
+Filename: 224_post_interval40_penguin.txt, score: 14.357411212459, y_hat: [163, 183], y: [163.0, 213.0], loss: 12.5	
+Filename: 224_post_interval41_lemon.txt, score: -114.3409482996, y_hat: [191, 211], y: [172.0, 218.0], loss: 8	
+Filename: 224_post_interval42_shirt.txt, score: -152.42740591137, y_hat: [173, 193], y: [158.0, 194.0], loss: 5	
+Filename: 224_post_interval43_fish.txt, score: 52.368376561002, y_hat: [161, 212], y: [163.0, 213.0], loss: 0	
+Filename: 224_post_interval44_orange.txt, score: 33.988900750511, y_hat: [161, 200], y: [161.0, 215.0], loss: 5	
+Filename: 224_post_interval45_dress.txt, score: 45.556488221297, y_hat: [152, 202], y: [152.0, 202.0], loss: 0	
+Filename: 224_post_interval4_celery.txt, score: 49.362804843464, y_hat: [275, 320], y: [275.0, 324.0], loss: 0	
+Filename: 224_post_interval5_eye.txt, score: 45.968855697967, y_hat: [160, 203], y: [160.0, 203.0], loss: 0	
+Filename: 224_post_interval9_swan.txt, score: 10.230643457847, y_hat: [312, 349], y: [301.0, 345.0], loss: 3	
+Filename: 224_pre_interval10_pot.txt, score: -80.115896656061, y_hat: [173, 193], y: [159.0, 195.0], loss: 4.5	
+Filename: 224_pre_interval11_chicken.txt, score: 37.13819089918, y_hat: [160, 192], y: [153.0, 195.0], loss: 1	
+Filename: 224_pre_interval12_top.txt, score: 52.776455893004, y_hat: [182, 214], y: [182.0, 215.0], loss: 0	
+Filename: 224_pre_interval13_rolling_pin.txt, score: 22.946875716022, y_hat: [176, 215], y: [175.0, 241.0], loss: 10.5	
+Filename: 224_pre_interval14_donkey.txt, score: 33.790335038875, y_hat: [181, 217], y: [181.0, 224.0], loss: 1	
+Filename: 224_pre_interval15_kite.txt, score: -7.3232986806416, y_hat: [206, 226], y: [181.0, 211.0], loss: 15	
+Filename: 224_pre_interval16_kettle.txt, score: 55.922697506467, y_hat: [190, 242], y: [190.0, 241.0], loss: 0	
+Filename: 224_pre_interval17_pig.txt, score: -36.420335522386, y_hat: [169, 189], y: [155.0, 181.0], loss: 6	
+Filename: 224_pre_interval18_ball.txt, score: -1.3351606969657, y_hat: [163, 183], y: [167.0, 201.0], loss: 6.5	
+Filename: 224_pre_interval19_pitcher.txt, score: 32.807881809751, y_hat: [217, 240], y: [203.0, 242.0], loss: 4.5	
+Filename: 224_pre_interval20_horse.txt, score: 46.296483699567, y_hat: [164, 206], y: [163.0, 208.0], loss: 0	
+Filename: 224_pre_interval21_doll.txt, score: 37.779741051207, y_hat: [168, 206], y: [168.0, 208.0], loss: 0	
+Filename: 224_pre_interval22_zebra.txt, score: 27.951272762007, y_hat: [189, 212], y: [164.0, 213.0], loss: 10	
+Filename: 224_pre_interval23_spoon.txt, score: 44.463646305826, y_hat: [145, 195], y: [145.0, 196.0], loss: 0	
+Filename: 224_pre_interval24_plane.txt, score: 20.046396475856, y_hat: [158, 178], y: [158.0, 207.0], loss: 12	
+Filename: 224_pre_interval25_elephant.txt, score: 42.322327021287, y_hat: [157, 203], y: [157.0, 199.0], loss: 0	
+Filename: 224_pre_interval27_bus.txt, score: 46.687830271022, y_hat: [166, 205], y: [164.0, 205.0], loss: 0	
+Filename: 224_pre_interval28_monkey.txt, score: 44.152716421465, y_hat: [154, 193], y: [154.0, 194.0], loss: 0	
+Filename: 224_pre_interval29_knife.txt, score: 46.085488575745, y_hat: [160, 196], y: [161.0, 199.0], loss: 0	
+Filename: 224_pre_interval30_train.txt, score: 48.346450686653, y_hat: [166, 205], y: [166.0, 207.0], loss: 0	
+Filename: 224_pre_interval31_gorilla.txt, score: 34.463242895645, y_hat: [179, 216], y: [180.0, 223.0], loss: 1	
+Filename: 224_pre_interval32_fork.txt, score: 45.096053193572, y_hat: [157, 177], y: [151.0, 191.0], loss: 5	
+Filename: 224_pre_interval33_car.txt, score: 47.04685838921, y_hat: [149, 186], y: [149.0, 186.0], loss: 0	
+Filename: 224_pre_interval34_tiger.txt, score: 52.084425016844, y_hat: [189, 233], y: [189.0, 234.0], loss: 0	
+Filename: 224_pre_interval35_cup.txt, score: 34.058718490145, y_hat: [206, 228], y: [201.0, 239.0], loss: 3	
+Filename: 224_pre_interval36_helicopter.txt, score: 53.57056076749, y_hat: [178, 240], y: [177.0, 242.0], loss: 0	
+Filename: 224_pre_interval37_hammer.txt, score: 36.964234786099, y_hat: [154, 194], y: [154.0, 196.0], loss: 0	
+Filename: 224_pre_interval38_table.txt, score: 52.697879122364, y_hat: [157, 198], y: [157.0, 197.0], loss: 0	
+Filename: 224_pre_interval40_screwdriver.txt, score: 49.885656128694, y_hat: [212, 333], y: [273.0, 334.0], loss: 28	
+Filename: 224_pre_interval41_bed.txt, score: 35.081671340801, y_hat: [165, 185], y: [164.0, 186.0], loss: 0	
+Filename: 224_pre_interval42_violin.txt, score: 46.723479781853, y_hat: [201, 250], y: [195.0, 250.0], loss: 0.5	
+Filename: 224_pre_interval43_saw.txt, score: 56.06264716783, y_hat: [158, 201], y: [159.0, 202.0], loss: 0	
+Filename: 224_pre_interval44_stool.txt, score: 39.012637422678, y_hat: [198, 218], y: [169.0, 217.0], loss: 12	
+Filename: 224_pre_interval45_drum.txt, score: 55.300606760131, y_hat: [157, 200], y: [158.0, 200.0], loss: 0	
+Filename: 224_pre_interval46_wrench.txt, score: 39.452513184144, y_hat: [177, 226], y: [175.0, 225.0], loss: 0	
+Filename: 224_pre_interval47_desk.txt, score: 39.272176333513, y_hat: [172, 220], y: [169.0, 226.0], loss: 0.5	
+Filename: 224_pre_interval48_piano.txt, score: 53.102746428644, y_hat: [175, 217], y: [169.0, 218.0], loss: 0.5	
+Filename: 224_pre_interval49_axe.txt, score: 49.195899772362, y_hat: [193, 244], y: [194.0, 241.0], loss: 0	
+Filename: 224_pre_interval50_chair.txt, score: 55.601349240603, y_hat: [172, 210], y: [173.0, 211.0], loss: 0	
+Filename: 224_pre_interval6_start.txt, score: 25.935332714913, y_hat: [171, 195], y: [156.0, 229.0], loss: 19.5	
+Filename: 224_pre_interval8_sheep.txt, score: 40.219002527759, y_hat: [160, 197], y: [160.0, 198.0], loss: 0	
+Filename: 224_pre_interval9_sled.txt, score: 27.063822333531, y_hat: [181, 235], y: [182.0, 229.0], loss: 0.5	
+Filename: 225_post_interval10_kettle.txt, score: 46.775864472647, y_hat: [289, 342], y: [281.0, 342.0], loss: 1.5	
+Filename: 225_post_interval11_guitar.txt, score: 48.187404266925, y_hat: [227, 278], y: [227.0, 279.0], loss: 0	
+Filename: 225_post_interval12_owl.txt, score: 60.217451441726, y_hat: [175, 229], y: [179.0, 229.0], loss: 0	
+Filename: 225_post_interval14_trumpet.txt, score: 51.919211855838, y_hat: [195, 227], y: [195.0, 242.0], loss: 5	
+Filename: 225_post_interval15_peacock.txt, score: 35.262375707322, y_hat: [193, 231], y: [193.0, 257.0], loss: 10.5	
+Filename: 225_post_interval16_pan.txt, score: 26.027552500143, y_hat: [218, 241], y: [192.0, 241.0], loss: 10.5	
+Filename: 225_post_interval17_skirt.txt, score: 26.746178192649, y_hat: [206, 226], y: [189.0, 242.0], loss: 11.5	
+Filename: 225_post_interval18_potato.txt, score: 51.104752790127, y_hat: [178, 235], y: [176.0, 235.0], loss: 0	
+Filename: 225_post_interval19_spider.txt, score: 19.976635235833, y_hat: [222, 248], y: [201.0, 265.0], loss: 14	
+Filename: 225_post_interval1_start.txt, score: 44.079652249772, y_hat: [168, 221], y: [168.0, 222.0], loss: 0	
+Filename: 225_post_interval20_coat.txt, score: 25.860751017059, y_hat: [197, 240], y: [197.0, 241.0], loss: 0	
+Filename: 225_post_interval21_lettuce.txt, score: 47.963275260347, y_hat: [200, 271], y: [199.0, 273.0], loss: 0	
+Filename: 225_post_interval22_butterfly.txt, score: 35.679927610478, y_hat: [184, 247], y: [184.0, 248.0], loss: 0	
+Filename: 225_post_interval23_shirt.txt, score: 29.308361466347, y_hat: [258, 278], y: [235.0, 278.0], loss: 9	
+Filename: 225_post_interval24_carrot.txt, score: 40.296164382226, y_hat: [186, 220], y: [179.0, 220.0], loss: 1	
+Filename: 225_post_interval26_dress.txt, score: 53.743166143095, y_hat: [180, 242], y: [180.0, 240.0], loss: 0	
+Filename: 225_post_interval27_onion.txt, score: 47.756535660223, y_hat: [185, 242], y: [185.0, 243.0], loss: 0	
+Filename: 225_post_interval29_sock.txt, score: 42.15615987557, y_hat: [176, 223], y: [175.0, 224.0], loss: 0	
+Filename: 225_post_interval2_violin.txt, score: 42.224720075461, y_hat: [186, 261], y: [186.0, 262.0], loss: 0	
+Filename: 225_post_interval32_top.txt, score: 51.241743046222, y_hat: [266, 317], y: [266.0, 317.0], loss: 0	
+Filename: 225_post_interval34_bed.txt, score: 50.243588366296, y_hat: [187, 215], y: [187.0, 215.0], loss: 0	
+Filename: 225_post_interval35_kite.txt, score: 48.977815257636, y_hat: [174, 215], y: [167.0, 206.0], loss: 3	
+Filename: 225_post_interval36_skunk.txt, score: 46.611306333596, y_hat: [170, 208], y: [169.0, 222.0], loss: 4.5	
+Filename: 225_post_interval37_stool.txt, score: 52.777013666705, y_hat: [168, 217], y: [169.0, 216.0], loss: 0	
+Filename: 225_post_interval38_ball.txt, score: 43.63230400168, y_hat: [289, 329], y: [288.0, 327.0], loss: 0	
+Filename: 225_post_interval39_raccoon.txt, score: 51.41213411408, y_hat: [212, 282], y: [212.0, 282.0], loss: 0	
+Filename: 225_post_interval3_duck.txt, score: 46.368738657859, y_hat: [236, 265], y: [234.0, 266.0], loss: 0	
+Filename: 225_post_interval42_fox.txt, score: 8.1540814315187, y_hat: [249, 275], y: [205.0, 280.0], loss: 19.5	
+Filename: 225_post_interval43_chair.txt, score: 55.306382016971, y_hat: [161, 202], y: [161.0, 202.0], loss: 0	
+Filename: 225_post_interval44_sled.txt, score: 41.001518500983, y_hat: [194, 219], y: [176.0, 225.0], loss: 7	
+Filename: 225_post_interval46_table.txt, score: 51.00306271885, y_hat: [235, 280], y: [235.0, 281.0], loss: 0	
+Filename: 225_post_interval4_pot.txt, score: 47.311708465288, y_hat: [197, 217], y: [197.0, 236.0], loss: 7	
+Filename: 225_post_interval5_drum.txt, score: 56.026033277172, y_hat: [217, 265], y: [218.0, 265.0], loss: 0	
+Filename: 225_post_interval7_rolling_pin.txt, score: 64.081444394817, y_hat: [229, 285], y: [229.0, 287.0], loss: 0	
+Filename: 225_post_interval8_piano.txt, score: 56.809393599435, y_hat: [194, 247], y: [186.0, 247.0], loss: 1.5	
+Filename: 225_pre_interval10_penguin.txt, score: 27.794158573851, y_hat: [179, 201], y: [179.0, 235.0], loss: 14.5	
+Filename: 225_pre_interval11_train.txt, score: 47.975982470866, y_hat: [206, 253], y: [205.0, 252.0], loss: 0	
+Filename: 225_pre_interval12_saw.txt, score: 48.334992003462, y_hat: [186, 239], y: [188.0, 240.0], loss: 0	
+Filename: 225_pre_interval13_fish.txt, score: 26.997830632454, y_hat: [195, 215], y: [165.0, 216.0], loss: 12.5	
+Filename: 225_pre_interval14_car.txt, score: 51.144374878616, y_hat: [160, 203], y: [159.0, 204.0], loss: 0	
+Filename: 225_pre_interval15_wrench.txt, score: 29.669077362604, y_hat: [237, 271], y: [237.0, 299.0], loss: 11.5	
+Filename: 225_pre_interval16_seahorse.txt, score: -42.456609348046, y_hat: [209, 229], y: [177.0, 261.0], loss: 27	
+Filename: 225_pre_interval17_helicopter.txt, score: 37.207875487102, y_hat: [184, 257], y: [183.0, 258.0], loss: 0	
+Filename: 225_pre_interval19_sea_lion.txt, score: 52.852715464587, y_hat: [210, 255], y: [209.0, 256.0], loss: 0	
+Filename: 225_pre_interval20_plane.txt, score: 29.963070750171, y_hat: [192, 215], y: [192.0, 252.0], loss: 16	
+Filename: 225_pre_interval21_hammer.txt, score: 39.563773002301, y_hat: [182, 230], y: [182.0, 232.0], loss: 0	
+Filename: 225_pre_interval22_well.txt, score: 53.234117484149, y_hat: [195, 238], y: [195.0, 239.0], loss: 0	
+Filename: 225_pre_interval23_pear.txt, score: -100.89854022562, y_hat: [200, 220], y: [180.0, 225.0], loss: 7.5	
+Filename: 225_pre_interval24_elephant.txt, score: 56.68382911749, y_hat: [252, 273], y: [204.0, 260.0], loss: 25.5	
+Filename: 225_pre_interval25_windmill.txt, score: 50.976886587932, y_hat: [231, 275], y: [230.0, 276.0], loss: 0	
+Filename: 225_pre_interval26_apple.txt, score: 50.191439969947, y_hat: [186, 235], y: [186.0, 235.0], loss: 0	
+Filename: 225_pre_interval27_monkey.txt, score: 49.633390533206, y_hat: [232, 274], y: [232.0, 273.0], loss: 0	
+Filename: 225_pre_interval28_church.txt, score: 45.115135858041, y_hat: [193, 244], y: [193.0, 246.0], loss: 0	
+Filename: 225_pre_interval29_lemon.txt, score: 50.246938887165, y_hat: [173, 222], y: [173.0, 223.0], loss: 0	
+Filename: 225_pre_interval30_gorilla.txt, score: 46.132544385543, y_hat: [183, 233], y: [182.0, 234.0], loss: 0	
+Filename: 225_pre_interval31_barn.txt, score: 42.14650092681, y_hat: [211, 285], y: [203.0, 284.0], loss: 1.5	
+Filename: 225_pre_interval32_orange.txt, score: 39.637488982571, y_hat: [230, 251], y: [182.0, 255.0], loss: 21.5	
+Filename: 225_pre_interval33_tiger.txt, score: 45.384539437556, y_hat: [178, 227], y: [173.0, 227.0], loss: 0	
+Filename: 225_pre_interval34_house.txt, score: 58.213936422575, y_hat: [196, 258], y: [196.0, 256.0], loss: 0	
+Filename: 225_pre_interval35_banana.txt, score: 25.496185292456, y_hat: [176, 199], y: [176.0, 226.0], loss: 11	
+Filename: 225_pre_interval36_zebra.txt, score: 31.122012880129, y_hat: [178, 221], y: [168.0, 221.0], loss: 2.5	
+Filename: 225_pre_interval37_chicken.txt, score: 41.569321135806, y_hat: [172, 219], y: [172.0, 219.0], loss: 0	
+Filename: 225_pre_interval38_eye.txt, score: 35.849510561058, y_hat: [164, 213], y: [165.0, 212.0], loss: 0	
+Filename: 225_pre_interval39_glass.txt, score: 43.52853852723, y_hat: [176, 246], y: [176.0, 248.0], loss: 0	
+Filename: 225_pre_interval40_donkey.txt, score: 41.762575011945, y_hat: [193, 247], y: [192.0, 247.0], loss: 0	
+Filename: 225_pre_interval41_hand.txt, score: 38.422494784101, y_hat: [152, 198], y: [151.0, 199.0], loss: 0	
+Filename: 225_pre_interval42_knife.txt, score: 48.859192783455, y_hat: [166, 218], y: [166.0, 221.0], loss: 0	
+Filename: 225_pre_interval43_pig.txt, score: 50.246400059144, y_hat: [186, 218], y: [182.0, 219.0], loss: 0	
+Filename: 225_pre_interval44_ear.txt, score: 48.328423394036, y_hat: [168, 209], y: [167.0, 209.0], loss: 0	
+Filename: 225_pre_interval45_fork.txt, score: 41.466935335781, y_hat: [168, 204], y: [165.0, 205.0], loss: 0	
+Filename: 225_pre_interval46_horse.txt, score: 35.029832188237, y_hat: [188, 242], y: [187.0, 246.0], loss: 0	
+Filename: 225_pre_interval47_finger.txt, score: 32.989904707472, y_hat: [205, 225], y: [166.0, 226.0], loss: 17	
+Filename: 225_pre_interval48_cup.txt, score: 40.122522432318, y_hat: [177, 204], y: [177.0, 206.0], loss: 0	
+Filename: 225_pre_interval49_sheep.txt, score: 54.864352424309, y_hat: [220, 249], y: [221.0, 258.0], loss: 2	
+Filename: 225_pre_interval50_nose.txt, score: 23.484474438691, y_hat: [190, 210], y: [191.0, 258.0], loss: 21.5	
+Filename: 225_pre_interval51_spoon.txt, score: 55.816960686193, y_hat: [218, 785], y: [153.0, 218.0], loss: 311	
+Filename: 225_pre_interval6_start.txt, score: 47.378926101598, y_hat: [179, 225], y: [176.0, 227.0], loss: 0	
+Filename: 225_pre_interval7_lobster.txt, score: 30.171443516974, y_hat: [185, 208], y: [184.0, 247.0], loss: 17	
+Filename: 225_pre_interval8_bus.txt, score: 55.055643825887, y_hat: [201, 248], y: [201.0, 250.0], loss: 0	
+Filename: 225_pre_interval9_screwdriver.txt, score: 38.431479079767, y_hat: [229, 320], y: [246.0, 323.0], loss: 6	
+Filename: 227_post_interval10_seahorse.txt, score: 54.268917539749, y_hat: [221, 248], y: [171.0, 248.0], loss: 22.5	
+Filename: 227_post_interval11_helicopter.txt, score: 49.325528211298, y_hat: [163, 231], y: [162.0, 230.0], loss: 0	
+Filename: 227_post_interval12_axe.txt, score: 50.804571176439, y_hat: [156, 215], y: [156.0, 212.0], loss: 0	
+Filename: 227_post_interval13_sea_lion.txt, score: 50.173260556755, y_hat: [146, 193], y: [145.0, 194.0], loss: 0	
+Filename: 227_post_interval14_plane.txt, score: 53.089285155569, y_hat: [163, 204], y: [160.0, 202.0], loss: 0	
+Filename: 227_post_interval15_hammer.txt, score: 51.11743013799, y_hat: [151, 195], y: [151.0, 196.0], loss: 0	
+Filename: 227_post_interval16_well.txt, score: 49.091425811768, y_hat: [161, 197], y: [161.0, 199.0], loss: 0	
+Filename: 227_post_interval17_pear.txt, score: 54.708004031945, y_hat: [160, 199], y: [159.0, 200.0], loss: 0	
+Filename: 227_post_interval18_elephant.txt, score: 48.304469964401, y_hat: [160, 222], y: [160.0, 213.0], loss: 2	
+Filename: 227_post_interval19_windmill.txt, score: 52.231334864372, y_hat: [192, 236], y: [192.0, 236.0], loss: 0	
+Filename: 227_post_interval1_lobster.txt, score: 39.999507945878, y_hat: [153, 205], y: [155.0, 205.0], loss: 0	
+Filename: 227_post_interval20_apple.txt, score: 45.244630979955, y_hat: [160, 197], y: [160.0, 199.0], loss: 0	
+Filename: 227_post_interval21_monkey.txt, score: 57.236858913489, y_hat: [160, 205], y: [159.0, 205.0], loss: 0	
+Filename: 227_post_interval22_church.txt, score: 50.731483977151, y_hat: [160, 206], y: [158.0, 216.0], loss: 2.5	
+Filename: 227_post_interval23_lemon.txt, score: 42.185067629556, y_hat: [145, 189], y: [145.0, 186.0], loss: 0	
+Filename: 227_post_interval25_barn.txt, score: 52.624493800047, y_hat: [193, 231], y: [193.0, 232.0], loss: 0	
+Filename: 227_post_interval26_orange.txt, score: 36.578813300941, y_hat: [174, 231], y: [177.0, 234.0], loss: 0	
+Filename: 227_post_interval27_tiger.txt, score: 48.655703449947, y_hat: [187, 240], y: [194.0, 240.0], loss: 1	
+Filename: 227_post_interval28_house.txt, score: 49.007158838037, y_hat: [170, 230], y: [169.0, 230.0], loss: 0	
+Filename: 227_post_interval29_banana.txt, score: 36.21789150315, y_hat: [158, 202], y: [157.0, 202.0], loss: 0	
+Filename: 227_post_interval2_bus.txt, score: 49.495121328894, y_hat: [158, 208], y: [158.0, 205.0], loss: 0	
+Filename: 227_post_interval30_zebra.txt, score: -113.80231555978, y_hat: [180, 200], y: [153.0, 201.0], loss: 11	
+Filename: 227_post_interval31_chicken.txt, score: 45.967153365477, y_hat: [157, 194], y: [157.0, 201.0], loss: 1	
+Filename: 227_post_interval32_eye.txt, score: 38.186918427761, y_hat: [171, 215], y: [171.0, 211.0], loss: 0	
+Filename: 227_post_interval33_glass.txt, score: 46.773410728534, y_hat: [162, 223], y: [161.0, 218.0], loss: 0	
+Filename: 227_post_interval34_donkey.txt, score: 44.56367221306, y_hat: [166, 211], y: [166.0, 212.0], loss: 0	
+Filename: 227_post_interval35_hand.txt, score: 51.870764121208, y_hat: [150, 193], y: [149.0, 194.0], loss: 0	
+Filename: 227_post_interval36_knife.txt, score: 35.930915727749, y_hat: [169, 195], y: [170.0, 215.0], loss: 7.5	
+Filename: 227_post_interval37_pig.txt, score: 3.6918029682697, y_hat: [169, 189], y: [154.0, 182.0], loss: 6	
+Filename: 227_post_interval38_ear.txt, score: 43.114213768001, y_hat: [148, 178], y: [146.0, 178.0], loss: 0	
+Filename: 227_post_interval39_fork.txt, score: 48.199818889695, y_hat: [148, 175], y: [137.0, 176.0], loss: 3	
+Filename: 227_post_interval3_screwdriver.txt, score: 52.895974538879, y_hat: [143, 215], y: [144.0, 215.0], loss: 0	
+Filename: 227_post_interval40_horse.txt, score: 47.798137208046, y_hat: [154, 200], y: [152.0, 201.0], loss: 0	
+Filename: 227_post_interval41_finger.txt, score: 33.084103872316, y_hat: [157, 188], y: [151.0, 186.0], loss: 0.5	
+Filename: 227_post_interval42_cup.txt, score: 15.289300491997, y_hat: [188, 208], y: [193.0, 221.0], loss: 4	
+Filename: 227_post_interval43_sheep.txt, score: -150.17709391144, y_hat: [165, 185], y: [151.0, 189.0], loss: 4.5	
+Filename: 227_post_interval44_nose.txt, score: 46.661311500347, y_hat: [147, 203], y: [147.0, 202.0], loss: 0	
+Filename: 227_post_interval4_penguin.txt, score: 43.854892019886, y_hat: [155, 201], y: [154.0, 200.0], loss: 0	
+Filename: 227_post_interval5_train.txt, score: 43.591196210516, y_hat: [169, 205], y: [162.0, 204.0], loss: 1	
+Filename: 227_post_interval6_saw.txt, score: 48.602830194144, y_hat: [162, 212], y: [162.0, 210.0], loss: 0	
+Filename: 227_post_interval7_fish.txt, score: 39.70144182381, y_hat: [160, 205], y: [149.0, 204.0], loss: 3	
+Filename: 227_post_interval8_car.txt, score: 53.588326132931, y_hat: [177, 217], y: [177.0, 217.0], loss: 0	
+Filename: 227_post_interval9_wrench.txt, score: 49.709302385132, y_hat: [191, 216], y: [154.0, 217.0], loss: 16	
+Filename: 227_pre_interval10_drum.txt, score: 51.982305126153, y_hat: [174, 210], y: [174.0, 210.0], loss: 0	
+Filename: 227_pre_interval11_swan.txt, score: 57.235633263908, y_hat: [190, 238], y: [191.0, 238.0], loss: 0	
+Filename: 227_pre_interval12_rolling_pin.txt, score: 50.298040054264, y_hat: [179, 242], y: [179.0, 242.0], loss: 0	
+Filename: 227_pre_interval13_piano.txt, score: 39.097010558045, y_hat: [178, 218], y: [170.0, 219.0], loss: 1.5	
+Filename: 227_pre_interval14_eagle.txt, score: 51.972279300728, y_hat: [177, 213], y: [177.0, 214.0], loss: 0	
+Filename: 227_pre_interval15_kettle.txt, score: 56.71339136702, y_hat: [184, 216], y: [184.0, 216.0], loss: 0	
+Filename: 227_pre_interval16_guitar.txt, score: 49.628081429784, y_hat: [195, 217], y: [178.0, 217.0], loss: 6	
+Filename: 227_pre_interval17_owl.txt, score: 45.763943124165, y_hat: [174, 216], y: [174.0, 214.0], loss: 0	
+Filename: 227_pre_interval18_pitcher.txt, score: 45.323704360532, y_hat: [215, 235], y: [214.0, 247.0], loss: 3.5	
+Filename: 227_pre_interval19_trumpet.txt, score: 39.779787925548, y_hat: [283, 319], y: [285.0, 323.0], loss: 0	
+Filename: 227_pre_interval20_peacock.txt, score: 44.882176120905, y_hat: [167, 211], y: [165.0, 210.0], loss: 0	
+Filename: 227_pre_interval21_pan.txt, score: 50.995192157981, y_hat: [195, 229], y: [193.0, 230.0], loss: 0	
+Filename: 227_pre_interval22_skirt.txt, score: 47.446004385914, y_hat: [166, 186], y: [166.0, 203.0], loss: 6	
+Filename: 227_pre_interval23_potato.txt, score: 51.322336659598, y_hat: [186, 235], y: [186.0, 234.0], loss: 0	
+Filename: 227_pre_interval24_spider.txt, score: 48.715329263135, y_hat: [154, 209], y: [153.0, 211.0], loss: 0	
+Filename: 227_pre_interval25_coat.txt, score: 34.340126197465, y_hat: [181, 229], y: [181.0, 230.0], loss: 0	
+Filename: 227_pre_interval26_lettuce.txt, score: 46.795288476054, y_hat: [168, 226], y: [169.0, 224.0], loss: 0	
+Filename: 227_pre_interval27_butterfly.txt, score: 47.404810642956, y_hat: [159, 211], y: [158.0, 211.0], loss: 0	
+Filename: 227_pre_interval28_shirt.txt, score: 43.839095879846, y_hat: [163, 193], y: [162.0, 195.0], loss: 0	
+Filename: 227_pre_interval29_carrot.txt, score: 46.863788236461, y_hat: [158, 187], y: [158.0, 190.0], loss: 0	
+Filename: 227_pre_interval30_caterpillar.txt, score: 59.571529693235, y_hat: [193, 222], y: [164.0, 224.0], loss: 12	
+Filename: 227_pre_interval31_dress.txt, score: 50.917457896549, y_hat: [170, 229], y: [170.0, 226.0], loss: 0	
+Filename: 227_pre_interval32_onion.txt, score: 41.884567562847, y_hat: [173, 214], y: [173.0, 214.0], loss: 0	
+Filename: 227_pre_interval33_ant.txt, score: 44.905667048835, y_hat: [181, 224], y: [181.0, 222.0], loss: 0	
+Filename: 227_pre_interval34_sock.txt, score: 49.662637999554, y_hat: [156, 207], y: [156.0, 207.0], loss: 0	
+Filename: 227_pre_interval35_celery.txt, score: 52.76581456419, y_hat: [244, 295], y: [244.0, 295.0], loss: 0	
+Filename: 227_pre_interval36_beetle.txt, score: 60.045183439143, y_hat: [185, 219], y: [184.0, 219.0], loss: 0	
+Filename: 227_pre_interval37_top.txt, score: 24.323767192658, y_hat: [158, 178], y: [158.0, 181.0], loss: 0	
+Filename: 227_pre_interval38_deer.txt, score: -109.80493323221, y_hat: [181, 201], y: [180.0, 211.0], loss: 2.5	
+Filename: 227_pre_interval39_bed.txt, score: 49.313844073649, y_hat: [167, 193], y: [167.0, 195.0], loss: 0	
+Filename: 227_pre_interval40_kite.txt, score: 38.681365109926, y_hat: [156, 181], y: [156.0, 182.0], loss: 0	
+Filename: 227_pre_interval41_skunk.txt, score: 57.833483035162, y_hat: [172, 217], y: [174.0, 220.0], loss: 0	
+Filename: 227_pre_interval42_stool.txt, score: 58.989455633176, y_hat: [169, 215], y: [167.0, 215.0], loss: 0	
+Filename: 227_pre_interval43_ball.txt, score: 50.145632924485, y_hat: [164, 197], y: [164.0, 197.0], loss: 0	
+Filename: 227_pre_interval44_raccoon.txt, score: 54.928014444729, y_hat: [161, 213], y: [161.0, 213.0], loss: 0	
+Filename: 227_pre_interval45_desk.txt, score: 53.814893325637, y_hat: [171, 216], y: [169.0, 216.0], loss: 0	
+Filename: 227_pre_interval46_doll.txt, score: 59.370965366909, y_hat: [168, 205], y: [168.0, 205.0], loss: 0	
+Filename: 227_pre_interval48_chair.txt, score: 55.564628403967, y_hat: [161, 202], y: [160.0, 203.0], loss: 0	
+Filename: 227_pre_interval49_sled.txt, score: 54.940953588801, y_hat: [152, 195], y: [152.0, 195.0], loss: 0	
+Filename: 227_pre_interval50_squirrel.txt, score: 61.77917237245, y_hat: [149, 200], y: [149.0, 200.0], loss: 0	
+Filename: 227_pre_interval6_start.txt, score: 38.419075934088, y_hat: [175, 211], y: [174.0, 209.0], loss: 0	
+Filename: 227_pre_interval7_violin.txt, score: 56.195530230155, y_hat: [179, 228], y: [178.0, 228.0], loss: 0	
+Filename: 227_pre_interval8_duck.txt, score: 43.598642865917, y_hat: [168, 195], y: [168.0, 196.0], loss: 0	
+
+Average score: 44.28056916023	
+Average cumulative loss: 3.8359840954274
