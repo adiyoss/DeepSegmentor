@@ -23,12 +23,13 @@ if not opt then
    -- data
    cmd:option('-features_path', 'data/word_duration/test/', 'the path to the features file')
    cmd:option('-labels_path', 'data/word_duration/test/', 'the path to the labels file')
-   cmd:option('-input_dim', 13, 'the input size')
+   cmd:option('-test_file', 'test.t7', 'the t7 file that contains the data')
+   cmd:option('-input_dim', 63, 'the input size')
    -- train
    cmd:option('-model', 'results/model.net', 'the path to the model directory')
    cmd:option('-type', 'double', 'data type: double | cuda')
    -- loss
-   cmd:option('-eps', 2, 'the tolerance value for the loss function')
+   cmd:option('-eps', 5, 'the tolerance value for the loss function')
    
    cmd:text()
    opt = cmd:parse(arg or {})
@@ -36,11 +37,11 @@ end
 ----------------------------------------------------------------------
 
 torch.manualSeed(opt.seed)
-local eps = 2
+local eps = opt.eps
 
 d:new()
 print '==> Loading data set'
-x, y, f_n = d:read_data(opt.features_path, opt.labels_path, opt.input_dim, 'test.t7')
+x, y, f_n = d:read_data(opt.features_path, opt.labels_path, opt.input_dim, opt.test_file)
 
 print '==> define loss'
 criterion = nn.StructuredHingeLoss(eps)
@@ -51,4 +52,5 @@ model = torch.load(opt.model)
 print(model)
 
 print '==> predict '
-local loss, score = eval:evaluate(model, criterion, x, y, f_n, true)
+local loss, score, durations = eval:evaluate(model, criterion, x, y, f_n, true)
+eval:plot_vot_stats(durations)

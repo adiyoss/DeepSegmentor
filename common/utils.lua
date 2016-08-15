@@ -27,9 +27,9 @@ end
 -- load features from txt file
 function utils:load_data(path, input_dim)
   local file = io.open(path, "r")
-  num_of_examples = self:get_num_of_lines(path)
+  num_of_frames = self:get_num_of_lines(path)
   
-  local data = torch.Tensor(num_of_examples, 1, input_dim)
+  local data = torch.Tensor(num_of_frames, 1, input_dim)
   if file then
     local i = 1
     for line in file:lines() do
@@ -64,6 +64,12 @@ function utils:load_data(path, input_dim)
   -- support gpu processing    
   if opt and opt.type == 'cuda' then
     data = data:cuda()
+  end
+  
+  -- Detecting and removing NaNs
+  if data:ne(data):sum() > 0 then
+    print(sys.COLORS.red .. ' training set has NaN/s, replace with zeros.')
+    data[data:ne(data)] = 0
   end
   
   return data

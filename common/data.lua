@@ -10,9 +10,18 @@ logger = dofile('common/logger.lua')
 local data = {}
 
 -- C'Tor
-function data:new()
-  self.x_suffix = '.txt'
-  self.y_suffix = '.labels'
+function data:new(x_suffix, y_suffix)
+  -- default value is .data and .labels
+  if x_suffix ~= nil then
+    self.x_suffix = x_suffix
+  else
+    self.x_suffix = '.data'
+  end
+  if y_suffix ~= nil then
+    self.y_suffix = y_suffix
+  else
+    self.y_suffix = '.labels'
+  end
 end
 
 -- validate that for every .txt file there exists .textgrid file
@@ -82,6 +91,26 @@ function data:read_data(path_x, path_y, input_dim, t7_file)
   end
   
   return x, y, f_n
+end
+
+function data:create_mini_batches(x, y, batch_size)
+  local max = 0
+  local input_dim = x[1]:size(3)
+  -- find max
+  for i=1 ,batch_size do
+    max = (max < x[i]:size(1)) and x[i]:size(1) or max
+  end
+  
+  local b_x, b_y = {}, {}
+  local x_all = torch.zeros(max, batch_size, input_dim)  
+  local y_all = {}
+  for i=1 ,batch_size do
+    x_all[{{}, {i}}][{{1, x[i]:size(1)}}] = x[i]
+    y_all[i] = y[i]
+  end
+  table.insert(b_x, x_all)
+  table.insert(b_y, y_all)
+  return b_x, b_y
 end
 
 return data

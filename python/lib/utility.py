@@ -1,6 +1,7 @@
 from subprocess import call
 import sys
 import numpy as np
+import tempfile
 
 from lib.textgrid import IntervalTier, Interval
 from lib.textgrid import TextGrid
@@ -28,6 +29,10 @@ def crop_wav(wav_path, start_trim, end_trim, output_path):
     duration = end_trim - start_trim
     cmd = 'sbin/sox %s %s trim %s %s' % (wav_path, output_path, str(start_trim), str(duration))
     easy_call(cmd)
+
+
+def generate_tmp_filename(extension="txt"):
+    return tempfile._get_default_tempdir() + "/" + next(tempfile._get_candidate_names()) + "." + extension
 
 
 # get the length of the wav file

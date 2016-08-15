@@ -23,16 +23,17 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration', 'the path to the labels file')
-   cmd:option('-input_dim', 13, 'the input size')
+   cmd:option('-features_path', 'data/vot/natalia_pos/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/vot/natalia_pos/', 'the path to the labels file')
+   cmd:option('-input_dim', 63, 'the input size')
    -- loss
-   cmd:option('-eps', 10, 'the tolerance value for the loss function')
+   cmd:option('-eps', 0, 'the tolerance value for the loss function')
    -- model
    cmd:option('-hidden_size', 100, 'the hidden size')
-   cmd:option('-dropout', 0.5, 'dropout rate')
+   cmd:option('-dropout', 0.8, 'dropout rate')
+   cmd:option('-n_layers', 2, 'the number of layers')
    -- train
-   cmd:option('-save', 'results', 'subdirectory to save/log experiments in')
+   cmd:option('-save', 'results/vot/natalia_pos/', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
    cmd:option('-clipping', 2, 'gradient clipping in the range of [-n, n]')
@@ -40,11 +41,14 @@ if not opt then
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
-   cmd:option('-patience', 5, 'the number of epochs to be patience')
+   cmd:option('-patience', 8, 'the number of epochs to be patience')
+   cmd:option('-x_suffix', '.txt', 'the suffix of the data files')
+   cmd:option('-y_suffix', '.labels', 'the suffix of the label files')
    
    cmd:text()
    opt = cmd:parse(arg or {})
 end
+
 ----------------------------------------------------------------------
 -- define parameters
 local time = 0
@@ -79,12 +83,13 @@ paramsLogger:close()
 
 
 -- ============================ load the data ============================ --
-d:new()
+d:new(opt.x_suffix, opt.y_suffix)
 print '==> Loading data set'
 x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
 x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
 
+--x_train, y_train = d:create_mini_batches(x_train, y_train, 2)
 
 -- ========== define the model, loss and optimization technique ========== --
 print '==> define loss'
@@ -93,7 +98,7 @@ print(criterion)
 
 print '==> build the model and initialize weights'
 method = 'xavier'
-model = m:build_model(opt.input_dim, opt.hidden_size, opt.dropout, method)
+model = m:build_model(opt.input_dim, opt.hidden_size, opt.dropout, method, opt.n_layers)
 print(model)
 
 print '==> configuring optimizer'
@@ -108,6 +113,9 @@ end
 -- ============================= training ================================ --
 print '==> training! '
 print '==> evaluating on validation set'
+
+-- evaluate mode
+model:evaluate()
 loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
 print('\n==> Average score: ' .. score)
@@ -120,7 +128,7 @@ while loss < best_loss or iteration <= opt.patience do
   
   -- do full epoch
   print("==> online epoch # " .. epoch)
-  for t =1, #x_train do
+  for t=1, #x_train do
     xlua.progress(t, #x_train)
     time = time + tr:train(x_train[t], y_train[t])
   end  

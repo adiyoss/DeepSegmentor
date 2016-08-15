@@ -11,9 +11,13 @@ function StructLayer:__init(dim, init)
 end
 
 -- compute the forward pass
-function StructLayer:updateOutput(input)     
-  self.output:resize(input:size(1))
-  self.output:zero()  
+function StructLayer:updateOutput(input)
+  -- support mini-batches
+  if input:size(2) == 1 then
+    self.output:resize(input:size(1)):zero()  
+  else    
+    self.output:resize(input:size(1), input:size(2)):zero()
+  end
   -- W*x for all timesteps
   for i=1,input:size(1) do
     self.output[i] = self.weight * input[i]:t()    
@@ -25,7 +29,6 @@ end
 -- df / dx
 function StructLayer:updateGradInput(input, gradOutput)
   self.gradInput = torch.zeros(input:size())
-  --for k=1, input:size(1) do self.gradInput[k] = torch.zeros(1, self.dim) end
   self.gradInput[tonumber(gradOutput[1][1])]:add(self.weight) --> w for phi(x, y_hat)
   self.gradInput[tonumber(gradOutput[2][1])]:add(self.weight) --> w for phi(x, y_hat)
   self.gradInput[tonumber(gradOutput[3][1])]:add(torch.mul(self.weight, -1)) --> -w for phi(x, y)

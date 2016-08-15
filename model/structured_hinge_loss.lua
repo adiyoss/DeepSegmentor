@@ -9,7 +9,7 @@ function StructuredHingeLoss:__init(epsilon)
    self.gradInput = {torch.Tensor(1), torch.Tensor(1), torch.Tensor(1), torch.Tensor(1)}
    -- consts
    self.MIN_GAP = 1
-   self.MIN_SIZE = 20
+   self.MIN_SIZE = 4
    
 end
 
