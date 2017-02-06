@@ -1,0 +1,108 @@
+bb - new ind calculation
+
+1 epoch
+
+with zc (after correction of t) 
+==================================================================================
+
+Cum VOT loss = 5.2956
+% VOT error (t <= 2ms) = 60.3774
+% VOT error (t <= 5ms) = 83.0189
+% VOT error (t <= 10ms) = 89.3082
+% VOT error (t <= 15ms) = 94.3396
+% VOT error (t <= 20ms) = 96.2264
+% VOT error (t <= 25ms) = 96.8553
+% VOT error (t <= 50ms) = 98.7421
+
+rms onset loss: 12.6095
+
+with pitch (after correction of t)
+==================================================================================
+Cum VOT loss = 6.45283
+% VOT error (t <= 2ms) = 52.8302
+% VOT error (t <= 5ms) = 79.2453
+% VOT error (t <= 10ms) = 89.3082
+% VOT error (t <= 15ms) = 91.8239
+% VOT error (t <= 20ms) = 95.5975
+% VOT error (t <= 25ms) = 96.2264
+% VOT error (t <= 50ms) = 98.1132
+
+rms onset loss: 12.6095
+
+after correction of t
+==================================================================================
+Cum VOT loss = 6.02516
+% VOT error (t <= 2ms) = 57.8616
+% VOT error (t <= 5ms) = 78.6164
+% VOT error (t <= 10ms) = 88.6792
+% VOT error (t <= 15ms) = 94.9686
+% VOT error (t <= 20ms) = 96.2264
+% VOT error (t <= 25ms) = 96.8553
+% VOT error (t <= 50ms) = 98.1132
+
+rms onset loss: 12.6095
+Done.
+
+original setting:
+==================================================================================
+Cum VOT loss = 6.02516
+% VOT error (t <= 2ms) = 57.8616
+% VOT error (t <= 5ms) = 78.6164
+% VOT error (t <= 10ms) = 88.6792
+% VOT error (t <= 15ms) = 94.9686
+% VOT error (t <= 20ms) = 96.2264
+% VOT error (t <= 25ms) = 96.8553
+% VOT error (t <= 50ms) = 98.1132
+
+rms onset loss: 12.6095
+Done.
+
+
+
+
+
+3 epochs
+
+zc (after correction of t)
+==================================================================================
+Cum VOT loss = 6.16981
+% VOT error (t <= 2ms) = 59.7484
+% VOT error (t <= 5ms) = 78.6164
+% VOT error (t <= 10ms) = 87.4214
+% VOT error (t <= 15ms) = 94.3396
+% VOT error (t <= 20ms) = 95.5975
+% VOT error (t <= 25ms) = 96.2264
+% VOT error (t <= 50ms) = 98.1132
+
+rms onset loss: 12.6095
+Done.
+
+
+with pitch (after correction of t)
+==================================================================================
+Cum VOT loss = 5.15094
+% VOT error (t <= 2ms) = 55.3459
+% VOT error (t <= 5ms) = 81.761
+% VOT error (t <= 10ms) = 89.3082
+% VOT error (t <= 15ms) = 94.3396
+% VOT error (t <= 20ms) = 97.4843
+% VOT error (t <= 25ms) = 98.1132
+% VOT error (t <= 50ms) = 98.7421
+
+rms onset loss: 12.6095
+
+
+after correction of t
+==================================================================================
+Cum VOT loss = 5.93082
+% VOT error (t <= 2ms) = 59.1195
+% VOT error (t <= 5ms) = 80.5031
+% VOT error (t <= 10ms) = 89.9371
+% VOT error (t <= 15ms) = 94.3396
+% VOT error (t <= 20ms) = 96.2264
+% VOT error (t <= 25ms) = 96.8553
+% VOT error (t <= 50ms) = 98.1132
+
+rms onset loss: 12.6095
+Done.
+

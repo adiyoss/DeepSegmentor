@@ -1,4 +1,4 @@
-WORD DURATION DATA STATISTICS:
+VOT DURATION DATA STATISTICS:
 
 Duration statistics for train files: 
 Mean: 33.160

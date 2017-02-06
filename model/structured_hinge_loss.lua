@@ -47,12 +47,17 @@ end
 -- task loss / cost function
 function StructuredHingeLoss:task_loss(y, y_hat, eps)
   local loss = 0
-  local e = (eps or self.eps)
-  
+  local e = (eps or self.eps)  
+  loss = math.max(0, torch.abs((y[2] - y[1]) - (y_hat[2] - y_hat[1])) - e)
+  return loss
+
+  --[[
   for i=1,#y do
     loss = loss + math.max(0, torch.abs(y[i] - y_hat[i]) - e)
   end
+
   return loss / #y
+    ]]--
 end
 
 -- inference

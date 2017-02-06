@@ -1,0 +1,46 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 3.5122000000833964 
+tiers? <exists> 
+size = 3 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "label" 
+        xmin = 0 
+        xmax = 3.5122000000833964 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3.5122000000833964 
+            text = "saw" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "'OnsetsOffsets'" 
+        xmin = 0 
+        xmax = 3.5122000000833964 
+        intervals: size = 3 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.6810357913210368 
+            text = "" 
+        intervals [2]:
+            xmin = 1.6810357913210368 
+            xmax = 2.2024599448375284 
+            text = "0" 
+        intervals [3]:
+            xmin = 2.2024599448375284 
+            xmax = 3.5122000000833964 
+            text = "" 
+    item [3]:
+        class = "IntervalTier" 
+        name = "" 
+        xmin = 0 
+        xmax = 3.5122000000833964 
+        intervals: size = 1 
+        intervals [1]:
+            xmin = 0 
+            xmax = 3.5122000000833964 
+            text = "" 

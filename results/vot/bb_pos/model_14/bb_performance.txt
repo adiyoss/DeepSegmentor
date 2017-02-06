@@ -1,0 +1,8 @@
+Average cumulative loss: 5.5408805031447	
+|(y_off - y_on) - (y_hat_off - y_hat_on)|	
+Percentage of <= 2ms: 0.64779874213836%	
+Percentage of <= 5ms: 0.85534591194969%	
+Percentage of <= 10ms: 0.94339622641509%	
+Percentage of <= 15ms: 0.94968553459119%	
+Percentage of <= 25ms: 0.9622641509434%	
+Percentage of <= 50ms: 0.9748427672956%	

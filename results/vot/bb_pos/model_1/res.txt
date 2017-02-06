@@ -1,0 +1,211 @@
+==> processing options	
+==> Loading data set	
+==> define loss	
+nn.StructuredHingeLoss
+==> loading model	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> output]
+  (1): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (2): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (3): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (4): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (5): nn.StructLayer
+}
+==> predict 	
+Filename: ep02-Rachel-4000-mod_1125218.txt, score: 147.46018946874, y_hat: [175, 179], y: [26, 175], loss: 76.5	
+Filename: ep02-Rachel-4000-mod_1392687.txt, score: 39.25627743906, y_hat: [25, 51], y: [26, 53], loss: 1.5	
+Filename: ep02-Rachel-4000-mod_1618614.txt, score: 148.01109509083, y_hat: [11, 49], y: [26, 66], loss: 16	
+Filename: ep02-Rachel-4000-mod_675261.txt, score: 147.83817104789, y_hat: [24, 125], y: [26, 130], loss: 3.5	
+Filename: ep12-Rachel-2825-mod_1113330.txt, score: 63.209800354759, y_hat: [24, 76], y: [26, 78], loss: 2	
+Filename: ep12-Rachel-2825-mod_1121619.txt, score: 147.28731426527, y_hat: [25, 109], y: [26, 110], loss: 1	
+Filename: ep12-Rachel-2825-mod_1192495.txt, score: 51.761816934141, y_hat: [23, 74], y: [26, 81], loss: 5	
+Filename: ep12-Rachel-2825-mod_1217912.txt, score: 47.928725969319, y_hat: [25, 97], y: [26, 97], loss: 0.5	
+Filename: ep12-Rachel-2825-mod_1238744.txt, score: 46.140551495379, y_hat: [27, 64], y: [26, 66], loss: 1.5	
+Filename: ep12-Rachel-2825-mod_149035.txt, score: 136.43351234381, y_hat: [17, 21], y: [26, 99], loss: 43.5	
+Filename: ep12-Rachel-2825-mod_1661631.txt, score: 100.59971489457, y_hat: [24, 116], y: [26, 118], loss: 2	
+Filename: ep12-Rachel-2825-mod_316773.txt, score: 50.299009363369, y_hat: [25, 74], y: [26, 75], loss: 1	
+Filename: ep12-Rachel-2825-mod_323773.txt, score: 148.46522297069, y_hat: [26, 65], y: [26, 68], loss: 1.5	
+Filename: ep12-Rachel-2825-mod_493216.txt, score: 148.24267772507, y_hat: [24, 72], y: [26, 73], loss: 1.5	
+Filename: ep12-Rachel-2825-mod_718350.txt, score: 113.4715320925, y_hat: [22, 26], y: [26, 106], loss: 42	
+Filename: ep12-Rachel-2825-mod_847489.txt, score: 147.65640683509, y_hat: [94, 98], y: [26, 100], loss: 35	
+Filename: ep19-Rachel-0350-mod_1106207.txt, score: 148.62918742957, y_hat: [24, 62], y: [26, 62], loss: 1	
+Filename: ep19-Rachel-0350-mod_1233814.txt, score: 55.96625493689, y_hat: [25, 106], y: [26, 106], loss: 0.5	
+Filename: ep19-Rachel-0350-mod_1242057.txt, score: 67.718699631128, y_hat: [38, 42], y: [26, 35], loss: 9.5	
+Filename: ep19-Rachel-0350-mod_839311.txt, score: 46.445851570092, y_hat: [25, 53], y: [26, 53], loss: 0.5	
+Filename: ep19-Rachel-0350-mod_846743.txt, score: 48.179751822591, y_hat: [36, 84], y: [26, 84], loss: 5	
+Filename: ep20-Rachel-1555-mod_1170671.txt, score: 42.367513677735, y_hat: [26, 119], y: [26, 123], loss: 2	
+Filename: ep20-Rachel-1555-mod_1508409.txt, score: 148.40023902367, y_hat: [26, 92], y: [26, 95], loss: 1.5	
+Filename: ep20-Rachel-1555-mod_1831505.txt, score: 30.968216173175, y_hat: [23, 92], y: [26, 80], loss: 7.5	
+Filename: ep20-Rachel-1555-mod_1923097.txt, score: 50.291215692686, y_hat: [24, 77], y: [26, 78], loss: 1.5	
+Filename: ep20-Rachel-1555-mod_1949674.txt, score: 139.77005189911, y_hat: [24, 91], y: [26, 91], loss: 1	
+Filename: ep20-Rachel-1555-mod_1962838.txt, score: 148.52870861036, y_hat: [75, 79], y: [26, 79], loss: 24.5	
+Filename: ep20-Rachel-1555-mod_2025993.txt, score: 41.565998865871, y_hat: [26, 73], y: [26, 73], loss: 0	
+Filename: ep20-Rachel-1555-mod_2037378.txt, score: 29.816549479262, y_hat: [23, 27], y: [26, 67], loss: 21.5	
+Filename: ep20-Rachel-1555-mod_2241659.txt, score: 49.795736793824, y_hat: [22, 118], y: [26, 120], loss: 3	
+Filename: ep20-Rachel-1555-mod_2611394.txt, score: 148.13457992786, y_hat: [54, 58], y: [26, 55], loss: 15.5	
+Filename: ep20-Rachel-1555-mod_2831997.txt, score: 147.90864394571, y_hat: [25, 98], y: [26, 99], loss: 1	
+Filename: ep20-Rachel-1555-mod_2929458.txt, score: 147.77644680536, y_hat: [81, 85], y: [26, 85], loss: 27.5	
+Filename: ep20-Rachel-1555-mod_3215853.txt, score: 67.396640529252, y_hat: [23, 108], y: [26, 106], loss: 2.5	
+Filename: ep20-Rachel-1555-mod_3789817.txt, score: 47.423705225134, y_hat: [25, 67], y: [26, 66], loss: 1	
+Filename: ep20-Rachel-1555-mod_587479.txt, score: 148.42825509259, y_hat: [130, 134], y: [26, 134], loss: 52	
+Filename: ep20-Rachel-1555-mod_629233.txt, score: 147.77252034903, y_hat: [44, 120], y: [26, 124], loss: 11	
+Filename: ep20-Rachel-1555-mod_851147.txt, score: 42.628970297369, y_hat: [26, 73], y: [26, 74], loss: 0.5	
+Filename: ep33-Rachel-0400-mod_1126120.txt, score: 64.628564562721, y_hat: [11, 193], y: [26, 97], loss: 55.5	
+Filename: ep33-Rachel-0400-mod_1317119.txt, score: 53.500587108119, y_hat: [14, 72], y: [26, 70], loss: 7	
+Filename: ep33-Rachel-0400-mod_1437496.txt, score: 47.093337438383, y_hat: [22, 82], y: [26, 84], loss: 3	
+Filename: ep33-Rachel-0400-mod_1486917.txt, score: 50.066615702375, y_hat: [21, 206], y: [26, 80], loss: 65.5	
+Filename: ep33-Rachel-0400-mod_1623679.txt, score: 140.65296109846, y_hat: [23, 117], y: [26, 121], loss: 3.5	
+Filename: ep33-Rachel-0400-mod_1709662.txt, score: 55.560121105124, y_hat: [28, 59], y: [26, 61], loss: 2	
+Filename: ep33-Rachel-0400-mod_1892679.txt, score: 87.964538323903, y_hat: [20, 73], y: [26, 76], loss: 4.5	
+Filename: ep33-Rachel-0400-mod_2003719.txt, score: 32.155566130824, y_hat: [19, 44], y: [26, 53], loss: 8	
+Filename: ep33-Rachel-0400-mod_2033005.txt, score: 40.827730227135, y_hat: [24, 55], y: [26, 56], loss: 1.5	
+Filename: ep33-Rachel-0400-mod_736180.txt, score: 147.19067445201, y_hat: [69, 73], y: [26, 73], loss: 21.5	
+Filename: ep33-Rachel-0400-mod_950838.txt, score: 68.535632151479, y_hat: [34, 132], y: [26, 132], loss: 4	
+Filename: ep37-Rachel-0630-mod_1199505.txt, score: 37.881665865719, y_hat: [19, 80], y: [26, 79], loss: 4	
+Filename: ep37-Rachel-0630-mod_1564622.txt, score: 142.65005371409, y_hat: [24, 76], y: [26, 77], loss: 1.5	
+Filename: ep37-Rachel-0630-mod_1799258.txt, score: 49.106817046539, y_hat: [25, 134], y: [26, 132], loss: 1.5	
+Filename: ep37-Rachel-0630-mod_1897558.txt, score: 148.34453273278, y_hat: [24, 82], y: [26, 82], loss: 1	
+Filename: ep37-Rachel-0630-mod_971735.txt, score: 31.835025017489, y_hat: [25, 110], y: [26, 119], loss: 5	
+Filename: ep54-Rachel-4240-mod_1238972.txt, score: 143.30868508681, y_hat: [22, 44], y: [26, 44], loss: 2	
+Filename: ep54-Rachel-4240-mod_1307996.txt, score: 148.40331550885, y_hat: [22, 134], y: [26, 141], loss: 5.5	
+Filename: ep54-Rachel-4240-mod_1384955.txt, score: 55.06163735015, y_hat: [24, 156], y: [26, 157], loss: 1.5	
+Filename: ep54-Rachel-4240-mod_1454757.txt, score: 148.6949368598, y_hat: [23, 92], y: [26, 93], loss: 2	
+Filename: ep54-Rachel-4240-mod_1476807.txt, score: 42.669388917185, y_hat: [24, 120], y: [26, 64], loss: 29	
+Filename: ep54-Rachel-4240-mod_1511980.txt, score: 58.656676417925, y_hat: [25, 84], y: [26, 87], loss: 2	
+Filename: ep54-Rachel-4240-mod_1580150.txt, score: 147.95655253593, y_hat: [24, 74], y: [26, 76], loss: 2	
+Filename: ep54-Rachel-4240-mod_1954801.txt, score: 148.55067571998, y_hat: [69, 73], y: [26, 72], loss: 22	
+Filename: ep54-Rachel-4240-mod_2062128.txt, score: 147.96538829492, y_hat: [22, 26], y: [26, 99], loss: 38.5	
+Filename: ep54-Rachel-4240-mod_2084700.txt, score: 144.45176697553, y_hat: [24, 56], y: [26, 56], loss: 1	
+Filename: ep54-Rachel-4240-mod_2164547.txt, score: 73.603206600932, y_hat: [27, 124], y: [26, 128], loss: 2.5	
+Filename: ep54-Rachel-4240-mod_2509313.txt, score: 148.36945189298, y_hat: [11, 121], y: [26, 133], loss: 13.5	
+Filename: ep54-Rachel-4240-mod_2628111.txt, score: 148.33221856144, y_hat: [25, 45], y: [26, 46], loss: 1	
+Filename: ep54-Rachel-4240-mod_2648341.txt, score: 52.373344961916, y_hat: [24, 100], y: [26, 97], loss: 2.5	
+Filename: ep54-Rachel-4240-mod_2659792.txt, score: 51.6864174272, y_hat: [25, 71], y: [26, 73], loss: 1.5	
+Filename: ep54-Rachel-4240-mod_2756549.txt, score: 148.32787162248, y_hat: [25, 61], y: [26, 62], loss: 1	
+Filename: ep54-Rachel-4240-mod_2778497.txt, score: 148.35494643193, y_hat: [42, 46], y: [26, 47], loss: 8.5	
+Filename: ep54-Rachel-4240-mod_2796862.txt, score: 148.35273190519, y_hat: [25, 42], y: [26, 44], loss: 1.5	
+Filename: ep54-Rachel-4240-mod_3125598.txt, score: 148.69054373224, y_hat: [26, 61], y: [26, 62], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_3327769.txt, score: 147.50879167822, y_hat: [60, 64], y: [26, 65], loss: 17.5	
+Filename: ep54-Rachel-4240-mod_3471121.txt, score: 107.16674294762, y_hat: [23, 111], y: [26, 109], loss: 2.5	
+Filename: ep54-Rachel-4240-mod_544291.txt, score: 65.369203171084, y_hat: [25, 68], y: [26, 65], loss: 2	
+Filename: ep54-Rachel-4240-mod_894152.txt, score: 84.564290256554, y_hat: [24, 109], y: [26, 108], loss: 1.5	
+Filename: ep54-Rachel-4240-mod_905536.txt, score: 143.44700302474, y_hat: [22, 116], y: [26, 115], loss: 2.5	
+Filename: ep54-Rachel-4240-mod_942106.txt, score: 110.40313226373, y_hat: [25, 54], y: [26, 54], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_977406.txt, score: 65.66422414215, y_hat: [26, 123], y: [26, 119], loss: 2	
+Filename: ep61-Rachel-0315-mod_1019088.txt, score: 148.5259864582, y_hat: [67, 71], y: [26, 69], loss: 21.5	
+Filename: ep61-Rachel-0315-mod_1191534.txt, score: 60.273277290214, y_hat: [23, 27], y: [26, 104], loss: 40	
+Filename: ep61-Rachel-0315-mod_1376176.txt, score: 147.91179917769, y_hat: [26, 130], y: [26, 132], loss: 1	
+Filename: ep61-Rachel-0315-mod_1400077.txt, score: 147.94677399407, y_hat: [112, 116], y: [26, 116], loss: 43	
+Filename: ep61-Rachel-0315-mod_1470560.txt, score: 148.42659802826, y_hat: [25, 72], y: [26, 72], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_1558456.txt, score: 143.09054862499, y_hat: [27, 80], y: [26, 82], loss: 1.5	
+Filename: ep61-Rachel-0315-mod_1939490.txt, score: 148.5645530399, y_hat: [63, 67], y: [26, 66], loss: 19	
+Filename: ep61-Rachel-0315-mod_2004238.txt, score: 147.59865615855, y_hat: [87, 91], y: [26, 87], loss: 32.5	
+Filename: ep61-Rachel-0315-mod_2091870.txt, score: 81.614008126396, y_hat: [26, 97], y: [26, 96], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_2303750.txt, score: 136.92256298085, y_hat: [27, 80], y: [26, 67], loss: 7	
+Filename: ep61-Rachel-0315-mod_2465738.txt, score: 70.905864134556, y_hat: [26, 135], y: [26, 134], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_3320487.txt, score: 70.919013707826, y_hat: [26, 90], y: [26, 84], loss: 3	
+Filename: ep61-Rachel-0315-mod_3488753.txt, score: 143.72374909034, y_hat: [38, 120], y: [26, 121], loss: 6.5	
+Filename: ep61-Rachel-0315-mod_3609524.txt, score: 148.35819671945, y_hat: [93, 97], y: [26, 95], loss: 34.5	
+Filename: ep61-Rachel-0315-mod_3913415.txt, score: 100.31022741507, y_hat: [25, 116], y: [26, 114], loss: 1.5	
+Filename: ep61-Rachel-0315-mod_4043055.txt, score: 57.022727258244, y_hat: [26, 51], y: [26, 50], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_4186194.txt, score: 147.65340855612, y_hat: [105, 109], y: [26, 107], loss: 40.5	
+Filename: ep61-Rachel-0315-mod_744423.txt, score: 144.93484905688, y_hat: [87, 91], y: [26, 87], loss: 32.5	
+Filename: ep61-Rachel-0315-mod_807992.txt, score: 148.14935104924, y_hat: [26, 107], y: [26, 104], loss: 1.5	
+Filename: ep65-Rachel-1210-mod_1132990.txt, score: 52.990182741138, y_hat: [27, 105], y: [26, 104], loss: 1	
+Filename: ep65-Rachel-1210-mod_1172214.txt, score: 144.93669682058, y_hat: [23, 27], y: [26, 227], loss: 101.5	
+Filename: ep65-Rachel-1210-mod_1312366.txt, score: 69.92853970969, y_hat: [25, 98], y: [26, 100], loss: 1.5	
+Filename: ep65-Rachel-1210-mod_809503.txt, score: 54.763804270501, y_hat: [27, 77], y: [26, 75], loss: 1.5	
+Filename: ep76-Rachel-2450-mod_1275029.txt, score: 94.907964468451, y_hat: [26, 89], y: [26, 88], loss: 0.5	
+Filename: ep76-Rachel-2450-mod_1436208.txt, score: 46.277205911139, y_hat: [25, 64], y: [26, 64], loss: 0.5	
+Filename: ep76-Rachel-2450-mod_1445820.txt, score: 78.867542165582, y_hat: [23, 61], y: [26, 60], loss: 2	
+Filename: ep76-Rachel-2450-mod_1670849.txt, score: 140.51992654484, y_hat: [24, 128], y: [26, 128], loss: 1	
+Filename: ep76-Rachel-2450-mod_1926616.txt, score: 54.502718173318, y_hat: [25, 90], y: [26, 91], loss: 1	
+Filename: ep76-Rachel-2450-mod_1978295.txt, score: 62.432562371707, y_hat: [22, 89], y: [26, 94], loss: 4.5	
+Filename: ep76-Rachel-2450-mod_2006646.txt, score: 57.402324638968, y_hat: [26, 99], y: [26, 100], loss: 0.5	
+Filename: ep76-Rachel-2450-mod_2040987.txt, score: 148.06445390506, y_hat: [82, 86], y: [26, 85], loss: 28.5	
+Filename: ep76-Rachel-2450-mod_612131.txt, score: 144.03611392226, y_hat: [22, 26], y: [26, 92], loss: 35	
+Filename: ep76-Rachel-2450-mod_723579.txt, score: 51.719637044568, y_hat: [25, 130], y: [26, 132], loss: 1.5	
+Filename: ep76-Rachel-2450-mod_901752.txt, score: 40.261413518342, y_hat: [27, 85], y: [26, 86], loss: 1	
+Filename: ep87-Rachel-3340-mod_925811.txt, score: 45.810202321394, y_hat: [22, 93], y: [26, 95], loss: 3	
+Filename: ep87-Rachel-3340-mod_935654.txt, score: 124.82515783745, y_hat: [25, 125], y: [26, 124], loss: 1	
+Filename: ep90-Rachel-1450-mod_1434904.txt, score: 47.013591140419, y_hat: [24, 62], y: [26, 60], loss: 2	
+Filename: ep90-Rachel-1450-mod_1676345.txt, score: 62.270647303189, y_hat: [26, 70], y: [26, 70], loss: 0	
+Filename: ep90-Rachel-1450-mod_1973204.txt, score: 139.54099948379, y_hat: [26, 113], y: [26, 111], loss: 1	
+Filename: ep90-Rachel-1450-mod_2045989.txt, score: 45.441990298531, y_hat: [27, 105], y: [26, 100], loss: 3	
+Filename: ep90-Rachel-1450-mod_2164750.txt, score: 141.42680019187, y_hat: [27, 66], y: [26, 68], loss: 1.5	
+Filename: ep90-Rachel-1450-mod_2306306.txt, score: 148.32569109944, y_hat: [26, 84], y: [26, 84], loss: 0	
+Filename: ep90-Rachel-1450-mod_2747651.txt, score: 147.7034464811, y_hat: [25, 59], y: [26, 59], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_2885753.txt, score: 117.30631190533, y_hat: [24, 28], y: [26, 81], loss: 27.5	
+Filename: ep90-Rachel-1450-mod_2962017.txt, score: 148.65990980125, y_hat: [84, 88], y: [26, 88], loss: 29	
+Filename: ep90-Rachel-1450-mod_3100198.txt, score: 80.962343445231, y_hat: [26, 60], y: [26, 58], loss: 1	
+Filename: ep90-Rachel-1450-mod_3308561.txt, score: 70.68177105925, y_hat: [27, 68], y: [26, 69], loss: 1	
+Filename: ep90-Rachel-1450-mod_3557475.txt, score: 58.772810484541, y_hat: [26, 65], y: [26, 64], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_3575717.txt, score: 143.99822176181, y_hat: [25, 72], y: [26, 72], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_3897154.txt, score: 67.550373658485, y_hat: [27, 75], y: [26, 77], loss: 1.5	
+Filename: ep90-Rachel-1450-mod_413388.txt, score: 147.49947933036, y_hat: [25, 107], y: [26, 110], loss: 2	
+Filename: ep90-Rachel-1450-mod_4179091.txt, score: 51.65056519168, y_hat: [29, 65], y: [26, 67], loss: 2.5	
+Filename: ep90-Rachel-1450-mod_4273785.txt, score: 38.698923359333, y_hat: [25, 72], y: [26, 72], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_741868.txt, score: 110.56069027243, y_hat: [25, 93], y: [26, 95], loss: 1.5	
+Filename: ep90-Rachel-1450-mod_765493.txt, score: 146.20593347036, y_hat: [26, 77], y: [26, 73], loss: 2	
+Filename: ep90-Rachel-1450-mod_804629.txt, score: 79.920658248597, y_hat: [25, 94], y: [26, 93], loss: 1	
+Filename: ep90-Rachel-1450-mod_824680.txt, score: 148.15414200949, y_hat: [26, 78], y: [26, 79], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_945409.txt, score: 148.5741915169, y_hat: [43, 47], y: [26, 43], loss: 10.5	
+Filename: ep92-Rachel-1840-mod_1131674.txt, score: 50.07314031704, y_hat: [25, 68], y: [27, 67], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_1288887.txt, score: 57.514466214616, y_hat: [26, 147], y: [26, 145], loss: 1	
+Filename: ep92-Rachel-1840-mod_1303576.txt, score: 34.400397476154, y_hat: [20, 62], y: [26, 60], loss: 4	
+Filename: ep92-Rachel-1840-mod_1425622.txt, score: 32.284778476983, y_hat: [22, 136], y: [26, 132], loss: 4	
+Filename: ep92-Rachel-1840-mod_1578554.txt, score: 47.475974865426, y_hat: [24, 85], y: [26, 84], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_1585980.txt, score: 143.53487825497, y_hat: [21, 25], y: [26, 48], loss: 14	
+Filename: ep92-Rachel-1840-mod_1891791.txt, score: 148.27236416217, y_hat: [62, 66], y: [26, 65], loss: 18.5	
+Filename: ep92-Rachel-1840-mod_2096307.txt, score: 148.69971446539, y_hat: [25, 48], y: [26, 49], loss: 1	
+Filename: ep92-Rachel-1840-mod_2230798.txt, score: 116.28524164733, y_hat: [48, 52], y: [26, 52], loss: 11	
+Filename: ep92-Rachel-1840-mod_2259557.txt, score: 59.709155756851, y_hat: [37, 147], y: [26, 147], loss: 5.5	
+Filename: ep92-Rachel-1840-mod_2363158.txt, score: 135.34448804536, y_hat: [26, 79], y: [26, 78], loss: 0.5	
+Filename: ep92-Rachel-1840-mod_2615011.txt, score: 148.19349829001, y_hat: [24, 93], y: [26, 97], loss: 3	
+Filename: ep92-Rachel-1840-mod_2646920.txt, score: 147.51898265923, y_hat: [111, 115], y: [26, 111], loss: 44.5	
+Filename: ep92-Rachel-1840-mod_2667827.txt, score: 146.23157783366, y_hat: [25, 74], y: [26, 77], loss: 2	
+Filename: ep92-Rachel-1840-mod_2832245.txt, score: 148.34254707539, y_hat: [24, 64], y: [26, 65], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_2950458.txt, score: 37.410883473272, y_hat: [22, 45], y: [26, 41], loss: 4	
+Filename: ep92-Rachel-1840-mod_2962799.txt, score: 147.69217244806, y_hat: [23, 27], y: [26, 83], loss: 29.5	
+Filename: ep92-Rachel-1840-mod_3033858.txt, score: 50.734863589166, y_hat: [26, 101], y: [26, 101], loss: 0	
+Filename: ep92-Rachel-1840-mod_3065791.txt, score: 148.62377242266, y_hat: [25, 73], y: [26, 75], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_679266.txt, score: 132.57184063743, y_hat: [25, 82], y: [26, 84], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_834727.txt, score: 127.13226659952, y_hat: [25, 118], y: [26, 119], loss: 1	
+
+Average score: 101.00609066974	
+Average cumulative loss: 9.3899371069182	
+|(y_off - y_on) - (y_hat_off - y_hat_on)|	
+Percentage of <= 2ms: 0.71698113207547%	
+Percentage of <= 5ms: 0.90566037735849%	
+Percentage of <= 10ms: 0.9622641509434%	
+Percentage of <= 15ms: 0.9748427672956%	
+Percentage of <= 25ms: 0.9811320754717%	
+Percentage of <= 50ms: 0.9811320754717%	

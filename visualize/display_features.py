@@ -70,7 +70,7 @@ def display_features(filename, frame_begin_and_end_real, frame_begin_and_end_pre
         max_m = np.max(m[:, index])
         min_m = np.min(m[:, index])
         width = float(0.6)
-        plt.plot((m[:, index]), linestyle='-', linewidth=width, color='#006699')
+        plt.plot((m[:, index]), linestyle='-', linewidth=width, color='black')
         if label_line == 1:
             labels_plot, = plt.plot([labels[0], labels[0]], [min_m, max_m], linestyle='-.', color="#730A0A", lw=2)
             plt.plot([labels[1], labels[1]], [min_m, max_m], linestyle='-.', color="#730A0A", lw=2)

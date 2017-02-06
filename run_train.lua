@@ -23,25 +23,25 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/vot/natalia_pos/', 'the path to the features file')
-   cmd:option('-labels_path', 'data/vot/natalia_pos/', 'the path to the labels file')
+   cmd:option('-features_path', 'data/vot/natalia_neg/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/vot/natalia_neg/', 'the path to the labels file')
    cmd:option('-input_dim', 63, 'the input size')
    -- loss
    cmd:option('-eps', 0, 'the tolerance value for the loss function')
    -- model
    cmd:option('-hidden_size', 100, 'the hidden size')
-   cmd:option('-dropout', 0.8, 'dropout rate')
+   cmd:option('-dropout', 0.1, 'dropout rate')
    cmd:option('-n_layers', 2, 'the number of layers')
    -- train
-   cmd:option('-save', 'results/vot/natalia_pos/', 'subdirectory to save/log experiments in')
+   cmd:option('-save', 'results/vot/natalia_neg/model_2/', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
-   cmd:option('-clipping', 2, 'gradient clipping in the range of [-n, n]')
-   cmd:option('-learningRate', 0.01, 'learning rate at t=0')
+   cmd:option('-clipping', 5, 'gradient clipping in the range of [-n, n]')
+   cmd:option('-learningRate', 0.1, 'learning rate at t=0')
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
    cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
-   cmd:option('-patience', 8, 'the number of epochs to be patience')
+   cmd:option('-patience', 5, 'the number of epochs to be patience')
    cmd:option('-x_suffix', '.txt', 'the suffix of the data files')
    cmd:option('-y_suffix', '.labels', 'the suffix of the label files')
    
@@ -115,8 +115,8 @@ print '==> training! '
 print '==> evaluating on validation set'
 
 -- evaluate mode
-model:evaluate()
-loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+--model:evaluate()
+--loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
 print('\n==> Average score: ' .. score)
 print('==> Average cumulative loss: ' .. loss)
@@ -183,4 +183,3 @@ scoreLogger:add{['% score (train set)'] = best_score}
 -- ============================== testing ================================ --
 print '==> evaluating on test set'
 eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
-

@@ -21,8 +21,8 @@ if not opt then
   -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration/test/', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration/test/', 'the path to the labels file')
+   cmd:option('-features_path', 'data/vot/bb_pos/test/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/vot/bb_pos/test/', 'the path to the labels file')
    cmd:option('-test_file', 'test.t7', 'the t7 file that contains the data')
    cmd:option('-input_dim', 63, 'the input size')
    -- train

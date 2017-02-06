@@ -47,6 +47,8 @@ def run_stats(path, output_path):
     str = 'WORD DURATION DATA STATISTICS:'
 
     for i, d in enumerate(dirs):
+        if not os.path.exists(os.path.join(path + d)):
+            continue
         files = read_labels_files(os.path.join(path + d))
         durations = calc_durations(files)
 
@@ -98,10 +100,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Calculates data statistics.")
     parser.add_argument("--in_path", help="The path to the data files, this dir should contains the val"
                                           ", test and train dirs with the labels files inside them",
-                        default='/Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/vot/amanda_pos/')
+                        default='/Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/vot/bb_pos/')
     parser.add_argument("--out_path", help="The path to the save the data stats",
                         default='/Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/docs/'
-                                'vot_duration_amanda_stats.txt')
+                                'vot_duration_bb_stats.txt')
     args = parser.parse_args()
-
     run_stats(args.in_path, args.out_path)
+

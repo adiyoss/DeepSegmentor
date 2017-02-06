@@ -152,7 +152,8 @@ def create_labels(in_path, out_path):
 
 
 def convert_files(path, output_path):
-    mfcc_suffix = ".htk"
+    # mfcc_suffix = ".htk"
+    mfcc_suffix = ".mfc"
     txt_suffix = ".txt"
     # =================================== #
 
@@ -214,6 +215,7 @@ if __name__ == "__main__":
     parser.add_argument("out_path", help="The path to save the mfcc's and labels")
     args = parser.parse_args()
 
-    clean(init=True)
-    main(args.in_path_x, args.in_path_y, args.out_path)
-    clean()
+    convert_files("/Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/word_duration/", "/Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/word_duration/")
+    # clean(init=True)
+    # main(args.in_path_x, args.in_path_y, args.out_path)
+    # clean()

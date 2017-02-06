@@ -16,7 +16,7 @@ function evaluator:evaluate(model, criterion, x, y, f_n, verbose)
       local output = model:forward(x[t])
       local score, onset, offset = criterion:predict(output)
       local loss = criterion:task_loss(y[t], {onset, offset})
-      durations[t] = (tonumber(offset) - tonumber(onset)) - (tonumber(y[t][2]) - tonumber(y[t][1]))
+      durations[t] = torch.abs((tonumber(offset) - tonumber(onset)) - (tonumber(y[t][2]) - tonumber(y[t][1])))
       avg_score = avg_score + score
       cumulative_loss = cumulative_loss + loss      
       -- printings
@@ -43,22 +43,22 @@ function evaluator:plot_vot_stats(durations)
   ms_50 = 0
 
   for d=1, #durations do
-    if durations[d] < 2 then
+    if durations[d] <= 2 then
       ms_2 = ms_2 + 1
     end
-    if durations[d] < 5 then
+    if durations[d] <= 5 then
       ms_5 = ms_5 + 1  
     end
-    if durations[d] < 10 then
+    if durations[d] <= 10 then
       ms_10 = ms_10 + 1  
     end
-    if durations[d] < 15 then
+    if durations[d] <= 15 then
       ms_15 = ms_15 + 1  
     end
-    if durations[d] < 25 then
+    if durations[d] <= 25 then
       ms_25 = ms_25 + 1  
     end
-    if durations[d] < 50 then
+    if durations[d] <= 50 then
       ms_50 = ms_50 + 1  
     end
   end
@@ -70,6 +70,5 @@ function evaluator:plot_vot_stats(durations)
   print('Percentage of <= 25ms: ' .. (ms_25 / #durations) .. '%')
   print('Percentage of <= 50ms: ' .. (ms_50 / #durations) .. '%')
 end
-
 
 return evaluator

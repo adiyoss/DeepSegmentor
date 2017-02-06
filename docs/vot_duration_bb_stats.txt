@@ -1,0 +1,20 @@
+VOT DURATION DATA STATISTICS:
+
+Duration statistics for train files: 
+Mean: 61.813
+Median: 59.000
+Std: 23.392
+Max: 195.000
+Min: 13.000
+Number of files: 545
+Number of files that do not fall into 4 std is 4
+
+
+Duration statistics for test files: 
+Mean: 62.025
+Median: 58.000
+Std: 28.720
+Max: 201.000
+Min: 9.000
+Number of files: 159
+Number of files that do not fall into 4 std is 1

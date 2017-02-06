@@ -1,0 +1,114 @@
+
+# training and average test on all speakers
+22:52:45.661 [VotFrontEnd2] INFO: Processing 7654 instances.
+00:07:26.053 [VotFrontEnd2] INFO: Features extraction completed.
+00:07:27.170 [VotFrontEnd2] INFO: Processing 9585 instances.
+05:04:59.048 [VotFrontEnd2] INFO: Features extraction completed.
+05:10:02.746 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+05:20:58.319 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+05:23:07.108 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+05:35:04.514 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+06:16:40.659 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+06:28:40.739 [VotTrain] WARNING: Hinge loss is less than zero. This is due a short VOT in training data.
+06:52:19.536 [VotTrain] INFO: Training completed.
+08:19:56.535 [VotDecode] INFO: Total num misclassified = 0
+08:19:56.535 [VotDecode] INFO: Num pos misclassified as neg = 0
+08:19:56.535 [VotDecode] INFO: Num neg misclassified as pos = nan
+08:19:56.535 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 5.38414
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 50.5373
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 79.0923
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 91.7475
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 94.4079
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 95.8998
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 96.8597
+08:19:56.535 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 98.8315
+08:19:56.535 [VotDecode] INFO: RMS onset loss: 97.903
+08:19:56.535 [VotDecode] INFO: Decoding completed.08:50:03.267 
+
+# Speaker 5
+[VotFrontEnd2] INFO: Processing 1918 instances.
+09:09:06.734 [VotFrontEnd2] INFO: Features extraction completed.
+09:09:47.480 [VotDecode] INFO: Total num misclassified = 0
+09:09:47.480 [VotDecode] INFO: Num pos misclassified as neg = 0
+09:09:47.480 [VotDecode] INFO: Num neg misclassified as pos = nan
+09:09:47.480 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 4.45933
+09:09:47.480 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 47.5495
+09:09:47.480 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 76.9552
+09:09:47.481 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 93.8478
+09:09:47.481 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 95.9854
+09:09:47.481 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 97.2888
+09:09:47.481 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 98.1752
+09:09:47.481 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 99.6872
+09:09:47.481 [VotDecode] INFO: RMS onset loss: 43.795
+09:09:47.481 [VotDecode] INFO: Decoding completed.
+
+# Speaker 6
+09:09:47.664 [VotFrontEnd2] INFO: Processing 1920 instances.
+09:22:59.469 [VotFrontEnd2] INFO: Features extraction completed.
+09:23:36.550 [VotDecode] INFO: Total num misclassified = 0
+09:23:36.550 [VotDecode] INFO: Num pos misclassified as neg = 0
+09:23:36.550 [VotDecode] INFO: Num neg misclassified as pos = nan
+09:23:36.550 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 5.04323
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 53.2812
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 77.9688
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 93.6458
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 96.1979
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 97.3958
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 98.0729
+09:23:36.550 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 98.75
+09:23:36.550 [VotDecode] INFO: RMS onset loss: 43.8178
+09:23:36.550 [VotDecode] INFO: Decoding completed.
+
+
+# Speaker 7
+09:23:36.743 [VotFrontEnd2] INFO: Processing 1917 instances.
+09:37:52.875 [VotFrontEnd2] INFO: Features extraction completed.
+09:38:39.787 [VotDecode] INFO: Total num misclassified = 0
+09:38:39.787 [VotDecode] INFO: Num pos misclassified as neg = 0
+09:38:39.787 [VotDecode] INFO: Num neg misclassified as pos = nan
+09:38:39.787 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 6.32447
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 47.783
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 76.4737
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 89.3062
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 92.9577
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 94.8357
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 95.7746
+09:38:39.787 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 98.2264
+09:38:39.787 [VotDecode] INFO: RMS onset loss: 43.7836
+09:38:39.787 [VotDecode] INFO: Decoding completed.
+
+
+# Speaker 8
+09:38:39.992 [VotFrontEnd2] INFO: Processing 1917 instances.
+09:54:48.398 [VotFrontEnd2] INFO: Features extraction completed.
+09:55:36.171 [VotDecode] INFO: Total num misclassified = 0
+09:55:36.171 [VotDecode] INFO: Num pos misclassified as neg = 0
+09:55:36.171 [VotDecode] INFO: Num neg misclassified as pos = nan
+09:55:36.171 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 4.34377
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 57.1727
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 87.3761
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 93.3751
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 94.8878
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 95.6182
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 96.6615
+09:55:36.171 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 99.2697
+09:55:36.171 [VotDecode] INFO: RMS onset loss: 43.7836
+09:55:36.171 [VotDecode] INFO: Decoding completed.
+
+
+# Speaker 9
+09:55:36.363 [VotFrontEnd2] INFO: Processing 1913 instances.
+10:09:45.077 [VotFrontEnd2] INFO: Features extraction completed.
+10:10:31.370 [VotDecode] INFO: Total num misclassified = 0
+10:10:31.370 [VotDecode] INFO: Num pos misclassified as neg = 0
+10:10:31.370 [VotDecode] INFO: Num neg misclassified as pos = nan
+10:10:31.370 [VotDecode] INFO: Cumulative VOT loss on correctly classified data = 6.75379
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 2ms) = 46.8897
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 5ms) = 76.6858
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 10ms) = 88.552
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 15ms) = 92.0021
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 20ms) = 94.3544
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 25ms) = 95.609
+10:10:31.371 [VotDecode] INFO: % corr VOT error (t <= 50ms) = 98.2227
+10:10:31.371 [VotDecode] INFO: RMS onset loss: 43.7379
+10:10:31.371 [VotDecode] INFO: Decoding completed.

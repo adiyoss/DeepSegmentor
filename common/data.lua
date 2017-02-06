@@ -15,7 +15,7 @@ function data:new(x_suffix, y_suffix)
   if x_suffix ~= nil then
     self.x_suffix = x_suffix
   else
-    self.x_suffix = '.data'
+    self.x_suffix = '.txt'
   end
   if y_suffix ~= nil then
     self.y_suffix = y_suffix

@@ -1,5 +1,6 @@
 —- accuracy —-
 1. initialize the model with the multi class version
+2. train amanda’s model using 1 layer only
 
 —- technicalities —-
 1. support mini-batches

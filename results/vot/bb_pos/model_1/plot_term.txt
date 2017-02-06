@@ -1,0 +1,612 @@
+th run_train.lua -input_dim 51                                       ~/Projects/deep_audio_segmentation/code/segmentor
+==> processing options	
+==> Loading data set	
+ training set has NaN/s, replace with zeros.===========>........... 313/495 ............] ETA: 17s180ms | Step: 94ms    
+ training set has NaN/s, replace with zeros.======================= 473/495 =======>....] ETA: 3s677ms | Step: 167ms    
+ [================================================================== 495/495 ==========>] Tot: 49s533ms | Step: 156ms   
+saving the data to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/vot/bb_pos/train/train.t7 for faster loading
+ [=============================================================== 50/50 ===============>] Tot: 4s73ms | Step: 83ms      
+saving the data to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/vot/bb_pos/val/val.t7 for faster loading	
+ [================================================================= 159/159 ===========>] Tot: 13s581ms | Step: 81ms    
+saving the data to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/data/vot/bb_pos/test/test.t7 for faster loading	
+==> define loss	
+nn.StructuredHingeLoss
+==> build the model and initialize weights	
+nn.Sequential {
+  [input -> (1) -> (2) -> (3) -> (4) -> (5) -> output]
+  (1): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (2): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (3): nn.SeqBRNN @ nn.Sequential {
+    [input -> (1) -> (2) -> output]
+    (1): nn.ConcatTable {
+      input
+        |`-> (1): nn.SeqLSTM
+        |`-> (2): nn.Sequential {
+        |      [input -> (1) -> (2) -> (3) -> output]
+        |      (1): nn.SeqReverseSequence
+        |      (2): nn.SeqLSTM
+        |      (3): nn.SeqReverseSequence
+        |    }
+         ... -> output
+    }
+    (2): nn.CAddTable
+  }
+  (4): nn.Sequencer @ nn.Recursor @ nn.Dropout(0.8, busy)
+  (5): nn.StructLayer
+}
+==> configuring optimizer	
+==> training! 	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s951ms | Step: 182ms    
+
+==> Average score: 0	
+==> Average cumulative loss: 52.22	
+==> online epoch # 1	
+ [============================================================== 495/495 ==============>] Tot: 4m7s | Step: 469ms       
+
+==> time to learn 1 sample = 724.03920703634ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s361ms | Step: 170ms    
+
+==> Average score: 53.719253160892	
+==> Average cumulative loss: 26.4	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 2	
+ [=============================================================== 495/495 =============>] Tot: 3m44s | Step: 474ms      
+
+==> time to learn 1 sample = 1374.5084297001ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s887ms | Step: 160ms    
+
+==> Average score: 67.300620662942	
+==> Average cumulative loss: 27.53	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 3	
+ [=============================================================== 495/495 =============>] Tot: 3m44s | Step: 470ms      
+
+==> time to learn 1 sample = 2027.2431055525ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s16ms | Step: 163ms     
+
+==> Average score: 74.534428194149	
+==> Average cumulative loss: 26.2	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 4	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 469ms      
+
+==> time to learn 1 sample = 2674.5995142328ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s938ms | Step: 162ms    
+
+==> Average score: 77.743497647648	
+==> Average cumulative loss: 20.24	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 5	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 467ms      
+
+==> time to learn 1 sample = 3321.8763127736ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s995ms | Step: 163ms    
+
+==> Average score: 80.50583002978	
+==> Average cumulative loss: 20.49	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 6	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 468ms      
+
+==> time to learn 1 sample = 3967.9657328177ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s917ms | Step: 161ms    
+
+==> Average score: 82.799384617585	
+==> Average cumulative loss: 19.25	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 7	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 468ms      
+
+==> time to learn 1 sample = 4614.2640324471ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s148ms | Step: 166ms    
+
+==> Average score: 82.389954698667	
+==> Average cumulative loss: 19.8	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 8	
+ [=============================================================== 495/495 =============>] Tot: 3m42s | Step: 468ms      
+
+==> time to learn 1 sample = 5261.491838139ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s47ms | Step: 164ms     
+
+==> Average score: 84.406451214006	
+==> Average cumulative loss: 14.49	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 9	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 470ms      
+
+==> time to learn 1 sample = 5910.0356626837ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s17ms | Step: 163ms     
+
+==> Average score: 89.927678613015	
+==> Average cumulative loss: 14.1	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 10	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 468ms      
+
+==> time to learn 1 sample = 6559.0101604524ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s956ms | Step: 162ms    
+
+==> Average score: 86.57289583817	
+==> Average cumulative loss: 14.45	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 11	
+ [=============================================================== 495/495 =============>] Tot: 3m42s | Step: 468ms      
+
+==> time to learn 1 sample = 7205.2530521716ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s989ms | Step: 163ms    
+
+==> Average score: 86.448574170514	
+==> Average cumulative loss: 13.06	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 12	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 469ms      
+
+==> time to learn 1 sample = 7851.8843618893ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s916ms | Step: 161ms    
+
+==> Average score: 90.446294231264	
+==> Average cumulative loss: 15.29	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 13	
+ [=============================================================== 495/495 =============>] Tot: 3m44s | Step: 470ms      
+
+==> time to learn 1 sample = 8502.2214248713ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s942ms | Step: 162ms    
+
+==> Average score: 90.942639925679	
+==> Average cumulative loss: 13	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 14	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 468ms      
+
+==> time to learn 1 sample = 9150.035163177ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s988ms | Step: 163ms    
+
+==> Average score: 90.40638717876	
+==> Average cumulative loss: 11.35	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 15	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 470ms      
+
+==> time to learn 1 sample = 9796.756521161ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s936ms | Step: 161ms    
+
+==> Average score: 93.927093825175	
+==> Average cumulative loss: 8.92	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 16	
+ [=============================================================== 495/495 =============>] Tot: 3m44s | Step: 471ms      
+
+==> time to learn 1 sample = 10445.537786038ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s960ms | Step: 162ms    
+
+==> Average score: 94.325889596439	
+==> Average cumulative loss: 7.91	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 17	
+ [=============================================================== 495/495 =============>] Tot: 3m43s | Step: 469ms      
+
+==> time to learn 1 sample = 11094.488303404ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s22ms | Step: 163ms     
+
+==> Average score: 95.918371931821	
+==> Average cumulative loss: 11.21	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 18	
+ [=============================================================== 495/495 =============>] Tot: 3m42s | Step: 469ms      
+
+==> time to learn 1 sample = 11740.080058988ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s52ms | Step: 164ms     
+
+==> Average score: 100.45385648111	
+==> Average cumulative loss: 9.44	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 19	
+ [=============================================================== 495/495 =============>] Tot: 3m46s | Step: 492ms      
+
+==> time to learn 1 sample = 12397.391221362ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s890ms | Step: 161ms    
+
+==> Average score: 98.698722644065	
+==> Average cumulative loss: 6.2	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 20	
+ [=============================================================== 495/495 =============>] Tot: 3m38s | Step: 458ms      
+
+==> time to learn 1 sample = 13030.671805842ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s858ms | Step: 160ms    
+
+==> Average score: 100.65709981831	
+==> Average cumulative loss: 7.85	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 21	
+ [=============================================================== 495/495 =============>] Tot: 3m38s | Step: 461ms      
+
+==> time to learn 1 sample = 13663.353510957ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 7s826ms | Step: 159ms    
+
+==> Average score: 99.073848257833	
+==> Average cumulative loss: 6.96	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 22	
+ [=============================================================== 495/495 =============>] Tot: 3m38s | Step: 458ms      
+
+==> time to learn 1 sample = 14295.902458433ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s18ms | Step: 163ms     
+
+==> Average score: 105.50120103271	
+==> Average cumulative loss: 5.92	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 23	
+ [=============================================================== 495/495 =============>] Tot: 3m47s | Step: 525ms      
+
+==> time to learn 1 sample = 14960.53676983ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s50ms | Step: 164ms     
+
+==> Average score: 104.96971809051	
+==> Average cumulative loss: 3.86	
+==> loss improved, saving model to /Users/yossiadi/Projects/deep_audio_segmentation/code/segmentor/results/vot/bb_pos/model_1/model.net	
+==> online epoch # 24	
+ [================================================================= 495/495 ===========>] Tot: 4m899ms | Step: 488ms    
+
+==> time to learn 1 sample = 15665.558135115ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s43ms | Step: 164ms     
+
+==> Average score: 106.63772406005	
+==> Average cumulative loss: 8.57	
+
+========================================	
+==> Loss did not improved, iteration: 1	
+========================================
+	
+==> online epoch # 25	
+ [============================================================== 495/495 ==============>] Tot: 4m2s | Step: 505ms       
+
+==> time to learn 1 sample = 16366.899941889ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s455ms | Step: 172ms    
+
+==> Average score: 106.69929079616	
+==> Average cumulative loss: 6.73	
+
+========================================	
+==> Loss did not improved, iteration: 2	
+========================================
+	
+==> online epoch # 26	
+ [=============================================================== 495/495 =============>] Tot: 3m56s | Step: 482ms      
+
+==> time to learn 1 sample = 17052.340655555ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s27ms | Step: 163ms     
+
+==> Average score: 106.39129255655	
+==> Average cumulative loss: 8.95	
+
+========================================	
+==> Loss did not improved, iteration: 3	
+========================================
+	
+==> online epoch # 27	
+ [=============================================================== 495/495 =============>] Tot: 3m55s | Step: 491ms      
+
+==> time to learn 1 sample = 17736.566603588ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s273ms | Step: 168ms    
+
+==> Average score: 106.14617073013	
+==> Average cumulative loss: 9.55	
+
+========================================	
+==> Loss did not improved, iteration: 4	
+========================================
+	
+==> online epoch # 28	
+ [=============================================================== 495/495 =============>] Tot: 3m57s | Step: 518ms      
+
+==> time to learn 1 sample = 18424.49593219ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 9s156ms | Step: 186ms    
+
+==> Average score: 105.26141137598	
+==> Average cumulative loss: 6.63	
+
+========================================	
+==> Loss did not improved, iteration: 5	
+========================================
+	
+==> online epoch # 29	
+ [=============================================================== 495/495 =============>] Tot: 3m52s | Step: 472ms      
+
+==> time to learn 1 sample = 19099.987220276ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 8s185ms | Step: 167ms    
+
+==> Average score: 104.91765814012	
+==> Average cumulative loss: 8.02	
+
+========================================	
+==> Loss did not improved, iteration: 6	
+========================================
+	
+==> online epoch # 30	
+ [=============================================================== 495/495 =============>] Tot: 3m50s | Step: 480ms      
+
+==> time to learn 1 sample = 19770.919871284ms	
+==> evaluating on validation set	
+ [================================================================ 50/50 ==============>] Tot: 8s93ms | Step: 165ms     
+
+==> Average score: 107.39417245234	
+==> Average cumulative loss: 4.54	
+
+========================================	
+==> Loss did not improved, iteration: 7	
+========================================
+	
+==> online epoch # 31	
+ [=============================================================== 495/495 =============>] Tot: 3m53s | Step: 471ms      
+
+==> time to learn 1 sample = 20451.452892804ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 9s231ms | Step: 188ms    
+
+==> Average score: 106.50688016801	
+==> Average cumulative loss: 7.02	
+
+========================================	
+==> Loss did not improved, iteration: 8	
+========================================
+	
+==> online epoch # 32	
+ [=============================================================== 495/495 =============>] Tot: 3m54s | Step: 502ms      
+
+==> time to learn 1 sample = 21130.057446182ms	
+==> evaluating on validation set	
+ [================================================================= 50/50 =============>] Tot: 9s774ms | Step: 199ms    
+
+==> Average score: 110.03635675701	
+==> Average cumulative loss: 6.29	
+
+========================================	
+==> Loss did not improved, iteration: 9	
+========================================
+	
+==> evaluating on test set	
+Filename: ep02-Rachel-4000-mod_1125218.txt, score: 161.77907296937, y_hat: [174, 181], y: [26, 175], loss: 75	
+Filename: ep02-Rachel-4000-mod_1392687.txt, score: 44.845054093513, y_hat: [26, 52], y: [26, 53], loss: 0	
+Filename: ep02-Rachel-4000-mod_1618614.txt, score: 162.40459028887, y_hat: [11, 49], y: [26, 66], loss: 14	
+Filename: ep02-Rachel-4000-mod_675261.txt, score: 161.91124827264, y_hat: [24, 125], y: [26, 130], loss: 1.5	
+Filename: ep12-Rachel-2825-mod_1113330.txt, score: 76.865596681874, y_hat: [23, 76], y: [26, 78], loss: 0.5	
+Filename: ep12-Rachel-2825-mod_1121619.txt, score: 161.46031729594, y_hat: [25, 107], y: [26, 110], loss: 0.5	
+Filename: ep12-Rachel-2825-mod_1192495.txt, score: 53.19891314814, y_hat: [23, 74], y: [26, 81], loss: 3	
+Filename: ep12-Rachel-2825-mod_1217912.txt, score: 60.34315025353, y_hat: [25, 97], y: [26, 97], loss: 0	
+Filename: ep12-Rachel-2825-mod_1238744.txt, score: 49.722253446663, y_hat: [27, 64], y: [26, 66], loss: 0	
+Filename: ep12-Rachel-2825-mod_149035.txt, score: 142.28378309249, y_hat: [19, 97], y: [26, 99], loss: 2.5	
+Filename: ep12-Rachel-2825-mod_1661631.txt, score: 96.60169028779, y_hat: [24, 116], y: [26, 118], loss: 0	
+Filename: ep12-Rachel-2825-mod_316773.txt, score: 49.398173174894, y_hat: [25, 75], y: [26, 75], loss: 0	
+Filename: ep12-Rachel-2825-mod_323773.txt, score: 163.33783801556, y_hat: [26, 65], y: [26, 68], loss: 0.5	
+Filename: ep12-Rachel-2825-mod_493216.txt, score: 162.87615487683, y_hat: [26, 73], y: [26, 73], loss: 0	
+Filename: ep12-Rachel-2825-mod_718350.txt, score: 101.36630738365, y_hat: [25, 29], y: [26, 106], loss: 37.5	
+Filename: ep12-Rachel-2825-mod_847489.txt, score: 160.80822455338, y_hat: [25, 96], y: [26, 100], loss: 1	
+Filename: ep19-Rachel-0350-mod_1106207.txt, score: 163.25491638023, y_hat: [24, 62], y: [26, 62], loss: 0	
+Filename: ep19-Rachel-0350-mod_1233814.txt, score: 64.414376701816, y_hat: [25, 107], y: [26, 106], loss: 0	
+Filename: ep19-Rachel-0350-mod_1242057.txt, score: 69.503220539198, y_hat: [26, 41], y: [26, 35], loss: 2	
+Filename: ep19-Rachel-0350-mod_839311.txt, score: 47.579818465477, y_hat: [26, 54], y: [26, 53], loss: 0	
+Filename: ep19-Rachel-0350-mod_846743.txt, score: 48.430426777538, y_hat: [26, 85], y: [26, 84], loss: 0	
+Filename: ep20-Rachel-1555-mod_1170671.txt, score: 51.828161413094, y_hat: [27, 121], y: [26, 123], loss: 0	
+Filename: ep20-Rachel-1555-mod_1508409.txt, score: 162.26423598535, y_hat: [26, 91], y: [26, 95], loss: 1	
+Filename: ep20-Rachel-1555-mod_1831505.txt, score: 30.146104588391, y_hat: [24, 92], y: [26, 80], loss: 5	
+Filename: ep20-Rachel-1555-mod_1923097.txt, score: 52.36580884743, y_hat: [25, 78], y: [26, 78], loss: 0	
+Filename: ep20-Rachel-1555-mod_1949674.txt, score: 115.66724071139, y_hat: [25, 92], y: [26, 91], loss: 0	
+Filename: ep20-Rachel-1555-mod_1962838.txt, score: 163.32767829959, y_hat: [75, 79], y: [26, 79], loss: 23.5	
+Filename: ep20-Rachel-1555-mod_2025993.txt, score: 46.235712097367, y_hat: [26, 73], y: [26, 73], loss: 0	
+Filename: ep20-Rachel-1555-mod_2037378.txt, score: 23.421577605505, y_hat: [25, 84], y: [26, 67], loss: 7.5	
+Filename: ep20-Rachel-1555-mod_2241659.txt, score: 62.769920726512, y_hat: [24, 118], y: [26, 120], loss: 0	
+Filename: ep20-Rachel-1555-mod_2611394.txt, score: 162.62409937092, y_hat: [54, 58], y: [26, 55], loss: 13.5	
+Filename: ep20-Rachel-1555-mod_2831997.txt, score: 162.54103301612, y_hat: [25, 98], y: [26, 99], loss: 0	
+Filename: ep20-Rachel-1555-mod_2929458.txt, score: 162.40638712442, y_hat: [81, 85], y: [26, 85], loss: 26.5	
+Filename: ep20-Rachel-1555-mod_3215853.txt, score: 64.766378646613, y_hat: [24, 108], y: [26, 106], loss: 0	
+Filename: ep20-Rachel-1555-mod_3789817.txt, score: 48.115256802665, y_hat: [25, 67], y: [26, 66], loss: 0	
+Filename: ep20-Rachel-1555-mod_587479.txt, score: 163.34365233982, y_hat: [130, 134], y: [26, 134], loss: 51	
+Filename: ep20-Rachel-1555-mod_629233.txt, score: 162.40771821204, y_hat: [44, 121], y: [26, 124], loss: 8.5	
+Filename: ep20-Rachel-1555-mod_851147.txt, score: 45.068484764837, y_hat: [27, 73], y: [26, 74], loss: 0	
+Filename: ep33-Rachel-0400-mod_1126120.txt, score: 64.825154903301, y_hat: [11, 194], y: [26, 97], loss: 54	
+Filename: ep33-Rachel-0400-mod_1317119.txt, score: 56.197555903219, y_hat: [16, 73], y: [26, 70], loss: 4.5	
+Filename: ep33-Rachel-0400-mod_1437496.txt, score: 50.130553045996, y_hat: [27, 82], y: [26, 84], loss: 0	
+Filename: ep33-Rachel-0400-mod_1486917.txt, score: 59.633452740366, y_hat: [23, 207], y: [26, 80], loss: 63	
+Filename: ep33-Rachel-0400-mod_1623679.txt, score: 154.32012207128, y_hat: [24, 36], y: [26, 121], loss: 41.5	
+Filename: ep33-Rachel-0400-mod_1709662.txt, score: 60.363259389872, y_hat: [28, 59], y: [26, 61], loss: 0	
+Filename: ep33-Rachel-0400-mod_1892679.txt, score: 101.37746264114, y_hat: [20, 73], y: [26, 76], loss: 2.5	
+Filename: ep33-Rachel-0400-mod_2003719.txt, score: 32.798748372232, y_hat: [21, 45], y: [26, 53], loss: 4.5	
+Filename: ep33-Rachel-0400-mod_2033005.txt, score: 42.843397463524, y_hat: [24, 55], y: [26, 56], loss: 0	
+Filename: ep33-Rachel-0400-mod_736180.txt, score: 161.54070177898, y_hat: [69, 73], y: [26, 73], loss: 20.5	
+Filename: ep33-Rachel-0400-mod_950838.txt, score: 80.317326886689, y_hat: [34, 132], y: [26, 132], loss: 3	
+Filename: ep37-Rachel-0630-mod_1199505.txt, score: 40.310658599222, y_hat: [23, 80], y: [26, 79], loss: 0.5	
+Filename: ep37-Rachel-0630-mod_1564622.txt, score: 149.06511117415, y_hat: [24, 76], y: [26, 77], loss: 0	
+Filename: ep37-Rachel-0630-mod_1799258.txt, score: 55.198538495468, y_hat: [19, 134], y: [26, 132], loss: 2.5	
+Filename: ep37-Rachel-0630-mod_1897558.txt, score: 162.71158065634, y_hat: [24, 83], y: [26, 82], loss: 0	
+Filename: ep37-Rachel-0630-mod_971735.txt, score: 40.396003373021, y_hat: [25, 110], y: [26, 119], loss: 3.5	
+Filename: ep54-Rachel-4240-mod_1238972.txt, score: 143.71074224266, y_hat: [22, 45], y: [26, 44], loss: 1	
+Filename: ep54-Rachel-4240-mod_1307996.txt, score: 163.10125530807, y_hat: [23, 134], y: [26, 141], loss: 3	
+Filename: ep54-Rachel-4240-mod_1384955.txt, score: 57.873674405815, y_hat: [23, 156], y: [26, 157], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_1454757.txt, score: 163.38259820241, y_hat: [24, 92], y: [26, 93], loss: 0	
+Filename: ep54-Rachel-4240-mod_1476807.txt, score: 48.998820459407, y_hat: [24, 120], y: [26, 64], loss: 27	
+Filename: ep54-Rachel-4240-mod_1511980.txt, score: 59.714494972664, y_hat: [25, 84], y: [26, 87], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_1580150.txt, score: 162.62320839523, y_hat: [24, 74], y: [26, 76], loss: 0	
+Filename: ep54-Rachel-4240-mod_1954801.txt, score: 163.40903687782, y_hat: [69, 73], y: [26, 72], loss: 20.5	
+Filename: ep54-Rachel-4240-mod_2062128.txt, score: 161.76485658537, y_hat: [25, 95], y: [26, 99], loss: 1	
+Filename: ep54-Rachel-4240-mod_2084700.txt, score: 161.55034582958, y_hat: [24, 55], y: [26, 56], loss: 0	
+Filename: ep54-Rachel-4240-mod_2164547.txt, score: 76.499698104766, y_hat: [27, 125], y: [26, 128], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_2509313.txt, score: 163.07278277112, y_hat: [119, 123], y: [26, 133], loss: 49.5	
+Filename: ep54-Rachel-4240-mod_2628111.txt, score: 161.46852607045, y_hat: [25, 46], y: [26, 46], loss: 0	
+Filename: ep54-Rachel-4240-mod_2648341.txt, score: 56.830562804843, y_hat: [25, 100], y: [26, 97], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_2659792.txt, score: 56.293810642441, y_hat: [25, 71], y: [26, 73], loss: 0	
+Filename: ep54-Rachel-4240-mod_2756549.txt, score: 163.03297980363, y_hat: [25, 61], y: [26, 62], loss: 0	
+Filename: ep54-Rachel-4240-mod_2778497.txt, score: 163.1481697889, y_hat: [42, 46], y: [26, 47], loss: 7	
+Filename: ep54-Rachel-4240-mod_2796862.txt, score: 163.15132116126, y_hat: [39, 43], y: [26, 44], loss: 5.5	
+Filename: ep54-Rachel-4240-mod_3125598.txt, score: 163.01751820732, y_hat: [26, 60], y: [26, 62], loss: 0	
+Filename: ep54-Rachel-4240-mod_3327769.txt, score: 161.79543269707, y_hat: [60, 64], y: [26, 65], loss: 16	
+Filename: ep54-Rachel-4240-mod_3471121.txt, score: 115.60557375677, y_hat: [24, 111], y: [26, 109], loss: 0	
+Filename: ep54-Rachel-4240-mod_544291.txt, score: 64.516341300806, y_hat: [26, 69], y: [26, 65], loss: 1	
+Filename: ep54-Rachel-4240-mod_894152.txt, score: 89.616673948682, y_hat: [25, 109], y: [26, 108], loss: 0	
+Filename: ep54-Rachel-4240-mod_905536.txt, score: 146.85574183129, y_hat: [23, 117], y: [26, 115], loss: 0.5	
+Filename: ep54-Rachel-4240-mod_942106.txt, score: 97.119181780247, y_hat: [25, 55], y: [26, 54], loss: 0	
+Filename: ep54-Rachel-4240-mod_977406.txt, score: 73.478333711744, y_hat: [26, 122], y: [26, 119], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_1019088.txt, score: 163.28832852922, y_hat: [68, 72], y: [26, 69], loss: 20.5	
+Filename: ep61-Rachel-0315-mod_1191534.txt, score: 77.007995315188, y_hat: [23, 27], y: [26, 104], loss: 38	
+Filename: ep61-Rachel-0315-mod_1376176.txt, score: 162.88023645633, y_hat: [128, 132], y: [26, 132], loss: 50	
+Filename: ep61-Rachel-0315-mod_1400077.txt, score: 162.53342558708, y_hat: [112, 116], y: [26, 116], loss: 42	
+Filename: ep61-Rachel-0315-mod_1470560.txt, score: 163.16291443636, y_hat: [69, 73], y: [26, 72], loss: 20.5	
+Filename: ep61-Rachel-0315-mod_1558456.txt, score: 152.17801599968, y_hat: [27, 81], y: [26, 82], loss: 0	
+Filename: ep61-Rachel-0315-mod_1939490.txt, score: 163.3706792647, y_hat: [63, 67], y: [26, 66], loss: 17.5	
+Filename: ep61-Rachel-0315-mod_2004238.txt, score: 160.70097307839, y_hat: [86, 90], y: [26, 87], loss: 29.5	
+Filename: ep61-Rachel-0315-mod_2091870.txt, score: 83.144608069533, y_hat: [26, 98], y: [26, 96], loss: 0	
+Filename: ep61-Rachel-0315-mod_2303750.txt, score: 94.258562638853, y_hat: [27, 80], y: [26, 67], loss: 5.5	
+Filename: ep61-Rachel-0315-mod_2465738.txt, score: 71.254731437233, y_hat: [27, 136], y: [26, 134], loss: 0	
+Filename: ep61-Rachel-0315-mod_3320487.txt, score: 78.056785099968, y_hat: [26, 89], y: [26, 84], loss: 1.5	
+Filename: ep61-Rachel-0315-mod_3488753.txt, score: 110.57140881656, y_hat: [25, 37], y: [26, 121], loss: 41	
+Filename: ep61-Rachel-0315-mod_3609524.txt, score: 163.19783467978, y_hat: [94, 98], y: [26, 95], loss: 33.5	
+Filename: ep61-Rachel-0315-mod_3913415.txt, score: 119.23581596032, y_hat: [24, 117], y: [26, 114], loss: 0.5	
+Filename: ep61-Rachel-0315-mod_4043055.txt, score: 61.026192881317, y_hat: [26, 51], y: [26, 50], loss: 0	
+Filename: ep61-Rachel-0315-mod_4186194.txt, score: 158.63705113625, y_hat: [30, 107], y: [26, 107], loss: 1	
+Filename: ep61-Rachel-0315-mod_744423.txt, score: 132.76899703744, y_hat: [27, 89], y: [26, 87], loss: 0	
+Filename: ep61-Rachel-0315-mod_807992.txt, score: 162.87999476222, y_hat: [26, 107], y: [26, 104], loss: 0.5	
+Filename: ep65-Rachel-1210-mod_1132990.txt, score: 60.944817626533, y_hat: [26, 106], y: [26, 104], loss: 0	
+Filename: ep65-Rachel-1210-mod_1172214.txt, score: 161.88498004773, y_hat: [24, 222], y: [26, 227], loss: 1.5	
+Filename: ep65-Rachel-1210-mod_1312366.txt, score: 71.501656485533, y_hat: [24, 99], y: [26, 100], loss: 0	
+Filename: ep65-Rachel-1210-mod_809503.txt, score: 56.917410225035, y_hat: [27, 77], y: [26, 75], loss: 0	
+Filename: ep76-Rachel-2450-mod_1275029.txt, score: 84.362877475313, y_hat: [26, 89], y: [26, 88], loss: 0	
+Filename: ep76-Rachel-2450-mod_1436208.txt, score: 51.310567630774, y_hat: [25, 64], y: [26, 64], loss: 0	
+Filename: ep76-Rachel-2450-mod_1445820.txt, score: 74.198800561608, y_hat: [23, 61], y: [26, 60], loss: 0.5	
+Filename: ep76-Rachel-2450-mod_1670849.txt, score: 105.81422620419, y_hat: [23, 129], y: [26, 128], loss: 0.5	
+Filename: ep76-Rachel-2450-mod_1926616.txt, score: 62.944261042567, y_hat: [25, 91], y: [26, 91], loss: 0	
+Filename: ep76-Rachel-2450-mod_1978295.txt, score: 64.588184339105, y_hat: [23, 89], y: [26, 94], loss: 2	
+Filename: ep76-Rachel-2450-mod_2006646.txt, score: 58.359546815384, y_hat: [27, 99], y: [26, 100], loss: 0	
+Filename: ep76-Rachel-2450-mod_2040987.txt, score: 162.53482704195, y_hat: [82, 86], y: [26, 85], loss: 27	
+Filename: ep76-Rachel-2450-mod_612131.txt, score: 138.06157164885, y_hat: [24, 92], y: [26, 92], loss: 0	
+Filename: ep76-Rachel-2450-mod_723579.txt, score: 56.642843055431, y_hat: [25, 130], y: [26, 132], loss: 0	
+Filename: ep76-Rachel-2450-mod_901752.txt, score: 45.528666964675, y_hat: [28, 85], y: [26, 86], loss: 0	
+Filename: ep87-Rachel-3340-mod_925811.txt, score: 61.428192982749, y_hat: [23, 93], y: [26, 95], loss: 0.5	
+Filename: ep87-Rachel-3340-mod_935654.txt, score: 141.77399875521, y_hat: [24, 125], y: [26, 124], loss: 0	
+Filename: ep90-Rachel-1450-mod_1434904.txt, score: 65.604603683232, y_hat: [24, 61], y: [26, 60], loss: 0	
+Filename: ep90-Rachel-1450-mod_1676345.txt, score: 76.954623963619, y_hat: [26, 70], y: [26, 70], loss: 0	
+Filename: ep90-Rachel-1450-mod_1973204.txt, score: 130.24037245866, y_hat: [27, 114], y: [26, 111], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_2045989.txt, score: 58.181986461131, y_hat: [27, 105], y: [26, 100], loss: 1.5	
+Filename: ep90-Rachel-1450-mod_2164750.txt, score: 123.70153032904, y_hat: [27, 67], y: [26, 68], loss: 0	
+Filename: ep90-Rachel-1450-mod_2306306.txt, score: 162.71453481716, y_hat: [26, 84], y: [26, 84], loss: 0	
+Filename: ep90-Rachel-1450-mod_2747651.txt, score: 162.36767162405, y_hat: [25, 59], y: [26, 59], loss: 0	
+Filename: ep90-Rachel-1450-mod_2885753.txt, score: 91.993626271928, y_hat: [27, 80], y: [26, 81], loss: 0	
+Filename: ep90-Rachel-1450-mod_2962017.txt, score: 163.50725964108, y_hat: [84, 88], y: [26, 88], loss: 28	
+Filename: ep90-Rachel-1450-mod_3100198.txt, score: 76.349248855783, y_hat: [26, 60], y: [26, 58], loss: 0	
+Filename: ep90-Rachel-1450-mod_3308561.txt, score: 80.630797291333, y_hat: [27, 69], y: [26, 69], loss: 0	
+Filename: ep90-Rachel-1450-mod_3557475.txt, score: 74.143269074671, y_hat: [26, 65], y: [26, 64], loss: 0	
+Filename: ep90-Rachel-1450-mod_3575717.txt, score: 144.11797377699, y_hat: [25, 73], y: [26, 72], loss: 0	
+Filename: ep90-Rachel-1450-mod_3897154.txt, score: 79.006874831634, y_hat: [26, 74], y: [26, 77], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_413388.txt, score: 161.67866522954, y_hat: [26, 107], y: [26, 110], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_4179091.txt, score: 62.809489348017, y_hat: [29, 65], y: [26, 67], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_4273785.txt, score: 32.272027572781, y_hat: [28, 72], y: [26, 72], loss: 0	
+Filename: ep90-Rachel-1450-mod_741868.txt, score: 99.697204644406, y_hat: [25, 94], y: [26, 95], loss: 0	
+Filename: ep90-Rachel-1450-mod_765493.txt, score: 159.40655178267, y_hat: [26, 74], y: [26, 73], loss: 0	
+Filename: ep90-Rachel-1450-mod_804629.txt, score: 94.20276501059, y_hat: [25, 96], y: [26, 93], loss: 0.5	
+Filename: ep90-Rachel-1450-mod_824680.txt, score: 162.35263468511, y_hat: [26, 78], y: [26, 79], loss: 0	
+Filename: ep90-Rachel-1450-mod_945409.txt, score: 163.31696670634, y_hat: [43, 47], y: [26, 43], loss: 8.5	
+Filename: ep92-Rachel-1840-mod_1131674.txt, score: 52.618854143238, y_hat: [26, 68], y: [27, 67], loss: 0	
+Filename: ep92-Rachel-1840-mod_1288887.txt, score: 69.391555518442, y_hat: [25, 147], y: [26, 145], loss: 0	
+Filename: ep92-Rachel-1840-mod_1303576.txt, score: 36.320454195787, y_hat: [20, 63], y: [26, 60], loss: 2.5	
+Filename: ep92-Rachel-1840-mod_1425622.txt, score: 46.901020522939, y_hat: [23, 137], y: [26, 132], loss: 2	
+Filename: ep92-Rachel-1840-mod_1578554.txt, score: 47.626423985903, y_hat: [23, 85], y: [26, 84], loss: 0.5	
+Filename: ep92-Rachel-1840-mod_1585980.txt, score: 159.0860917039, y_hat: [21, 25], y: [26, 48], loss: 12	
+Filename: ep92-Rachel-1840-mod_1891791.txt, score: 163.12832772995, y_hat: [62, 66], y: [26, 65], loss: 17	
+Filename: ep92-Rachel-1840-mod_2096307.txt, score: 161.938621562, y_hat: [23, 27], y: [26, 49], loss: 10.5	
+Filename: ep92-Rachel-1840-mod_2230798.txt, score: 89.686111715321, y_hat: [25, 51], y: [26, 52], loss: 0	
+Filename: ep92-Rachel-1840-mod_2259557.txt, score: 70.459280709163, y_hat: [36, 147], y: [26, 147], loss: 4	
+Filename: ep92-Rachel-1840-mod_2363158.txt, score: 127.00593634606, y_hat: [26, 80], y: [26, 78], loss: 0	
+Filename: ep92-Rachel-1840-mod_2615011.txt, score: 160.9786948125, y_hat: [25, 92], y: [26, 97], loss: 1.5	
+Filename: ep92-Rachel-1840-mod_2646920.txt, score: 161.96280874884, y_hat: [111, 115], y: [26, 111], loss: 42.5	
+Filename: ep92-Rachel-1840-mod_2667827.txt, score: 152.38514457931, y_hat: [25, 75], y: [26, 77], loss: 0	
+Filename: ep92-Rachel-1840-mod_2832245.txt, score: 159.86138196671, y_hat: [24, 63], y: [26, 65], loss: 0	
+Filename: ep92-Rachel-1840-mod_2950458.txt, score: 39.969593394651, y_hat: [23, 46], y: [26, 41], loss: 2	
+Filename: ep92-Rachel-1840-mod_2962799.txt, score: 162.24314181261, y_hat: [25, 80], y: [26, 83], loss: 0.5	
+Filename: ep92-Rachel-1840-mod_3033858.txt, score: 61.594154205964, y_hat: [26, 101], y: [26, 101], loss: 0	
+Filename: ep92-Rachel-1840-mod_3065791.txt, score: 163.52038279921, y_hat: [25, 73], y: [26, 75], loss: 0	
+Filename: ep92-Rachel-1840-mod_679266.txt, score: 139.38457843754, y_hat: [26, 84], y: [26, 84], loss: 0	
+Filename: ep92-Rachel-1840-mod_834727.txt, score: 120.19947470947, y_hat: [26, 119], y: [26, 119], loss: 0	
+
+Average score: 107.33214200097	
+Average cumulative loss: 6.7798742138365
