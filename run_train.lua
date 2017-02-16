@@ -33,7 +33,7 @@ if not opt then
    cmd:option('-dropout', 0.1, 'dropout rate')
    cmd:option('-n_layers', 2, 'the number of layers')
    -- train
-   cmd:option('-save', 'results/vot/natalia_neg/model_2/', 'subdirectory to save/log experiments in')
+   cmd:option('-save', 'results/', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
    cmd:option('-clipping', 5, 'gradient clipping in the range of [-n, n]')
@@ -88,8 +88,6 @@ print '==> Loading data set'
 x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
 x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
-
---x_train, y_train = d:create_mini_batches(x_train, y_train, 2)
 
 -- ========== define the model, loss and optimization technique ========== --
 print '==> define loss'

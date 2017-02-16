@@ -18,7 +18,8 @@ function StructLayer:updateOutput(input)
   else    
     self.output:resize(input:size(1), input:size(2)):zero()
   end
-  -- W*x for all timesteps
+  
+  -- W * x for all timesteps
   for i=1,input:size(1) do
     self.output[i] = self.weight * input[i]:t()    
   end
@@ -29,10 +30,11 @@ end
 -- df / dx
 function StructLayer:updateGradInput(input, gradOutput)
   self.gradInput = torch.zeros(input:size())
-  self.gradInput[tonumber(gradOutput[1][1])]:add(self.weight) --> w for phi(x, y_hat)
-  self.gradInput[tonumber(gradOutput[2][1])]:add(self.weight) --> w for phi(x, y_hat)
-  self.gradInput[tonumber(gradOutput[3][1])]:add(torch.mul(self.weight, -1)) --> -w for phi(x, y)
-  self.gradInput[tonumber(gradOutput[4][1])]:add(torch.mul(self.weight, -1)) --> -w for phi(x, y)
+  local size = #gradOutput / 2
+  for i=1, size do
+    self.gradInput[tonumber(gradOutput[i][1])]:add(self.weight) --> w for phi(x, y_hat)
+    self.gradInput[tonumber(gradOutput[i+size][1])]:add(torch.mul(self.weight, -1)) --> -w for phi(x, y)
+  end
   return self.gradInput  
 end
 
@@ -41,9 +43,11 @@ end
 function StructLayer:accGradParameters(input, gradOutput)  
   local phi_y_hat = torch.zeros(1, self.dim)
   local phi_y = torch.zeros(1, self.dim)
-  
-  phi_y_hat:add(input[tonumber(gradOutput[1][1])], input[tonumber(gradOutput[2][1])])
-  phi_y:add(input[tonumber(gradOutput[3][1])], input[tonumber(gradOutput[4][1])])  
+  local size = #gradOutput / 2
+  for i=1, size do
+    phi_y_hat:add(input[tonumber(gradOutput[i][1])])
+    phi_y:add(input[tonumber(gradOutput[i+size][1])])
+  end  
   self.gradWeight:add(phi_y_hat:csub(phi_y)) --> phi_y_hat - phi_y
 end
 
