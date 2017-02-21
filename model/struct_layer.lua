@@ -3,7 +3,7 @@ local StructLayer, Parent = torch.class('nn.StructLayer', 'nn.Module')
 require('common/weight_init.lua')
 
 -- C'TOR
-function StructLayer:__init(dim, init)
+function StructLayer:__init(dim)
   Parent.__init(self)
   self.weight = torch.zeros(1, dim)
   self.gradWeight = torch.randn(1, dim)

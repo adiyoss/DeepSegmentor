@@ -23,26 +23,27 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/vot/natalia_neg/', 'the path to the features file')
-   cmd:option('-labels_path', 'data/vot/natalia_neg/', 'the path to the labels file')
-   cmd:option('-input_dim', 63, 'the input size')
+   cmd:option('-features_path', 'data/word_duration/small/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/word_duration/small/', 'the path to the labels file')
+   cmd:option('-input_dim', 13, 'the input size')
+   cmd:option('-n_frames', 4, 'the number of frames to concatenate')
    -- loss
    cmd:option('-eps', 0, 'the tolerance value for the loss function')
    -- model
-   cmd:option('-hidden_size', 100, 'the hidden size')
-   cmd:option('-dropout', 0.1, 'dropout rate')
-   cmd:option('-n_layers', 2, 'the number of layers')
+   cmd:option('-hidden_size', 200, 'the hidden size')
+   cmd:option('-dropout', 0.0, 'dropout rate')
+   cmd:option('-n_layers', 1, 'the number of layers')
    -- train
    cmd:option('-save', 'results/', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
-   cmd:option('-clipping', 5, 'gradient clipping in the range of [-n, n]')
-   cmd:option('-learningRate', 0.1, 'learning rate at t=0')
+   cmd:option('-clipping', 10, 'gradient clipping in the range of [-n, n]')
+   cmd:option('-learningRate', 0.01, 'learning rate at t=0')
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
-   cmd:option('-momentum', 0.9, 'momentum (SGD only)')
+   cmd:option('-momentum', 0.8, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
-   cmd:option('-patience', 5, 'the number of epochs to be patience')
-   cmd:option('-x_suffix', '.txt', 'the suffix of the data files')
+   cmd:option('-patience', 10, 'the number of epochs to be patience')
+   cmd:option('-x_suffix', '.data', 'the suffix of the data files')
    cmd:option('-y_suffix', '.labels', 'the suffix of the label files')
    
    cmd:text()
@@ -81,13 +82,23 @@ for key, value in pairs(opt) do
 end
 paramsLogger:close()
 
-
 -- ============================ load the data ============================ --
-d:new(opt.x_suffix, opt.y_suffix)
 print '==> Loading data set'
+d:new(opt.x_suffix, opt.y_suffix)
 x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
 x_test, y_test, f_n_test = d:read_data(paths.concat(opt.features_path, test_folder), paths.concat(opt.labels_path, test_folder), opt.input_dim, 'test.t7')
+
+-- applying z-score normalization
+mue, sigma = d:calc_z_score_params(x_train)
+x_train = d:normalize(x_train, mue[1][1], sigma[1][1])
+x_val = d:normalize(x_val, mue[1][1], sigma[1][1])
+x_test = d:normalize(x_test, mue[1][1], sigma[1][1])
+
+-- concat frames
+x_train, y_train = d:concat_frames(x_train, y_train, opt.n_frames)
+x_test, y_test = d:concat_frames(x_test, y_test, opt.n_frames)
+x_val, y_val = d:concat_frames(x_val, y_val, opt.n_frames)
 
 -- ========== define the model, loss and optimization technique ========== --
 print '==> define loss'
@@ -96,7 +107,7 @@ print(criterion)
 
 print '==> build the model and initialize weights'
 method = 'xavier'
-model = m:build_model(opt.input_dim, opt.hidden_size, opt.dropout, method, opt.n_layers)
+model = m:build_model((2 * opt.n_frames + 1 ) * opt.input_dim, opt.hidden_size, opt.dropout, method, opt.n_layers)
 print(model)
 
 print '==> configuring optimizer'
@@ -114,7 +125,7 @@ print '==> evaluating on validation set'
 
 -- evaluate mode
 --model:evaluate()
---loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+--loss, score, _ = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
 print('\n==> Average score: ' .. score)
 print('==> Average cumulative loss: ' .. loss)
@@ -136,7 +147,7 @@ while loss < best_loss or iteration <= opt.patience do
   -- evaluate mode
   model:evaluate()
   print '==> evaluating on validation set'
-  loss, score = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+  loss, score, _ = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
   
   print('\n==> Average score: ' .. score)
   print('==> Average cumulative loss: ' .. loss)
@@ -177,7 +188,11 @@ end
 lossLogger:add{['% loss (train set)'] = best_loss}
 scoreLogger:add{['% score (train set)'] = best_score}
 
-
 -- ============================== testing ================================ --
+-- load the relevant model
+local filename = paths.concat(opt.save, 'model.net')
+model = torch.load(filename)
+
 print '==> evaluating on test set'
 eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
+eval:evaluate(model, criterion, x_train, y_train, f_n_train, true)
