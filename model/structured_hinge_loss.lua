@@ -7,12 +7,12 @@ function StructuredHingeLoss:__init(epsilon)
    self.onsets = {}
    
    -- consts
-   self.MIN_GAP = 5
+   self.MIN_GAP = 10
    self.MIN_SIZE = 4
 end
 
 -- compute forward pass
--- perform loss augmented inference
+-- loss augmented inference
 function StructuredHingeLoss:updateOutput(input, y)      
   self.output = 0
   self.onsets = {}  
@@ -24,9 +24,9 @@ function StructuredHingeLoss:updateOutput(input, y)
     local best_onset = 1
     local start_idx = self.onsets[i-1] or 1
     -- if we reach the end of the sequence, set all other labels to the same label
-    if start_idx + self.MIN_GAP < input:size(1) then
+    if start_idx + self.MIN_SIZE < input:size(1) then
       -- loop over all possiable onsets to find the max value
-      for j=start_idx + self.MIN_GAP, input:size(1) do
+      for j=start_idx + self.MIN_SIZE, input:size(1) do
         local tmp = input[j] + (self:task_loss({y[i]}, {j}, self.eps) / 100)
         if best_score < tmp then
           best_score = tmp
@@ -71,21 +71,26 @@ function StructuredHingeLoss:task_loss(y, y_hat, eps)
 end
 
 -- inference
-function StructuredHingeLoss:predict(input)
-  local onset = 1
-  local offset = 2
-  local output = input[onset] + input[offset]
-
-  -- TODO add more constraints
-  for i=self.MIN_GAP,input:size(1) do
-    for j=i+self.MIN_SIZE,input:size(1) do
-      local tmp = input[i] + input[j]
-      if tmp > output then
-        output = tmp
-        onset = i
-        offset = j
+function StructuredHingeLoss:predict(input, k)
+  local start_search = 1
+  local end_search = (start_search + 2 * (input:size(1) / (k + 1)))
+  local max_val = 0
+  local onsets_hat = {}
+  local output = 0
+  for i=1, k do
+    local max_k = 0
+    local best_onset = 1    
+    for j=start_search, end_search do
+      local tmp = input[j]
+      if tmp > max_k then
+        max_k = tmp  
+        best_onset = j
       end
     end
-  end
-  return output, onset, offset  
+    output = output + max_k
+    table.insert(onsets_hat, best_onset)
+    start_search = best_onset + self.MIN_SIZE
+    end_search = (i == k) and math.min(start_search + 2 * (input:size(1) / (k + 1)), input:size(1)) or input:size(1)
+  end 
+  return output, onsets_hat
 end

@@ -23,26 +23,28 @@ if not opt then
    -- general
    cmd:option('-seed', 1234, 'the seed to generate numbers')
    -- data
-   cmd:option('-features_path', 'data/word_duration/small/', 'the path to the features file')
-   cmd:option('-labels_path', 'data/word_duration/small/', 'the path to the labels file')
-   cmd:option('-input_dim', 13, 'the input size')
+   cmd:option('-features_path', 'data/synthetic/', 'the path to the features file')
+   cmd:option('-labels_path', 'data/synthetic/', 'the path to the labels file')
+   cmd:option('-input_dim', 9, 'the input size')
    cmd:option('-n_frames', 4, 'the number of frames to concatenate')
    -- loss
    cmd:option('-eps', 0, 'the tolerance value for the loss function')
    -- model
-   cmd:option('-hidden_size', 200, 'the hidden size')
-   cmd:option('-dropout', 0.0, 'dropout rate')
-   cmd:option('-n_layers', 1, 'the number of layers')
+   cmd:option('-arc_type', 'rnn', 'rnn | brnn')
+   cmd:option('-model_type', 'lstmp', 'gru | lstm | lstmp')
+   cmd:option('-hidden_size', 50, 'the hidden size')
+   cmd:option('-dropout', 0.1, 'dropout rate')
+   cmd:option('-n_layers', 1, 'the number of layers')   
    -- train
    cmd:option('-save', 'results/', 'subdirectory to save/log experiments in')
    cmd:option('-plot', false, 'live plot')
    cmd:option('-optimization', 'ADAGRAD', 'optimization method: SGD | ADAM | ADAGRAD | RMSPROP | ADADELTA')
-   cmd:option('-clipping', 10, 'gradient clipping in the range of [-n, n]')
+   cmd:option('-clipping', 2, 'gradient clipping in the range of [-n, n]')
    cmd:option('-learningRate', 0.01, 'learning rate at t=0')
    cmd:option('-weightDecay', 0, 'weight decay (SGD only)')
-   cmd:option('-momentum', 0.8, 'momentum (SGD only)')
+   cmd:option('-momentum', 0.9, 'momentum (SGD only)')
    cmd:option('-type', 'double', 'data type: double | cuda')
-   cmd:option('-patience', 10, 'the number of epochs to be patience')
+   cmd:option('-patience', 2, 'the number of epochs to be patience')
    cmd:option('-x_suffix', '.data', 'the suffix of the data files')
    cmd:option('-y_suffix', '.labels', 'the suffix of the label files')
    
@@ -83,7 +85,7 @@ end
 paramsLogger:close()
 
 -- ============================ load the data ============================ --
-print '==> Loading data set'
+print '==> loading data set'
 d:new(opt.x_suffix, opt.y_suffix)
 x_train, y_train, f_n_train = d:read_data(paths.concat(opt.features_path, train_folder), paths.concat(opt.labels_path, train_folder), opt.input_dim, 'train.t7')
 x_val, y_val, f_n_val = d:read_data(paths.concat(opt.features_path, val_folder), paths.concat(opt.labels_path, val_folder), opt.input_dim, 'val.t7')
@@ -106,30 +108,29 @@ criterion = nn.StructuredHingeLoss(opt.eps)
 print(criterion)
 
 print '==> build the model and initialize weights'
-method = 'xavier'
-model = m:build_model((2 * opt.n_frames + 1 ) * opt.input_dim, opt.hidden_size, opt.dropout, method, opt.n_layers)
+model = m:build_model(opt.arc_type, opt.model_type, (2 * opt.n_frames + 1 ) * opt.input_dim, opt.hidden_size, opt.dropout, opt.n_layers)
 print(model)
+
 
 print '==> configuring optimizer'
 tr:new(opt.type, opt.clipping)
 tr:set_optimizer(opt.optimization)
 
+-- ============================= training ================================ --
 -- Retrieve parameters and gradients
 if model then
   parameters, gradParameters = model:getParameters()
 end
 
--- ============================= training ================================ --
-print '==> training! '
-print '==> evaluating on validation set'
-
 -- evaluate mode
---model:evaluate()
---loss, score, _ = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
+model:evaluate()
+print '==> first, evaluate on validation set'
+loss, score, _ = eval:evaluate(model, criterion, x_val, y_val, f_n_val)
 
-print('\n==> Average score: ' .. score)
-print('==> Average cumulative loss: ' .. loss)
+print('\n==> average score: ' .. score)
+print('==> average cumulative loss: ' .. loss)
 
+print '==> training!'
 -- loop until convergence
 while loss < best_loss or iteration <= opt.patience do
   -- training mode
@@ -166,8 +167,8 @@ while loss < best_loss or iteration <= opt.patience do
     best_score = score
     
     -- clean state before saving
-    model:clearState()
-    model:get(1):forget()
+    --model:clearState()
+    --model:get(1):forget()
     model:get(1).output = torch.Tensor()
     model:get(1).gradInput = torch.Tensor()
     
@@ -195,4 +196,5 @@ model = torch.load(filename)
 
 print '==> evaluating on test set'
 eval:evaluate(model, criterion, x_test, y_test, f_n_test, true)
+print '==> evaluating on training set'
 eval:evaluate(model, criterion, x_train, y_train, f_n_train, true)

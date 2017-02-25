@@ -13,15 +13,18 @@ function evaluator:evaluate(model, criterion, x, y, f_n, verbose)
       if not verbose then
         xlua.progress(t, #x)
       end
+      if t == 3 then
+        print(1)
+      end
       local output = model:forward(x[t])
-      local score, onset, offset = criterion:predict(output)
-      local loss = criterion:task_loss(y[t], {onset, offset})
-      durations[t] = torch.abs((tonumber(offset) - tonumber(onset)) - (tonumber(y[t][2]) - tonumber(y[t][1])))
+      local score, onsets = criterion:predict(output, #y[t])
+      local loss = criterion:task_loss(y[t], onsets)
+      --durations[t] = torch.abs((tonumber(offset) - tonumber(onset)) - (tonumber(y[t][2]) - tonumber(y[t][1])))
       avg_score = avg_score + score
       cumulative_loss = cumulative_loss + loss      
       -- printings
       if verbose then
-        print('Filename: ' .. f_n[t] .. ', score: ' .. score .. ', y_hat: [' .. onset .. ', ' .. offset ..'], y: [' .. y[t][1] .. ', ' .. y[t][2] .. '], loss: ' .. loss)
+        print('Filename: ' .. f_n[t] .. ', score: ' .. score .. ', loss: ' .. loss)
       end
   end
   cumulative_loss = cumulative_loss / #x

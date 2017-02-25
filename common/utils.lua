@@ -32,27 +32,31 @@ function utils:load_data(path, input_dim)
   local data = torch.Tensor(num_of_frames, 1, input_dim)
   if file then
     local i = 1
+    local first = true
     for line in file:lines() do
-      local j = 1
-      for str in string.gmatch(line, "(%S+)") do
-        -- read only until input dim is reached
-        if j > input_dim then
-          break
+      if first == false then
+        local j = 1
+        for str in string.gmatch(line, "(%S+)") do
+          -- read only until input dim is reached
+          if j > input_dim then
+            break
+          end
+          data[i][1][j] = str
+          j = j + 1
+        end      
+        -- support gpu processing
+        if (j - 1) == input_dim then        
+          if not opt or not opt.type then
+            data[i] = data[i]:double()
+          elseif opt.type == 'double' then
+            data[i] = data[i]:double()
+          elseif opt.type == 'cuda' then
+            data[i] = data[i]:cuda()
+          end
+          i = i + 1
         end
-        data[i][1][j] = str
-        j = j + 1
-      end      
-      -- support gpu processing
-      if (j - 1) == input_dim then        
-        if not opt or not opt.type then
-          data[i] = data[i]:double()
-        elseif opt.type == 'double' then
-          data[i] = data[i]:double()
-        elseif opt.type == 'cuda' then
-          data[i] = data[i]:cuda()
-        end
-        i = i + 1
       end
+      first = false
     end
   else
     print("\n==>ERROR: can not open file.")    
